@@ -40,7 +40,6 @@ import {
 } from "@mui/icons-material";
 import LogoURL from "./icons/logo_url.svg";
 import Pour from "./icons/pour.svg";
-import EuLogo from "./icons/eu.svg";
 import Contre from "./icons/contre.svg";
 import Trophy from "./icons/trophy.svg";
 import { CardSwiper } from "react-card-swiper";
@@ -283,7 +282,6 @@ const Welcome = () => {
       <div className="Welcome">
         <div className="Card">
           <div className="top">
-            <EuLogo />
             <h2>{"Votez les textes de l'Assemblée Nationale 🏛️🇫🇷"}</h2>
           </div>
           <div className="bottom">
