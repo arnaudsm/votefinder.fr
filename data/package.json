@@ -1,0 +1,16 @@
+{
+  "name": "data",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "node-html-parser": "^6.1.13",
+    "openai": "^4.49.1",
+    "p-ratelimit": "^1.0.1",
+    "pako": "^2.1.0",
+    "pdf-text-reader": "^5.1.0",
+    "zlib": "^1.0.5"
+  }
+}
