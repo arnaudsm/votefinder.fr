@@ -50,7 +50,7 @@ import { theme } from "./theme";
 import html2canvas from "html2canvas";
 
 const minVotes = 5;
-const recommendedVotes = 30;
+const recommendedVotes = 23;
 const projectURL = "https://github.com/arnaudsm/votefinder.fr";
 
 const shuffle = (arr) => {
