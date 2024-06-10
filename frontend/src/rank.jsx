@@ -8,27 +8,30 @@ export const calculateResults = (choices) => {
     Object.keys(data.lists).map((group) => [group, { "+": 0, "-": 0 }]),
   );
 
-  const apply = (depute_id, choice) => {
+  const apply = ({ depute_id, choice, total }) => {
     if (!(depute_id in deputes)) return;
     const org_id = data.deputes[depute_id].o[0];
     if (!org_id) return;
-    lists[data.org_to_list[org_id]][choice ? "+" : "-"] += 1;
+    lists[data.org_to_list[org_id]][choice ? "+" : "-"] += 1 / total;
     deputes[depute_id][choice ? "+" : "-"] += 1;
   };
 
   for (const [vote_id, choice] of Object.entries(choices)) {
+    const votes = data.votes?.[vote_id]?.votes;
+    const total =
+      votes?.["0"].length + votes?.["-"].length + votes?.["+"].length;
     if (choice == "+") {
-      for (const depute_id of data.votes?.[vote_id]?.votes?.["0"] || [])
-        apply(depute_id, false);
-      for (const depute_id of data.votes?.[vote_id]?.votes?.["-"] || [])
-        apply(depute_id, false);
-      for (const depute_id of data.votes?.[vote_id]?.votes?.["+"] || [])
-        apply(depute_id, true);
+      for (const depute_id of votes?.["0"] || [])
+        apply({ depute_id, choice: false, total });
+      for (const depute_id of votes?.["-"] || [])
+        apply({ depute_id, choice: false, total });
+      for (const depute_id of votes?.["+"] || [])
+        apply({ depute_id, choice: true, total });
     } else if (choice == "-") {
-      for (const depute_id of data.votes?.[vote_id]?.votes?.["-"] || [])
-        apply(depute_id, true);
-      for (const depute_id of data.votes?.[vote_id]?.votes?.["+"] || [])
-        apply(depute_id, false);
+      for (const depute_id of votes?.["-"] || [])
+        apply({ depute_id, choice: true, total });
+      for (const depute_id of votes?.["+"] || [])
+        apply({ depute_id, choice: false, total });
     }
   }
   const rank = (x) => {
