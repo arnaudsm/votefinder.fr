@@ -50,6 +50,7 @@ import html2canvas from "html2canvas";
 
 const minVotes = 5;
 const recommendedVotes = 23;
+const enablePopup = false;
 const projectURL = "https://github.com/arnaudsm/votefinder.fr";
 
 const shuffle = (arr) => {
@@ -814,8 +815,10 @@ function App() {
     setChoices((prevChoices) => {
       const newChoices = { ...prevChoices, [vote_id]: type };
       localStorage.setItem("votes", JSON.stringify(newChoices));
-      if (Object.keys(newChoices).length == recommendedVotes && !noPopup)
+      if (Object.keys(newChoices).length == recommendedVotes && !noPopup) {
+        if (!enablePopup) setTab(1);
         setResultPopup(true);
+      }
       return newChoices;
     });
   };
@@ -841,6 +844,7 @@ function App() {
           setShowShare,
         }}
       >
+        {!enablePopup && resultPopup && <ConfettiExplosion zIndex="1400" />}
         <Navbar />
         {/* Switch with CSS to keep the state and rendering */}
         <div className="content">
@@ -855,7 +859,7 @@ function App() {
           )}
         </div>
         {showShare && <SharePopup />}
-        <ResultsModal />
+        {enablePopup && <ResultsModal />}
         {started && <BottomNav state={[tab, setTab]} />}
       </Context.Provider>
     </ThemeProvider>
