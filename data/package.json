@@ -5,6 +5,7 @@
   "license": "MIT",
   "type": "module",
   "dependencies": {
+    "csv": "^6.3.9",
     "dotenv": "^16.4.5",
     "node-html-parser": "^6.1.13",
     "openai": "^4.49.1",

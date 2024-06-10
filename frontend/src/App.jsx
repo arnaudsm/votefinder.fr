@@ -36,7 +36,7 @@ import {
   X,
   Instagram,
   Article,
-  QuestionAnswer,
+  Folder,
 } from "@mui/icons-material";
 import LogoURL from "./icons/logo_url.svg";
 import Pour from "./icons/pour.svg";
@@ -93,17 +93,17 @@ const Card = ({ vote_id }) => {
           {formatDate(vote.date)} - {vote.type}
         </div>
         <div className="actions">
-          {(vote.debat_url || vote.explications_url) && (
+          {vote.senat_url && (
             <Button
-              startIcon={<QuestionAnswer />}
+              startIcon={<Folder />}
               className="more-info"
               color="lightBlue"
               variant="contained"
               disableElevation
               target="_blank"
-              href={vote.debat_url || vote.explications_url}
+              href={vote.senat_url}
             >
-              Débat
+              Dossier
             </Button>
           )}
           {vote.summary_url && (
@@ -493,7 +493,9 @@ const ResultListe = ({ id, approval }) => {
 const ResultsListes = ({ results }) => (
   <div className="list">
     <div className="explanation">
-      Pourcentage d’accord avec les listes 2024.
+      Pourcentage d’accord avec les listes sortantes.
+      <br />
+      Les nouvelles listes seront annoncées bientôt.
     </div>
     {results.lists.map(([id, approval]) => (
       <ResultListe id={id} approval={approval} key={id} />
@@ -635,11 +637,20 @@ const About = ({ visible }) => {
         >
           contribuer sur github
         </Button>
+        <Button
+          color="primary"
+          variant="contained"
+          size="large"
+          href="https://votefinder.eu"
+        >
+          VoteFinder Européennes
+        </Button>
 
         <h2>Paramètres</h2>
         <Button
           className="reset"
           startIcon={<Delete />}
+          size="large"
           color="primary"
           variant="contained"
           onClick={() => {
@@ -663,7 +674,7 @@ const About = ({ visible }) => {
             href="https://twitter.com/VoteFinder_eu"
             startIcon={<X />}
           >
-            / Twitter
+            Twitter
           </Button>
           <Button
             color="primary"
@@ -695,6 +706,10 @@ const About = ({ visible }) => {
           <div>
             <h4>Yeliz Inci</h4>
             <h5>Spécialiste Droits Humains</h5>
+          </div>
+          <div>
+            <h4>Arnaud-Yoh Massenet</h4>
+            <h5>Data Scientist</h5>
           </div>
         </div>
       </div>

@@ -28,13 +28,7 @@ Notre ligne éditoriale sur les textes est la suivante
 - `make build` pour compiler l'application
 
 ## Todo
-- Lien Débats
-- Déployer Domaine
-- Rajouter lien eu
-- Améliorer Prompt
-- Rajouter label "Législatives"
-- Communiqué de presse
-- Disclaimer update des listes
+- Détail Votes
 - Crash rotations successives
 - Taux d'absentéisme
 - Tests E2E

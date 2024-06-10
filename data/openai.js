@@ -10,10 +10,13 @@ export const summarize = async (content) => {
         role: "system",
         content: `Résumes en francais le contenu de cette loi du parlement européen. 
         Sois précis et pas trop général. Utilises des mots faciles à comprendre. 
-        Fais des phrases de moins de 30 mots.
         Pas de phrases consensuelles, parles d'actions concrètes. Sois synthétique, ne mentionne pas le parlement ou le type de texte. 
-        
-        Résumes le texte dans le format JSON suivant:
+
+        titre: Objectif de la loi. Moins de 30 mots.
+        sous_titre_1: Contexte de la loi. Moins de 60 mots.
+        sous_titre_2: Mesure phare, chiffrée si possible. Moins de 60 mots.
+
+        Résumes la loi dans le format JSON suivant:
         {
             "titre": "",
             "sous_titre_1": "",
@@ -26,20 +29,20 @@ export const summarize = async (content) => {
         Ecris dans le même style que ces exemples :
         {
             "titre": "Condamner l'aggression Russe en Ukraine",
-            "sous_titre_1": "Apporter de l'aide humanitaire aux civils",
-            "sous_titre_2": "Geler les actifs des oligarques russes"
+            "sous_titre_1": "Apporter de l'aide humanitaire aux civils fuyant le pays",
+            "sous_titre_2": "Geler les actifs des oligarques russes proches de Poutine"
         }
         {
             "titre": "Assouplir la réglementation du glyphosate",
-            "sous_titre_1": "Autoriser le pesticide jusqu'en 2026",
-            "sous_titre_2": "Mais obliger la transparence des pesticides chimiques"
+            "sous_titre_1": "Autoriser le pesticide jusqu'en 2026 au plus tard",
+            "sous_titre_2": "Mais obliger la transparence des pesticides chimiques face aux dangers pour la santé"
         }
         {
             "titre": "Établir un droit constitutionnel à l'avortement",
-            "sous_titre_1": "Protéger les droits sexuels et reproductifs",
-            "sous_titre_2": "Etablir un accès universel à l'avortement légal et sûr"
+            "sous_titre_1": "Protéger les droits sexuels et reproductifs en France",
+            "sous_titre_2": "Etablir un accès universel à l'avortement légal, sûr et gratuit"
         }
-        Les 3 phrases ne doivent pas se répéter mais se compléter
+        Les 4 phrases ne doivent pas se répéter mais doivent se compléter
         `,
       },
       {

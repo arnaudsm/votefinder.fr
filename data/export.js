@@ -1,10 +1,10 @@
 import fs from "fs";
-import { loadDir, getData, getVotes, listify } from "./data.js";
+import { getData, getVotes, listify } from "./data.js";
 
-const { acteurs, organes } = getData();
+const { acteurs } = getData();
 
 const lists = {
-  PO800484: { label: "Démocrate (MoDem et Indépendants)" },
+  PO800484: { label: "Démocrate - MoDem et Indépendants" },
   PO800490: { label: "La France insoumise - NUPES" },
   PO800502: { label: "Gauche démocrate et républicaine" },
   PO800508: { label: "Les Républicains" },
@@ -55,12 +55,27 @@ const deputes = Object.fromEntries(
 
 const allVotes = Object.fromEntries(getVotes().map((x) => [x.vote_id, x]));
 const votes = Object.fromEntries(
-  loadDir("votes")
-    .filter((x) => x.vote_id)
-    .map((x) => ({
-      ...allVotes[x.vote_id],
-      ...x,
-    }))
+  fs
+    .readdirSync("votes")
+    .map((file) => {
+      const vote_id = file.replace(".json", "");
+      const data = JSON.parse(fs.readFileSync(`votes/${vote_id}.json`));
+      const vote = allVotes[vote_id];
+      // if (
+      //   vote.votes["+"].length /
+      //     (vote.votes["-"].length +
+      //       vote.votes["-"].length +
+      //       vote.votes["0"].length) <
+      //   0.5
+      // )
+      //   console.log(vote_id, "rejeté");
+      if (vote.votes["-"].length < 4)
+        console.log(vote_id, "quasi unanimité", vote.votes["-"].length);
+      return {
+        ...vote,
+        ...data,
+      };
+    })
     .map((x) => [x.vote_id, x])
 );
 
