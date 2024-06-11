@@ -4,16 +4,16 @@ import { getData, getVotes, listify } from "./data.js";
 const { acteurs } = getData();
 
 const lists = {
-  PO800484: { label: "Démocrate - MoDem et Indépendants" },
+  PO830170: { label: "Socialistes" },
   PO800490: { label: "La France insoumise - NUPES" },
+  PO800484: { label: "Démocrate - MoDem et Indépendants" },
+  PO800526: { label: "Écologiste - NUPES" },
   PO800502: { label: "Gauche démocrate et républicaine" },
+  PO800532: { label: "Libertés et Territoires" },
   PO800508: { label: "Les Républicains" },
   PO800514: { label: "Horizons" },
-  PO800520: { label: "Rassemblement National" },
-  PO800526: { label: "Écologiste - NUPES" },
-  PO800532: { label: "Libertés et Territoires" },
   PO800538: { label: "Renaissance" },
-  PO830170: { label: "Socialistes" },
+  PO800520: { label: "Rassemblement National" },
 };
 
 const org_to_list = {

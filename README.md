@@ -28,8 +28,7 @@ Notre ligne éditoriale sur les textes est la suivante
 - `make build` pour compiler l'application
 
 ## Todo
-- Pondérer les votes
-- Détail Votes
+- Refine Shared image
 - Crash rotations successives
 - Taux d'absentéisme
 - Tests E2E

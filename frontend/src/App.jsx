@@ -21,6 +21,7 @@ import {
   AccordionSummary,
   ToggleButtonGroup,
   ToggleButton,
+  SwipeableDrawer,
 } from "@mui/material";
 import {
   HowToVote,
@@ -37,6 +38,7 @@ import {
   Instagram,
   Article,
   Folder,
+  BarChart,
 } from "@mui/icons-material";
 import LogoURL from "./icons/logo_url.svg";
 import Pour from "./icons/pour.svg";
@@ -48,11 +50,6 @@ import { calculateResults, calculateVote } from "./rank";
 import { theme } from "./theme";
 import html2canvas from "html2canvas";
 
-const minVotes = 5;
-const recommendedVotes = 23;
-const enablePopup = false;
-const projectURL = "https://github.com/arnaudsm/votefinder.fr";
-
 const shuffle = (arr) => {
   const newArr = arr.slice();
   for (let i = newArr.length - 1; i > 0; i--) {
@@ -63,6 +60,10 @@ const shuffle = (arr) => {
 };
 
 const vote_ids = shuffle(Object.keys(data.votes));
+const minVotes = 5;
+const recommendedVotes = vote_ids.length;
+const enableResultsPopup = false;
+const projectURL = "https://github.com/arnaudsm/votefinder.fr";
 
 const formatDate = (txt) => {
   if (!txt) return "";
@@ -78,6 +79,7 @@ const formatDate = (txt) => {
 
 const Card = ({ vote_id }) => {
   const vote = data.votes[vote_id];
+  const context = useContext(Context);
 
   return (
     <div className="Card">
@@ -120,6 +122,17 @@ const Card = ({ vote_id }) => {
             </Button>
           )}
         </div>
+        <Button
+          startIcon={<BarChart />}
+          className="more-info"
+          color="lightBlue"
+          variant="contained"
+          disableElevation
+          target="_blank"
+          onClick={() => context.setStatsPopup(vote.vote_id)}
+        >
+          Votes des partis
+        </Button>
       </div>
     </div>
   );
@@ -761,6 +774,59 @@ const ResultsModal = () => {
   );
 };
 
+const StatsModal = () => {
+  const context = useContext(Context);
+  const votes = data.votes?.[context.statsPopup]?.votes;
+
+  return (
+    <SwipeableDrawer
+      anchor="top"
+      open={Boolean(context.statsPopup)}
+      onClose={() => context.setStatsPopup(false)}
+      className="StatsModal"
+    >
+      <div className="content">
+        <h2>Votes des partis</h2>
+        <div className="results">
+          {votes &&
+            Object.entries(calculateVote(votes))
+              .filter(([, results]) => !Number.isNaN(results["-%"]))
+              .map(([id, results]) => (
+                <div className="result" key={id}>
+                  <div className="progress">
+                    <div
+                      className="bar pour"
+                      style={{
+                        width: `${Math.floor(results["+%"] * 100)}%`,
+                      }}
+                    ></div>
+                    <div
+                      className="bar contre"
+                      style={{
+                        width: `${Math.floor(results["-%"] * 100)}%`,
+                        marginLeft: `${Math.floor(results["+%"] * 100)}%`,
+                      }}
+                    ></div>
+                    <div className="name">
+                      <h4>{data.lists[id].label}</h4>
+                      <h5>{data.lists[id].leader}</h5>
+                    </div>
+                    <div className="score">
+                      {`${Math.floor(results["+"])} pour`}
+                      <br />
+                      {`${Math.floor(results["-"])} contre`}
+                      <br />
+                      {`${Math.floor(results["0"])} abs`}
+                    </div>
+                  </div>
+                </div>
+              ))}
+        </div>
+      </div>
+    </SwipeableDrawer>
+  );
+};
+
 const SharePopup = () => {
   const context = useContext(Context);
   const results = useMemo(
@@ -801,8 +867,9 @@ const SharePopup = () => {
 
 function App() {
   const [tab, setTab] = useState(0);
-  const [resultPopup, setResultPopup] = useState(false);
-  const [showShare, setShowShare] = useState(false);
+  const [resultPopup, setResultPopup] = useState();
+  const [statsPopup, setStatsPopup] = useState();
+  const [showShare, setShowShare] = useState();
   const [choices, setChoices] = useState(() => {
     const json = localStorage.getItem("votes");
     if (!json) return {};
@@ -816,7 +883,7 @@ function App() {
       const newChoices = { ...prevChoices, [vote_id]: type };
       localStorage.setItem("votes", JSON.stringify(newChoices));
       if (Object.keys(newChoices).length == recommendedVotes && !noPopup) {
-        if (!enablePopup) setTab(1);
+        if (!enableResultsPopup) setTab(1);
         setResultPopup(true);
       }
       return newChoices;
@@ -842,9 +909,11 @@ function App() {
           setResultPopup,
           showShare,
           setShowShare,
+          statsPopup,
+          setStatsPopup,
         }}
       >
-        {!enablePopup && resultPopup && <ConfettiExplosion zIndex="1400" />}
+        {!enableResultsPopup && resultPopup && <ConfettiExplosion zIndex="1400" />}
         <Navbar />
         {/* Switch with CSS to keep the state and rendering */}
         <div className="content">
@@ -859,7 +928,8 @@ function App() {
           )}
         </div>
         {showShare && <SharePopup />}
-        {enablePopup && <ResultsModal />}
+        {enableResultsPopup && <ResultsModal />}
+        <StatsModal />
         {started && <BottomNav state={[tab, setTab]} />}
       </Context.Provider>
     </ThemeProvider>
