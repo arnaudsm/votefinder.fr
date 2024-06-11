@@ -835,7 +835,7 @@ const SharePopup = () => {
   );
   return (
     <div className="SharePopup">
-      <h1>Les partis qui votent comme moi 🏛️🇫🇷</h1>
+      <h1>{"Les partis qui votent comme moi à l'Assemblée Nationale 🏛️🇫🇷"}</h1>
       <div className="list">
         <div className="explanation">Pourcentage de votes d’accord</div>
         {results.lists.slice(0, 4).map(([id, approval]) => (
@@ -913,7 +913,9 @@ function App() {
           setStatsPopup,
         }}
       >
-        {!enableResultsPopup && resultPopup && <ConfettiExplosion zIndex="1400" />}
+        {!enableResultsPopup && resultPopup && (
+          <ConfettiExplosion zIndex="1400" />
+        )}
         <Navbar />
         {/* Switch with CSS to keep the state and rendering */}
         <div className="content">
