@@ -1,14 +1,17 @@
 import OpenAI from "openai";
 import "dotenv/config";
+import { backOff } from "exponential-backoff";
 
 const openai = new OpenAI();
 
 export const summarize = async (content) => {
-  const completion = await openai.chat.completions.create({
-    messages: [
-      {
-        role: "system",
-        content: `Résumes en francais le contenu de cette loi du parlement européen. 
+  const completion = await backOff(
+    () =>
+      openai.chat.completions.create({
+        messages: [
+          {
+            role: "system",
+            content: `Résumes en francais le contenu de cette loi du parlement européen. 
         Sois précis et pas trop général. Utilises des mots faciles à comprendre. 
         Pas de phrases consensuelles, parles d'actions concrètes. Sois synthétique, ne mentionne pas le parlement ou le type de texte. 
 
@@ -44,15 +47,22 @@ export const summarize = async (content) => {
         }
         Les 4 phrases ne doivent pas se répéter mais doivent se compléter
         `,
+          },
+          {
+            role: "user",
+            content: content.slice(20000 * 4),
+          },
+        ],
+        model: "gpt-4o",
+        response_format: { type: "json_object" },
+      }),
+    {
+      retry: (e) => {
+        console.log(e);
+        if (e.status == 429) return true;
       },
-      {
-        role: "user",
-        content,
-      },
-    ],
-    model: "gpt-4o",
-    response_format: { type: "json_object" },
-  });
+    }
+  );
 
   const data = JSON.parse(completion.choices[0].message.content);
   return data;

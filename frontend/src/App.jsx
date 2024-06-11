@@ -16,9 +16,6 @@ import {
   Tab,
   Tabs,
   Modal,
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
   ToggleButtonGroup,
   ToggleButton,
   SwipeableDrawer,
@@ -27,11 +24,9 @@ import {
   HowToVote,
   EmojiEvents,
   Info,
-  Add,
   Delete,
   Email,
   GitHub,
-  ExpandMore,
   Share,
   PictureAsPdf,
   X,
@@ -39,6 +34,7 @@ import {
   Article,
   Folder,
   BarChart,
+  ViewStream,
 } from "@mui/icons-material";
 import LogoURL from "./icons/logo_url.svg";
 import Pour from "./icons/pour.svg";
@@ -77,7 +73,7 @@ const formatDate = (txt) => {
   return txt;
 };
 
-const Card = ({ vote_id }) => {
+const Card = ({ vote_id, editable }) => {
   const vote = data.votes[vote_id];
   const context = useContext(Context);
 
@@ -133,6 +129,24 @@ const Card = ({ vote_id }) => {
         >
           Votes des partis
         </Button>
+        {editable && (
+          <ToggleButtonGroup
+            value={context.choices[vote_id]}
+            exclusive
+            fullWidth={true}
+            onChange={(event) =>
+              context.choose({
+                vote_id,
+                type: event.target.value,
+                noPopup: true,
+              })
+            }
+          >
+            <ToggleButton value="-">👎 Contre</ToggleButton>
+            <ToggleButton value="0">Passer</ToggleButton>
+            <ToggleButton value="+">👍 Pour</ToggleButton>
+          </ToggleButtonGroup>
+        )}
       </div>
     </div>
   );
@@ -147,8 +161,9 @@ function BottomNav({ state: [tab, setTab] }) {
       onChange={(event, newValue) => setTab(newValue)}
     >
       {[
-        { key: "votes", label: "Votes", icon: <HowToVote /> },
+        { key: "votes", label: "Voter", icon: <HowToVote /> },
         { key: "resultats", label: "Résultats", icon: <EmojiEvents /> },
+        { key: "mes-votes", label: "Mes Votes", icon: <ViewStream /> },
         { key: "a-propos", label: "À Propos", icon: <Info /> },
       ].map(({ label, icon, key }) => (
         <BottomNavigationAction label={label} icon={icon} key={key} />
@@ -331,118 +346,6 @@ const Welcome = () => {
   );
 };
 
-const ResultsParVoteEach = ({ vote_id }) => {
-  const vote = data.votes[vote_id];
-  const context = useContext(Context);
-  if (!vote) return <></>;
-
-  return (
-    <>
-      <div className="top">
-        <p>
-          {formatDate(vote.date)} - {vote.type}
-        </p>
-        <ul>
-          <li>{vote.sous_titre_1}</li>
-          <li>{vote.sous_titre_2}</li>
-        </ul>
-      </div>
-      <div className="results">
-        {Object.entries(calculateVote(vote.votes))
-          .filter(([, results]) => !Number.isNaN(results["-%"]))
-          .map(([id, results]) => (
-            <div className="result" key={id}>
-              <div className="progress">
-                <div
-                  className="bar pour"
-                  style={{
-                    width: `${Math.floor(results["+%"] * 100)}%`,
-                  }}
-                ></div>
-                <div
-                  className="bar contre"
-                  style={{
-                    width: `${Math.floor(results["-%"] * 100)}%`,
-                    marginLeft: `${Math.floor(results["+%"] * 100)}%`,
-                  }}
-                ></div>
-                <div className="name">
-                  <h4>{data.lists[id].label}</h4>
-                  <h5>{data.lists[id].leader}</h5>
-                </div>
-                <div className="score">
-                  {`${Math.floor(results["+"])} pour`}
-                  <br />
-                  {`${Math.floor(results["-"])} contre`}
-                  <br />
-                  {`${Math.floor(results["0"])} abs`}
-                </div>
-              </div>
-            </div>
-          ))}
-      </div>
-      <h2 className="mon-opinion">Mon Opinion</h2>
-      <ToggleButtonGroup
-        value={context.choices[vote_id]}
-        exclusive
-        fullWidth={true}
-        onChange={(event) =>
-          context.choose({ vote_id, type: event.target.value, noPopup: true })
-        }
-      >
-        <ToggleButton value="-">👎 Contre</ToggleButton>
-        <ToggleButton value="0">Passer</ToggleButton>
-        <ToggleButton value="+">👍 Pour</ToggleButton>
-      </ToggleButtonGroup>
-
-      <Button
-        startIcon={<Add />}
-        className="more-info"
-        color="lightBlue"
-        variant="contained"
-        disableElevation
-        target="_blank"
-        href={vote.summary_url}
-      >
-        PLUS D’INFOS
-      </Button>
-    </>
-  );
-};
-
-const ResultsParVote = () => {
-  const context = useContext(Context);
-  const choices = Object.keys(context.choices).filter(
-    (vote_id) => vote_id in data.votes,
-  );
-  return (
-    <div className="ResultsParVote">
-      {choices.map((vote_id) => (
-        <Accordion
-          slotProps={{ transition: { unmountOnExit: true } }}
-          key={vote_id}
-        >
-          <AccordionSummary
-            expandIcon={<ExpandMore />}
-            aria-controls="panel1-content"
-            id="panel1-header"
-          >
-            {data.votes[vote_id].titre}
-          </AccordionSummary>
-          <AccordionDetails>
-            <ResultsParVoteEach vote_id={vote_id} />
-          </AccordionDetails>
-        </Accordion>
-      ))}
-      {choices.length == 0 && (
-        <div className="list">
-          Répondez à plus de {minVotes} questions pour voir vos résultats!
-        </div>
-      )}
-    </div>
-  );
-};
-
 const share = async () => {
   try {
     await new Promise((r) => setTimeout(r, 800));
@@ -585,7 +488,6 @@ const Resultats = ({ visible }) => {
       <Tabs value={tab} onChange={handleChange} variant="fullWidth">
         <Tab label="Listes" />
         <Tab label="Députés" />
-        <Tab label="Votes" />
       </Tabs>
       {!minVotesReached ? (
         <div className="list">
@@ -595,8 +497,6 @@ const Resultats = ({ visible }) => {
         <ResultsListes results={results} />
       ) : tab == 1 ? (
         <ResultsDeputes results={results} />
-      ) : tab == 2 ? (
-        <ResultsParVote />
       ) : null}
     </div>
   );
@@ -865,6 +765,28 @@ const SharePopup = () => {
   );
 };
 
+const MesVotes = ({ visible }) => {
+  const context = useContext(Context);
+  const choices = Object.keys(context.choices).filter(
+    (vote_id) => vote_id in data.votes,
+  );
+
+  return (
+    <div className={`MesVotes ${visible ? "" : "hide"}`}>
+      <div className="ResultsParVote">
+        {choices.map((vote_id) => (
+          <Card vote_id={vote_id} key={vote_id} editable />
+        ))}
+        {choices.length == 0 && (
+          <div className="list">
+            Répondez à plus de {minVotes} questions pour voir vos résultats!
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
 function App() {
   const [tab, setTab] = useState(0);
   const [resultPopup, setResultPopup] = useState();
@@ -913,17 +835,16 @@ function App() {
           setStatsPopup,
         }}
       >
-        {!enableResultsPopup && resultPopup && (
-          <ConfettiExplosion zIndex="1400" />
-        )}
         <Navbar />
         {/* Switch with CSS to keep the state and rendering */}
         <div className="content">
+          {!enableResultsPopup && resultPopup && <ConfettiExplosion />}
           {started ? (
             <>
               <Votes visible={tab == 0} />
               <Resultats visible={tab == 1} />
-              <About visible={tab == 2} />
+              <MesVotes visible={tab == 2} />
+              <About visible={tab == 3} />
             </>
           ) : (
             <Welcome />

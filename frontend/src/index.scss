@@ -631,138 +631,7 @@ body {
   gap: 1rem;
 }
 
-.ResultsParVote {
-  margin-bottom: -1rem;
 
-  .list {
-    margin-bottom: 1rem;
-  }
-
-  .MuiSvgIcon-root {
-    color: white;
-  }
-
-  .MuiAccordion-root {
-    border-radius: 0 !important;
-    background-color: var(--primary);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    box-sizing: border-box;
-
-    ul {
-      padding-left: 1rem;
-      padding-top: 1rem;
-      margin-top: 0;
-      border-top: #ffffff30 1px solid;
-
-      li {
-        margin-bottom: 1rem;
-      }
-    }
-
-    .more-info {
-      height: 2.5rem;
-      margin-top: 1rem;
-      width: 100%;
-
-      &:hover {
-        opacity: .9;
-      }
-    }
-  }
-
-  .MuiToggleButtonGroup-root {
-    background: white;
-  }
-
-  .mon-opinion {
-    text-align: center;
-  }
-
-
-  .results {
-    display: flex;
-    flex-direction: column;
-    gap: .2rem;
-    margin: 1rem 0rem;
-
-    .result {
-      display: flex;
-      background-color: #C2C2C2;
-      border-radius: 0.675rem;
-      height: 3.375rem;
-
-      .progress {
-        height: 3.375rem;
-        border-radius: 0.675rem;
-        overflow: hidden;
-        width: 100%;
-        position: relative;
-
-
-        @keyframes progress-bar {
-          0% {
-            width: 0%;
-          }
-        }
-
-        .bar {
-          transition: width 0.3s ease-in-out;
-          position: absolute;
-          display: block;
-          height: 3.375rem;
-          padding: 0;
-          margin: 0;
-          animation: progress-bar 0.3s;
-          animation-timing-function: ease-in-out;
-
-          &.pour {
-            background-color: var(--green);
-          }
-
-          &.contre {
-            background-color: var(--secondary);
-          }
-        }
-
-        .name {
-          left: 1rem;
-          color: white;
-          position: absolute;
-          display: flex;
-          flex-direction: column;
-          height: 3.375rem;
-          justify-content: center;
-
-          h4 {
-            margin: 0;
-            font-size: 1rem;
-            white-space: pre;
-          }
-
-          h5 {
-            margin: 0;
-            font-weight: normal;
-            font-size: 1rem;
-            white-space: pre;
-          }
-        }
-
-        .score {
-          color: white;
-          position: absolute;
-          text-align: right;
-          right: 1rem;
-          line-height: 0.8rem;
-          font-size: 0.7rem;
-          padding-top: 0.6rem;
-        }
-      }
-    }
-  }
-}
 
 .SharePopup {
   position: absolute;
@@ -972,6 +841,111 @@ body {
           padding-top: 0.6rem;
         }
       }
+    }
+  }
+}
+
+.MesVotes {
+
+  .ResultsParVote {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    margin: 1rem 0;
+  }
+
+  .Card {
+    background: var(--primary);
+    color: white;
+    height: 2px;
+    padding: 1.2rem;
+    border-radius: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    box-sizing: border-box;
+
+    h2 {
+      font-size: 1.375rem;
+      text-align: center;
+      margin: 0;
+      padding-bottom: 1rem;
+      border-bottom: #ffffff30 1px solid;
+    }
+
+    ul {
+      padding-left: 1rem;
+
+      li {
+        margin-bottom: 1rem;
+      }
+    }
+
+    .more-info {
+      height: 2.5rem;
+      width: 100%;
+
+      &:hover {
+        opacity: .9;
+      }
+    }
+
+    .bottom {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+
+      .actions {
+        width: 100%;
+        display: flex;
+        gap: 1rem;
+
+        &>div {
+          flex: auto;
+        }
+      }
+
+      .meta {
+        opacity: .7;
+        text-align: center;
+        font-size: 14px;
+      }
+
+      .MuiToggleButtonGroup-root {
+        background-color: white;
+        border: none;
+
+        .MuiButtonBase-root {
+          border: none;
+        }
+
+        .Mui-selected {
+          color: white;
+          background-color: #5C90CF !important;
+        }
+      }
+    }
+  }
+
+  .progress {
+    background-color: white;
+    height: 1rem;
+    border-radius: 1rem;
+    width: 100%;
+    position: relative;
+    box-shadow: $shadow;
+
+    .bar {
+      background-color: var(--primary);
+      position: absolute;
+      transition: width 0.3s ease-in-out;
+      border-radius: 1rem;
+      display: block;
+      height: 1rem;
+      padding: 0;
+      margin: 0;
     }
   }
 }
