@@ -57,7 +57,9 @@ const shuffle = (arr) => {
 
 const vote_ids = shuffle(Object.keys(data.votes));
 const minVotes = 5;
-const recommendedVotes = 21;
+const recommendedVotes = Object.values(data.votes).filter(
+  (x) => x.pinned,
+).length;
 const enableResultsPopup = false;
 const projectURL = "https://github.com/arnaudsm/votefinder.fr";
 

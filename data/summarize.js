@@ -198,34 +198,6 @@ const shuffle = arr => {
 };
 
 const urls_todo = [
-  "https://www.assemblee-nationale.fr/dyn/16/amendements/0144/AN/94", // smic 1500€
-  "https://www.assemblee-nationale.fr/dyn/16/amendements/0273A/AN/1063", // taxer yachts jets
-  "https://www.assemblee-nationale.fr/dyn/16/dossiers/alt/assurer_repas_uneuro_etudiants", // repas 1€
-  "https://www.assemblee-nationale.fr/dyn/16/amendements/0273C/AN/1037", // musées gratuits
-  "https://www.assemblee-nationale.fr/dyn/16/amendements/0276/AN/388", // abandon de poste
-  "https://www.assemblee-nationale.fr/dyn/16/amendements/0393/AN/542", // kérosène
-  "https://www.assemblee-nationale.fr/dyn/16/amendements/0273C/AN/1690", // mangas
-  "https://www.assemblee-nationale.fr/dyn/16/scrutins/973", //isf
-  "https://www.assemblee-nationale.fr/dyn/16/scrutins/1094", // petites retraites
-  "https://www.assemblee-nationale.fr/dyn/16/amendements/2634/AN/2204", //nationalité fin de vie
-  "https://www.assemblee-nationale.fr/dyn/16/amendements/0276/AN/227",
-  "https://www.assemblee-nationale.fr/dyn/16/amendements/1352/AN/232",
-  "https://www.assemblee-nationale.fr/dyn/16/amendements/2139/AN/17",
-  "https://www.assemblee-nationale.fr/dyn/16/amendements/0273A/AN/3209",
-  "https://www.assemblee-nationale.fr/dyn/16/amendements/0273A/AN/3210",
-  "https://www.assemblee-nationale.fr/dyn/16/amendements/1680C/AN/2187",
-  "https://www.assemblee-nationale.fr/dyn/16/amendements/0017/AN/282",
-  "https://www.assemblee-nationale.fr/dyn/16/amendements/1011/AN/70",
-  "https://www.assemblee-nationale.fr/dyn/16/scrutins/2751",
-  "https://www.assemblee-nationale.fr/dyn/16/amendements/1680C/AN/129",
-  "https://www.assemblee-nationale.fr/dyn/16/amendements/1680C/AN/1708",
-  "https://www.assemblee-nationale.fr/dyn/16/amendements/0436/AN/551",
-  "https://www.assemblee-nationale.fr/dyn/16/amendements/0436/AN/767",
-  "https://www.assemblee-nationale.fr/dyn/16/amendements/1440/AN/1031",
-  "https://www.assemblee-nationale.fr/dyn/16/amendements/1440/AN/1277",
-  "https://www.assemblee-nationale.fr/dyn/16/amendements/1440/AN/1445",
-  "https://www.assemblee-nationale.fr/dyn/16/amendements/1537/AN/101",
-  "https://www.assemblee-nationale.fr/dyn/16/amendements/1537/AN/124",
 ]
 const todo = shuffle([
   ...dossiersTodo,
