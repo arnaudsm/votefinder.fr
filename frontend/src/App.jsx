@@ -781,7 +781,7 @@ const MesVotes = ({ visible }) => {
         ))}
         {choices.length == 0 && (
           <div className="list">
-            Répondez à plus de {minVotes} questions pour voir vos résultats!
+            {"Vous n'avez voté pour aucun texte pour l'instant !"}
           </div>
         )}
       </div>
