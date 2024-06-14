@@ -3,6 +3,7 @@ dist
 legacy
 .env
 data/sync.js
+data/resumes
 
 # Logs
 logs

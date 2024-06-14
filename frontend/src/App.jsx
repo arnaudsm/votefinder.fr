@@ -57,7 +57,7 @@ const shuffle = (arr) => {
 
 const vote_ids = shuffle(Object.keys(data.votes));
 const minVotes = 5;
-const recommendedVotes = vote_ids.length;
+const recommendedVotes = 21;
 const enableResultsPopup = false;
 const projectURL = "https://github.com/arnaudsm/votefinder.fr";
 
@@ -91,7 +91,7 @@ const Card = ({ vote_id, editable }) => {
           {formatDate(vote.date)} - {vote.type}
         </div>
         <div className="actions">
-          {vote.senat_url && (
+          {vote.dossier_url && (
             <Button
               startIcon={<Folder />}
               className="more-info"
@@ -99,7 +99,7 @@ const Card = ({ vote_id, editable }) => {
               variant="contained"
               disableElevation
               target="_blank"
-              href={vote.senat_url}
+              href={vote.dossier_url}
             >
               Dossier
             </Button>
