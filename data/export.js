@@ -4,11 +4,11 @@ import { getData, listify } from "./data.js";
 const data = getData();
 
 const lists = {
-  PO830170: { label: "Socialistes" },
-  PO800490: { label: "La France insoumise - NUPES" },
-  PO800484: { label: "Démocrate - MoDem et Indépendants" },
-  PO800526: { label: "Écologiste - NUPES" },
-  PO800502: { label: "Gauche démocrate et républicaine" },
+  PO830170: { label: "Socialistes | Front Populaire" },
+  PO800490: { label: "La France insoumise | Front Populaire" },
+  PO800484: { label: "Démocrate | MoDem et Indépendants" },
+  PO800526: { label: "Écologiste | Front Populaire" },
+  PO800502: { label: "GDR | Front Populaire" },
   PO800532: { label: "Libertés et Territoires" },
   PO800508: { label: "Les Républicains" },
   PO800514: { label: "Horizons" },

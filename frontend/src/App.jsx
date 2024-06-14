@@ -411,8 +411,6 @@ const ResultsListes = ({ results }) => (
   <div className="list">
     <div className="explanation">
       Pourcentage d’accord avec les listes sortantes.
-      <br />
-      Les nouvelles listes seront annoncées bientôt.
     </div>
     {results.lists.map(([id, approval]) => (
       <ResultListe id={id} approval={approval} key={id} />
