@@ -1,7 +1,7 @@
 import fs from "fs";
-import { getData, getVotes, listify } from "./data.js";
+import { getData, listify } from "./data.js";
 
-const { acteurs } = getData();
+const data = getData();
 
 const lists = {
   PO830170: { label: "Socialistes" },
@@ -31,7 +31,7 @@ const org_to_list = {
 };
 
 const deputes = Object.fromEntries(
-  Object.values(acteurs)
+  Object.values(data.acteurs)
     .filter((x) =>
       listify(x?.mandats?.mandat || []).find(
         (x) => x.legislature == "16" && x.typeOrgane == "ASSEMBLEE"
@@ -53,27 +53,38 @@ const deputes = Object.fromEntries(
     ])
 );
 
-const allVotes = Object.fromEntries(getVotes().map((x) => [x.vote_id, x]));
+const allVotes = Object.fromEntries(
+  Object.entries(data.votes)
+    .map(([vote_id, data]) => {
+      let voteData = { 0: [], "+": [], "-": [] };
+      for (const groupe of data.ventilationVotes.organe.groupes.groupe) {
+        const decompte = groupe?.vote?.decompteNominatif;
+        if (!decompte) return;
+        for (const acteur of listify(decompte?.pours?.votant) || [])
+          voteData["+"].push(acteur.acteurRef);
+        for (const acteur of listify(decompte?.contres?.votant) || [])
+          voteData["-"].push(acteur.acteurRef);
+        for (const acteur of listify(decompte?.abstentions?.votant) || [])
+          voteData["0"].push(acteur.acteurRef);
+      }
+      voteData["0"] = [...new Set(voteData["0"])];
+      voteData["+"] = [...new Set(voteData["+"])];
+      voteData["-"] = [...new Set(voteData["-"])];
+
+      return [vote_id, voteData]
+    })
+);
+
 const votes = Object.fromEntries(
   fs
     .readdirSync("votes")
     .map((file) => {
       const vote_id = file.replace(".json", "");
       const data = JSON.parse(fs.readFileSync(`votes/${vote_id}.json`));
-      const vote = allVotes[vote_id];
-      // if (
-      //   vote.votes["+"].length /
-      //     (vote.votes["-"].length +
-      //       vote.votes["-"].length +
-      //       vote.votes["0"].length) <
-      //   0.5
-      // )
-      //   console.log(vote_id, "rejeté");
-      if (vote.votes["-"].length < 4)
-        console.log(vote_id, "quasi unanimité", vote.votes["-"].length);
       return {
-        ...vote,
         ...data,
+        vote_id,
+        votes: allVotes[vote_id],
       };
     })
     .map((x) => [x.vote_id, x])
