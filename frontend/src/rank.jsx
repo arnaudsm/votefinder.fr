@@ -44,6 +44,7 @@ export const calculateResults = (choices) => {
   return {
     lists: rank(lists),
     deputes: rank(deputes),
+    deputesRaw: deputes,
   };
 };
 
