@@ -28,7 +28,7 @@ Notre ligne éditoriale sur les textes est la suivante
 - `make build` pour compiler l'application
 
 ## Todo
-- Lien débats avec Theo
+- Désactiver bouton partage firefox (incompatible)
 - Refine Shared image
 - Crash rotations successives
 - Taux d'absentéisme

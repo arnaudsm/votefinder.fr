@@ -36,6 +36,7 @@ import {
   Folder,
   BarChart,
   ViewStream,
+  QuestionAnswer,
 } from "@mui/icons-material";
 import LogoURL from "./icons/logo_url.svg";
 import Pour from "./icons/pour.svg";
@@ -105,6 +106,19 @@ const Card = ({ vote_id, editable }) => {
               href={vote.dossier_url}
             >
               Dossier
+            </Button>
+          )}
+          {vote.debat_url && (
+            <Button
+              startIcon={<QuestionAnswer />}
+              className="more-info"
+              color="lightBlue"
+              variant="contained"
+              disableElevation
+              target="_blank"
+              href={vote.debat_url}
+            >
+              Débat
             </Button>
           )}
           {vote.summary_url && (
@@ -627,8 +641,23 @@ const About = ({ visible }) => {
             <h5>Spécialiste Droits Humains</h5>
           </div>
           <div>
+            <h4>Rémi Dupont</h4>
+            <h5>Communication</h5>
+          </div>
+          <div>
             <h4>Arnaud-Yoh Massenet</h4>
             <h5>Data Scientist</h5>
+          </div>
+        </div>
+        <h2>Remerciements</h2>
+        <div className="equipe" style={{ width: "80%" }}>
+          <div style={{ width: "80%" }}>
+            <h4>Théo Delemazure</h4>
+            <h5>
+              <a href="https://theatrebourbon.delemazure.fr/">
+                Plateforme des débats
+              </a>
+            </h5>
           </div>
         </div>
       </div>

@@ -203,9 +203,8 @@ const todo = shuffle([
   ...dossiersTodo,
   ...amendementsTodo,
 ]
-  .filter(x => urls_todo.includes(x.amendement_url || x.assemblee_url))
+  .filter(x => urls_todo.includes(x.amendement_url || x.senat_url))
   .filter(x => !fs.existsSync(`resumes/${x.vote_id}.json`))
 )
-// console.log(todo.length);
 await Promise.all(todo.map((vote) => limit(() => scrape(vote))));
 
