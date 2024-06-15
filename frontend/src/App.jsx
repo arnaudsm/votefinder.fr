@@ -792,6 +792,7 @@ function App() {
   const [resultPopup, setResultPopup] = useState();
   const [statsPopup, setStatsPopup] = useState();
   const [showShare, setShowShare] = useState();
+  const [showConfetti, setConfetti] = useState(true);
   const [choices, setChoices] = useState(() => {
     const json = localStorage.getItem("votes");
     if (!json) return {};
@@ -838,7 +839,13 @@ function App() {
         <Navbar />
         {/* Switch with CSS to keep the state and rendering */}
         <div className="content">
-          {!enableResultsPopup && resultPopup && <ConfettiExplosion />}
+          {!enableResultsPopup && resultPopup && showConfetti && (
+            <ConfettiExplosion
+              onComplete={() => {
+                setConfetti(false);
+              }}
+            />
+          )}
           {started ? (
             <>
               <Votes visible={tab == 0} />
