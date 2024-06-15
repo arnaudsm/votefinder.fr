@@ -28,6 +28,7 @@ import {
   Email,
   GitHub,
   Share,
+  Close,
   PictureAsPdf,
   X,
   Instagram,
@@ -726,6 +727,14 @@ const StatsModal = () => {
                 </div>
               ))}
         </div>
+        <Button
+          endIcon={<Close />}
+          variant="text"
+          disableElevation
+          onClick={() => context.setStatsPopup(false)}
+        >
+          Fermer
+        </Button>
       </div>
     </SwipeableDrawer>
   );

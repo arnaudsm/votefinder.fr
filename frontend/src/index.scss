@@ -756,6 +756,7 @@ body {
   text-align: center;
   justify-content: space-between;
   overflow: auto;
+  min-height: 30rem;
 
   h2 {
     font-size: 1.25rem;
@@ -771,7 +772,6 @@ body {
     display: flex;
     flex-direction: column;
     gap: .2rem;
-    min-height: 30rem;
     margin: 0;
 
     .result {
