@@ -747,7 +747,7 @@ body {
   background-color: white;
   color: black;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1.5rem;
   border-radius: 1rem;
   max-width: 32rem;
   gap: 1rem;
@@ -758,7 +758,12 @@ body {
   overflow: auto;
 
   h2 {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
+  }
+
+  ul {
+    font-size: .875rem;
+    text-align: left;
   }
 
 
@@ -849,7 +854,6 @@ body {
 
   .ResultsParVote {
     display: flex;
-    gap: 1rem;
     flex-direction: column;
     margin: 1rem 0;
   }
@@ -859,6 +863,7 @@ body {
     color: white;
     height: 2px;
     padding: 1.2rem;
+    margin: .5rem;
     border-radius: 1.5rem;
     display: flex;
     flex-direction: column;

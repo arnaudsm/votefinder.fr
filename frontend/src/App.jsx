@@ -676,7 +676,7 @@ const ResultsModal = () => {
 
 const StatsModal = () => {
   const context = useContext(Context);
-  const votes = data.votes?.[context.statsPopup]?.votes;
+  const vote = data.votes?.[context.statsPopup];
 
   return (
     <SwipeableDrawer
@@ -686,10 +686,14 @@ const StatsModal = () => {
       className="StatsModal"
     >
       <div className="content">
-        <h2>Votes des partis</h2>
+        <h2>{vote?.titre}</h2>
+        <ul>
+          <li>{vote?.sous_titre_1}</li>
+          <li>{vote?.sous_titre_2}</li>
+        </ul>
         <div className="results">
-          {votes &&
-            Object.entries(calculateVote(votes))
+          {vote &&
+            Object.entries(calculateVote(vote?.votes))
               .filter(([, results]) => !Number.isNaN(results["-%"]))
               .map(([id, results]) => (
                 <div className="result" key={id}>
