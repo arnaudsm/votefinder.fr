@@ -36,6 +36,7 @@ import {
   BarChart,
   ViewStream,
   QuestionAnswer,
+  FileDownload,
 } from "@mui/icons-material";
 import LogoURL from "./icons/logo_url.svg";
 import Pour from "./icons/pour.svg";
@@ -604,6 +605,29 @@ const About = ({ visible }) => {
           disableElevation
         >
           réinitialiser mes votes
+        </Button>
+        <Button
+          className="reset"
+          startIcon={<FileDownload />}
+          size="large"
+          color="primary"
+          variant="contained"
+          onClick={() => {
+            const data = new Blob([JSON.stringify(context.choices)], {
+              type: "application/json",
+            });
+            const url = window.URL.createObjectURL(data);
+            const a = document.createElement("a");
+            a.style.display = "none";
+            a.href = url;
+            a.download = "votes_legislatives.txt";
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+          }}
+          disableElevation
+        >
+          Télécharger mes votes
         </Button>
 
         <h2>Réseaux Sociaux</h2>
