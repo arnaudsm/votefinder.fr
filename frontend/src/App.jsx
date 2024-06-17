@@ -436,10 +436,18 @@ const ResultsDeputes = ({ results }) => {
   return (
     <div className="list">
       <div className="explanation">
-        Pourcentage d’accord avec les députés français sortants
+        Pourcentage d’accord avec les députés français sortants.
+        <br />
+        Trié par accords - désaccords.
       </div>
       {results.deputes
-        .filter(([id]) => !data.deputes[id]?.hide)
+        .sort(
+          ([id_a], [id_b]) =>
+            results?.deputesRaw?.[id_b]?.["+"] -
+            results?.deputesRaw?.[id_b]?.["-"] -
+            (results?.deputesRaw?.[id_a]?.["+"] -
+              results?.deputesRaw?.[id_a]?.["-"]),
+        )
         .map(([id, approval]) => (
           <a
             className="result"
