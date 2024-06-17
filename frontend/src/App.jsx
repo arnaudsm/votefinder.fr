@@ -679,6 +679,20 @@ const About = ({ visible }) => {
             <h4>Arnaud-Yoh Massenet</h4>
             <h5>Data Scientist</h5>
           </div>
+          <div>
+            <h4>Mélusine Magat</h4>
+            <h5>Communication et Relecture</h5>
+          </div>
+
+          <div>
+            <h4>Marie-Bénédicte Fradin</h4>
+            <h5>Communication et Relecture</h5>
+          </div>
+
+          <div>
+            <h4>Cyprien Olive-Riban</h4>
+            <h5>Relecture</h5>
+          </div>
         </div>
         <h2>Remerciements</h2>
         <div className="equipe" style={{ width: "80%" }}>
