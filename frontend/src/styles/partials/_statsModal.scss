@@ -1,0 +1,110 @@
+@use "../abstracts" as *;
+
+.StatsModal {
+  .content {
+    background-color: white;
+    color: black;
+    margin: 0 auto;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    max-width: 32rem;
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-between;
+    overflow: auto;
+    min-height: 30rem;
+
+    h2 {
+      font-size: 1.25rem;
+    }
+
+    ul {
+      font-size: .875rem;
+      text-align: left;
+    }
+
+
+    .results {
+      display: flex;
+      flex-direction: column;
+      gap: .2rem;
+      margin: 0;
+
+      .result {
+        display: flex;
+        background-color: #C2C2C2;
+        border-radius: 0.675rem;
+        height: 3.375rem;
+
+        .progress {
+          height: 3.375rem;
+          border-radius: 0.675rem;
+          overflow: hidden;
+          width: 100%;
+          position: relative;
+
+
+          @keyframes progress-bar {
+            0% {
+              width: 0%;
+            }
+          }
+
+          .bar {
+            transition: width 0.3s ease-in-out;
+            position: absolute;
+            display: block;
+            height: 3.375rem;
+            padding: 0;
+            margin: 0;
+            animation: progress-bar 0.3s;
+            animation-timing-function: ease-in-out;
+
+            &.pour {
+              background-color: var(--color-green);
+            }
+
+            &.contre {
+              background-color: var(--color-secondary);
+            }
+          }
+
+          .name {
+            left: 1rem;
+            color: white;
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            height: 3.375rem;
+            justify-content: center;
+
+            h4 {
+              margin: 0;
+              font-size: 1rem;
+              white-space: pre;
+            }
+
+            h5 {
+              margin: 0;
+              font-weight: normal;
+              font-size: 1rem;
+              white-space: pre;
+            }
+          }
+
+          .score {
+            color: white;
+            position: absolute;
+            text-align: right;
+            right: 1rem;
+            line-height: 0.8rem;
+            font-size: 0.7rem;
+            padding-top: 0.6rem;
+          }
+        }
+      }
+    }
+  }
+}

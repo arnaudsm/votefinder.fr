@@ -1,0 +1,30 @@
+@use "../abstracts" as *;
+
+.Navbar {
+  .logo {
+    height: 2.625rem;
+
+    &:hover {
+      opacity: .85;
+    }
+  }
+}
+
+.Navbar,
+.BottomNav {
+  box-shadow: $shadow;
+  z-index: 5;
+
+  .MuiBottomNavigationAction-root:hover {
+    opacity: .8;
+  }
+}
+
+.MuiBottomNavigationAction-root .MuiBottomNavigationAction-label {
+  transition: margin 0.1s ease-in-out;
+
+  &.Mui-selected {
+    font-size: 0.75rem !important;
+    margin-top: .15rem;
+  }
+}
