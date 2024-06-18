@@ -40,7 +40,7 @@
     }
 
     .top {
-      background-color: var(--color-primary);
+      background-color: var(--mui-palette-primary-main);
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
     }
@@ -48,7 +48,7 @@
     .bottom {
       border-top-left-radius: 0;
       border-top-right-radius: 0;
-      background-color: var(--color-secondary);
+      background-color: var(--mui-palette-secondary-main);
 
       .welcome-start {
         color: white;

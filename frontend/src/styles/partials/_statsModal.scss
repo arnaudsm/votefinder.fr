@@ -63,11 +63,11 @@
             animation-timing-function: ease-in-out;
 
             &.pour {
-              background-color: var(--color-green);
+              background-color: var(--mui-palette-green-main);
             }
 
             &.contre {
-              background-color: var(--color-secondary);
+              background-color: var(--mui-palette-secondary-main);
             }
           }
 

@@ -28,7 +28,7 @@
     .swipe-card__content {
       height: 100%;
       width: 100%;
-      background: var(--color-primary);
+      background: var(--mui-palette-primary-main);
       color: white;
     }
   }
@@ -149,7 +149,7 @@
     box-shadow: $shadow;
 
     .bar {
-      background-color: var(--color-primary);
+      background-color: var(--mui-palette-primary-main);
       position: absolute;
       transition: width 0.3s ease-in-out;
       border-radius: 1rem;

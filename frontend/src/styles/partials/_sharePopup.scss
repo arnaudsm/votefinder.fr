@@ -60,7 +60,7 @@
         position: relative;
 
         .bar {
-          background-color: var(--color-green);
+          background-color: var(--mui-palette-green-main);
           transition: width 0.3s ease-in-out;
           position: absolute;
           display: block;
