@@ -29,7 +29,7 @@
       height: 100%;
       width: 100%;
       background: var(--mui-palette-primary-main);
-      color: white;
+      color: var(--mui-palette-white-main);
     }
   }
 
@@ -53,7 +53,7 @@
       bottom: 1rem;
 
       &:hover {
-        background-color: white;
+        background-color: var(--mui-palette-background-paper);
         opacity: .8;
       }
 
@@ -141,7 +141,7 @@
   }
 
   .progress {
-    background-color: white;
+    background-color: var(--mui-palette-background-paper);
     height: 1rem;
     border-radius: 1rem;
     width: 100%;

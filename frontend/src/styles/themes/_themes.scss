@@ -1,0 +1,18 @@
+@use "../abstracts" as *;
+
+html[data-mui-color-scheme="light"] {
+  --result-bg-color: #c2c2c2;
+
+  .MuiToolbar-root {
+    background-color: var(--mui-palette-background-paper) !important;
+  }
+}
+
+
+html[data-mui-color-scheme="dark"] {
+  --result-bg-color: var(--mui-palette-background-main);
+
+  .MuiToolbar-root {
+    background-color: var(--mui-palette-background-paper) !important;
+  }
+}

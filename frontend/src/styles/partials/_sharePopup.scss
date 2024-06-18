@@ -5,7 +5,7 @@
   top: -2000px;
   left: 0;
   z-index: 2000;
-  background-color: white;
+  background-color: var(--mui-palette-background-paper);
   width: 25rem;
   padding-bottom: 1rem;
   transform: scale(2);
@@ -33,7 +33,7 @@
 
     .result {
       display: flex;
-      background-color: #C2C2C2;
+      background-color: var(--result-bg-color);
       border-radius: 0.675rem;
       height: 3.375rem;
 
@@ -43,7 +43,7 @@
 
       img {
         object-fit: contain;
-        background-color: white;
+        background-color: var(--mui-palette-background-paper);
         width: 3.375rem;
         height: 3.375rem;
         border-top-left-radius: 0.675rem;
@@ -71,7 +71,7 @@
 
         .name {
           left: 1rem;
-          color: white;
+          color: var(--mui-palette-white-main);
           position: absolute;
           display: flex;
           flex-direction: column;
@@ -93,7 +93,7 @@
         }
 
         .score {
-          color: white;
+          color: var(--mui-palette-white-main);
           position: absolute;
           right: 1rem;
           line-height: 3.375rem;
@@ -104,7 +104,7 @@
     }
 
     .reset {
-      color: white;
+      color: var(--mui-palette-white-main);
       height: 3rem;
     }
   }

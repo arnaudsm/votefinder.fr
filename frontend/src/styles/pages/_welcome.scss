@@ -18,7 +18,7 @@
   .Card {
     display: flex;
     flex-direction: column;
-    color: white;
+    color: var(--mui-palette-white-main);
 
     h2 {
       text-align: center;
@@ -51,7 +51,7 @@
       background-color: var(--mui-palette-secondary-main);
 
       .welcome-start {
-        color: white;
+        color: var(--mui-palette-white-main);
         height: 3.25rem;
         font-size: 1.25rem;
         width: 100%;
