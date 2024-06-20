@@ -422,10 +422,12 @@ const ResultListe = ({ id, approval }) => {
     </a>
   );
 };
-const ResultsListes = ({ results }) => (
+const ResultsListes = ({ results, choices }) => (
   <div className="list">
     <div className="explanation">
       Pourcentage d’accord avec les listes sortantes.
+      <br />
+      Calculé sur {Object.keys(choices).length} votes. Continuez à voter pour affiner vos résultats.
     </div>
     {results.lists.map(([id, approval]) => (
       <ResultListe id={id} approval={approval} key={id} />
@@ -523,7 +525,7 @@ const Resultats = ({ visible }) => {
           Réponds à plus de {minVotes} questions pour voir tes résultats!
         </div>
       ) : tab == 0 ? (
-        <ResultsListes results={results} />
+        <ResultsListes results={results} choices={context.choices} />
       ) : tab == 1 ? (
         <ResultsDeputes results={results} />
       ) : null}
