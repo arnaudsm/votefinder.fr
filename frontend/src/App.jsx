@@ -427,7 +427,8 @@ const ResultsListes = ({ results, choices }) => (
     <div className="explanation">
       Pourcentage d’accord avec les listes sortantes.
       <br />
-      Calculé sur {Object.keys(choices).length} votes. Continuez à voter pour affiner vos résultats.
+      Calculé sur {Object.keys(choices).length} votes. Continuez à voter pour
+      affiner vos résultats.
     </div>
     {results.lists.map(([id, approval]) => (
       <ResultListe id={id} approval={approval} key={id} />
