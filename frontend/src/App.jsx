@@ -77,7 +77,7 @@ const formatDate = (txt) => {
   return txt;
 };
 
-const Card = ({ vote_id, editable }) => {
+const Card = ({ vote_id, list_id, editable }) => {
   const vote = data.votes[vote_id];
   const context = useContext(Context);
 
@@ -94,58 +94,104 @@ const Card = ({ vote_id, editable }) => {
         <div className="meta">
           {formatDate(vote.date)} - {vote.type}
         </div>
-        <div className="actions">
-          {vote.dossier_url && (
-            <Button
-              startIcon={<Folder />}
-              className="more-info"
-              color="lightBlue"
-              variant="contained"
-              disableElevation
-              target="_blank"
-              href={vote.dossier_url}
-            >
-              Dossier
-            </Button>
-          )}
-          {vote.debat_url && (
-            <Button
-              startIcon={<QuestionAnswer />}
-              className="more-info"
-              color="lightBlue"
-              variant="contained"
-              disableElevation
-              target="_blank"
-              href={vote.debat_url}
-            >
-              Débat
-            </Button>
-          )}
-          {vote.summary_url && (
-            <Button
-              startIcon={<Article />}
-              className="more-info"
-              color="lightBlue"
-              variant="contained"
-              disableElevation
-              target="_blank"
-              href={vote.summary_url}
-            >
-              Résumé
-            </Button>
-          )}
-        </div>
-        <Button
-          startIcon={<BarChart />}
-          className="more-info"
-          color="lightBlue"
-          variant="contained"
-          disableElevation
-          target="_blank"
-          onClick={() => context.setStatsPopup(vote.vote_id)}
-        >
-          Votes des partis
-        </Button>
+        {list_id && (
+          <div className="results">
+            {vote &&
+              Object.entries(calculateVote(vote?.votes))
+                .filter(
+                  ([id, results]) =>
+                    id === list_id && !Number.isNaN(results["-%"]),
+                )
+                .map(([id, results]) => (
+                  <div className="result" key={id}>
+                    <div className="progress">
+                      <div
+                        className="bar pour"
+                        style={{
+                          width: `${Math.floor(results["+%"] * 100)}%`,
+                        }}
+                      ></div>
+                      <div
+                        className="bar contre"
+                        style={{
+                          width: `${Math.floor(results["-%"] * 100)}%`,
+                          marginLeft: `${Math.floor(results["+%"] * 100)}%`,
+                        }}
+                      ></div>
+                      <div className="name">
+                        <h4>{data.lists[id].label}</h4>
+                        <h5>{data.lists[id].leader}</h5>
+                      </div>
+                      <div className="score">
+                        {`${Math.floor(results["+"])} pour`}
+                        <br />
+                        {`${Math.floor(results["-"])} contre`}
+                        <br />
+                        {`${Math.floor(results["0"])} abs`}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+          </div>
+        )}
+
+        {!list_id && (
+          <div className="actions">
+            {vote.dossier_url && (
+              <Button
+                startIcon={<Folder />}
+                className="more-info"
+                color="lightBlue"
+                variant="contained"
+                disableElevation
+                target="_blank"
+                href={vote.dossier_url}
+              >
+                Dossier
+              </Button>
+            )}
+            {vote.debat_url && (
+              <Button
+                startIcon={<QuestionAnswer />}
+                className="more-info"
+                color="lightBlue"
+                variant="contained"
+                disableElevation
+                target="_blank"
+                href={vote.debat_url}
+              >
+                Débat
+              </Button>
+            )}
+            {vote.summary_url && (
+              <Button
+                startIcon={<Article />}
+                className="more-info"
+                color="lightBlue"
+                variant="contained"
+                disableElevation
+                target="_blank"
+                href={vote.summary_url}
+              >
+                Résumé
+              </Button>
+            )}
+          </div>
+        )}
+
+        {!list_id && (
+          <Button
+            startIcon={<BarChart />}
+            className="more-info"
+            color="lightBlue"
+            variant="contained"
+            disableElevation
+            target="_blank"
+            onClick={() => context.setStatsPopup(vote.vote_id)}
+          >
+            Votes des partis
+          </Button>
+        )}
         {editable && (
           <ToggleButtonGroup
             value={context.choices[vote_id]}
@@ -392,13 +438,13 @@ const share = async () => {
 const ResultListe = ({ id, approval }) => {
   // const [open, setOpen] = useState(false);
   // TODO : Votes par liste
+  const context = useContext(Context);
 
   return (
     <a
       className="liste-result"
-      href={`https://www.assemblee-nationale.fr/dyn/org/${id}`}
       key={id}
-      target="_blank"
+      onClick={() => context.setListVotesPopup(id)}
     >
       <div className="top">
         <img src={`/lists/${id}.svg`} alt={data.lists[id].label} />
@@ -823,6 +869,51 @@ const StatsModal = () => {
   );
 };
 
+const ListVotesModal = () => {
+  const context = useContext(Context);
+  const choices = Object.keys(context.choices).filter(
+    (vote_id) => vote_id in data.votes,
+  );
+
+  return (
+    <SwipeableDrawer
+      anchor="top"
+      open={Boolean(context.listVotesPopup)}
+      onClose={() => context.setListVotesPopup(false)}
+      className="ListVotesModal"
+    >
+      <div className="content">
+        <div className="MesVotes">
+          <div className="ResultsParVote">
+            {choices.map((vote_id) => (
+              <Card
+                vote_id={vote_id}
+                key={vote_id}
+                list_id={context.listVotesPopup}
+                editable
+              />
+            ))}
+            {choices.length == 0 && (
+              <div className="list">
+                {"Vous n'avez voté pour aucun texte pour l'instant !"}
+              </div>
+            )}
+          </div>
+        </div>
+
+        <Button
+          endIcon={<Close />}
+          variant="text"
+          disableElevation
+          onClick={() => context.setListVotesPopup(false)}
+        >
+          Fermer
+        </Button>
+      </div>
+    </SwipeableDrawer>
+  );
+};
+
 const SharePopup = () => {
   const context = useContext(Context);
   const results = useMemo(
@@ -886,6 +977,7 @@ const MesVotes = ({ visible }) => {
 function App() {
   const [tab, setTab] = useState(0);
   const [resultPopup, setResultPopup] = useState();
+  const [listVotesPopup, setListVotesPopup] = useState();
   const [statsPopup, setStatsPopup] = useState();
   const [showShare, setShowShare] = useState();
   const [showConfetti, setConfetti] = useState(true);
@@ -926,6 +1018,8 @@ function App() {
           acceptWelcome,
           resultPopup,
           setResultPopup,
+          listVotesPopup,
+          setListVotesPopup,
           showShare,
           setShowShare,
           statsPopup,
@@ -956,6 +1050,7 @@ function App() {
         {showShare && <SharePopup />}
         {enableResultsPopup && <ResultsModal />}
         <StatsModal />
+        <ListVotesModal />
         {started && <BottomNav state={[tab, setTab]} />}
       </Context.Provider>
     </ThemeProvider>

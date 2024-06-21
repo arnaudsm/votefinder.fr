@@ -418,7 +418,7 @@ body {
     .liste-result {
       background-color: #C2C2C2;
       border-radius: 0.675rem;
-
+      cursor: pointer;
       box-shadow: $shadow;
 
       .top {
@@ -743,7 +743,7 @@ body {
   }
 }
 
-.StatsModal .content {
+.StatsModal .content, .ListVotesModal .content {
   background-color: white;
   color: black;
   margin: 0 auto;
@@ -772,6 +772,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: .2rem;
+    width: 100%;
     margin: 0;
 
     .result {
@@ -931,26 +932,6 @@ body {
           background-color: #5C90CF !important;
         }
       }
-    }
-  }
-
-  .progress {
-    background-color: white;
-    height: 1rem;
-    border-radius: 1rem;
-    width: 100%;
-    position: relative;
-    box-shadow: $shadow;
-
-    .bar {
-      background-color: var(--primary);
-      position: absolute;
-      transition: width 0.3s ease-in-out;
-      border-radius: 1rem;
-      display: block;
-      height: 1rem;
-      padding: 0;
-      margin: 0;
     }
   }
 }
