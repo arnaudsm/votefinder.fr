@@ -1,21 +1,63 @@
-import { createTheme } from "@mui/material";
+import { experimental_extendTheme as extendTheme } from "@mui/material/styles";
 
-export const theme = createTheme({
-  root: {
-    color: "#3E3E3E",
+const colors = {
+  primary: {
+    main: "#0052B4",
+    contrastText: "#fff",
   },
-  palette: {
-    primary: {
-      main: "#0052B4",
+  secondary: {
+    main: "#DD5A5A",
+    contrastText: "#fff",
+  },
+  lightBlue: {
+    main: "#6697D2",
+  },
+  lightRed: {
+    main: "#E78B8B",
+  },
+  green: {
+    main: "#63B85D",
+  },
+  white: {
+    main: "#FFFFFF",
+  },
+};
+
+export const theme = extendTheme({
+  colorSchemes: {
+    light: {
+      palette: {
+        ...colors,
+        body: {
+          main: "#3E3E3E",
+        },
+        highlight: {
+          main: "#FFFFFF",
+          contrastText: "#3E3E3E",
+        },
+        background: {
+          main: "#EBEBEB",
+          paper: "#FFFFFF",
+          contrastText: "#3E3E3E",
+        },
+      },
     },
-    secondary: {
-      main: "#FFFFFF",
-    },
-    lightBlue: {
-      main: "#6697D2",
-    },
-    lightRed: {
-      main: "#E78B8B",
+    dark: {
+      palette: {
+        ...colors,
+        body: {
+          main: "#FFFFFF",
+        },
+        highlight: {
+          main: "#121212",
+          contrastText: "#FFFFFF",
+        },
+        background: {
+          main: "#262626",
+          paper: "#121212",
+          contrastText: "#FFFFFF",
+        },
+      },
     },
   },
   shadows: [
