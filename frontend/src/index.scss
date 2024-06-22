@@ -19,6 +19,16 @@ html {
     .MuiToolbar-root {
       background-color: var(--mui-palette-background-paper) !important;
     }
+
+    .Welcome footer, .About .equipe {
+      a {
+        color: #cccccc;
+
+        &:visited {
+          color: #cccccc;
+        }
+      }
+    }
   }
 }
 
