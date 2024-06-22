@@ -29,6 +29,7 @@ import {
   Share,
   Close,
   PictureAsPdf,
+  AccountBalance,
   X,
   Instagram,
   Article,
@@ -902,6 +903,18 @@ const ListVotesModal = () => {
       className="ListVotesModal"
     >
       <div className="content">
+        <Button
+          startIcon={<AccountBalance />}
+          color="secondary"
+          variant="contained"
+          size="large"
+          href={`https://www.assemblee-nationale.fr/dyn/org/${context.listVotesPopup}`}
+          target="_blank"
+          disableElevation
+        >
+          Présentation du parti
+        </Button>
+
         <div className="MesVotes">
           <div className="ResultsParVote">
             {choices.map((vote_id) => (
