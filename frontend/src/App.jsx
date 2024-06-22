@@ -192,6 +192,22 @@ const Card = ({ vote_id, list_id, editable }) => {
             Votes des partis
           </Button>
         )}
+
+        {list_id && (
+          <div>
+            <span>Vous avez voter : </span>
+            <strong>
+              {context.choices[vote_id] === "-"
+                ? "👎 Contre"
+                : context.choices[vote_id] === "0"
+                  ? "Passer"
+                  : context.choices[vote_id] === "+"
+                    ? "👍 Pour"
+                    : ""}
+            </strong>
+          </div>
+        )}
+
         {editable && (
           <ToggleButtonGroup
             value={context.choices[vote_id]}
@@ -890,7 +906,6 @@ const ListVotesModal = () => {
                 vote_id={vote_id}
                 key={vote_id}
                 list_id={context.listVotesPopup}
-                editable
               />
             ))}
             {choices.length == 0 && (
