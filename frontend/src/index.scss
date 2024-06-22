@@ -743,6 +743,10 @@ body {
   }
 }
 
+.ListVotesModal .MuiPaper-root {
+  max-height: calc(100% - 100px) !important;
+}
+
 .StatsModal .content, .ListVotesModal .content {
   background-color: white;
   color: black;
