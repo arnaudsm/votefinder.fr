@@ -761,6 +761,11 @@ const About = ({ visible }) => {
             <h4>Cyprien Olive-Riban</h4>
             <h5>Relecture</h5>
           </div>
+
+          <div>
+            <h4>Clément Gayot</h4>
+            <h5>Développeur</h5>
+          </div>
         </div>
         <h2>Remerciements</h2>
         <div className="equipe" style={{ width: "80%" }}>
