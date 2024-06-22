@@ -460,7 +460,10 @@ const ResultListe = ({ id, approval }) => {
     <a
       className="liste-result"
       key={id}
-      onClick={() => context.setListVotesPopup(id)}
+      onClick={() => {
+        context.setListVotesPopup(id);
+        document.querySelector(".ListVotesModal .content").scrollTo(0, 0);
+      }}
     >
       <div className="top">
         <img src={`/lists/${id}.svg`} alt={data.lists[id].label} />
