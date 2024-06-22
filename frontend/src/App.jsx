@@ -45,7 +45,7 @@ import Contre from "./icons/contre.svg";
 import Trophy from "./icons/trophy.svg";
 import { CardSwiper } from "react-card-swiper";
 import ConfettiExplosion from "react-confetti-explosion";
-import { calculateResults, calculateVote } from "./rank";
+import { getRanks, getListsVotes } from "./rank";
 import { theme } from "./theme";
 import html2canvas from "html2canvas";
 
@@ -78,6 +78,43 @@ const formatDate = (txt) => {
   return txt;
 };
 
+const ListVote = ({ vote_id, list_id }) => {
+  const vote = data.votes[vote_id];
+  const results = getListsVotes(vote?.votes)[list_id];
+
+  return (
+    <>
+      <div className="result">
+        <div className="progress">
+          <div
+            className="bar pour"
+            style={{
+              width: `${Math.floor(results["+%"] * 100)}%`,
+            }}
+          ></div>
+          <div
+            className="bar contre"
+            style={{
+              width: `${Math.floor(results["-%"] * 100)}%`,
+              marginLeft: `${Math.floor(results["+%"] * 100)}%`,
+            }}
+          ></div>
+          <div className="name">
+            <h4>{data.lists[list_id].label}</h4>
+          </div>
+          <div className="score">
+            {`${Math.floor(results["+"])} pour`}
+            <br />
+            {`${Math.floor(results["-"])} contre`}
+            <br />
+            {`${Math.floor(results["0"])} abs`}
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
 const Card = ({ vote_id, list_id, editable }) => {
   const vote = data.votes[vote_id];
   const context = useContext(Context);
@@ -92,123 +129,73 @@ const Card = ({ vote_id, list_id, editable }) => {
         </ul>
       </div>
       <div className="bottom">
-        <div className="meta">
-          {formatDate(vote.date)} - {vote.type}
-        </div>
-        {list_id && (
-          <div className="results">
-            {vote &&
-              Object.entries(calculateVote(vote?.votes))
-                .filter(
-                  ([id, results]) =>
-                    id === list_id && !Number.isNaN(results["-%"]),
-                )
-                .map(([id, results]) => (
-                  <div className="result" key={id}>
-                    <div className="progress">
-                      <div
-                        className="bar pour"
-                        style={{
-                          width: `${Math.floor(results["+%"] * 100)}%`,
-                        }}
-                      ></div>
-                      <div
-                        className="bar contre"
-                        style={{
-                          width: `${Math.floor(results["-%"] * 100)}%`,
-                          marginLeft: `${Math.floor(results["+%"] * 100)}%`,
-                        }}
-                      ></div>
-                      <div className="name">
-                        <h4>{data.lists[id].label}</h4>
-                        <h5>{data.lists[id].leader}</h5>
-                      </div>
-                      <div className="score">
-                        {`${Math.floor(results["+"])} pour`}
-                        <br />
-                        {`${Math.floor(results["-"])} contre`}
-                        <br />
-                        {`${Math.floor(results["0"])} abs`}
-                      </div>
-                    </div>
-                  </div>
-                ))}
-          </div>
-        )}
-
         {!list_id && (
-          <div className="actions">
-            {vote.dossier_url && (
-              <Button
-                startIcon={<Folder />}
-                className="more-info"
-                color="lightBlue"
-                variant="contained"
-                disableElevation
-                target="_blank"
-                href={vote.dossier_url}
-              >
-                Dossier
-              </Button>
-            )}
-            {vote.debat_url && (
-              <Button
-                startIcon={<QuestionAnswer />}
-                className="more-info"
-                color="lightBlue"
-                variant="contained"
-                disableElevation
-                target="_blank"
-                href={vote.debat_url}
-              >
-                Débat
-              </Button>
-            )}
-            {vote.summary_url && (
-              <Button
-                startIcon={<Article />}
-                className="more-info"
-                color="lightBlue"
-                variant="contained"
-                disableElevation
-                target="_blank"
-                href={vote.summary_url}
-              >
-                Résumé
-              </Button>
-            )}
+          <div className="meta">
+            {formatDate(vote.date)} - {vote.type}
           </div>
-        )}
-
-        {!list_id && (
-          <Button
-            startIcon={<BarChart />}
-            className="more-info"
-            color="lightBlue"
-            variant="contained"
-            disableElevation
-            target="_blank"
-            onClick={() => context.setStatsPopup(vote.vote_id)}
-          >
-            Votes des partis
-          </Button>
         )}
 
         {list_id && (
-          <div>
-            <span>Vous avez voter : </span>
-            <strong>
-              {context.choices[vote_id] === "-"
-                ? "👎 Contre"
-                : context.choices[vote_id] === "0"
-                  ? "Passer"
-                  : context.choices[vote_id] === "+"
-                    ? "👍 Pour"
-                    : ""}
-            </strong>
+          <div className="results">
+            {vote && <ListVote vote_id={vote_id} list_id={list_id} />}
           </div>
         )}
-
+        {!list_id && (
+          <>
+            <div className="actions">
+              {vote.dossier_url && (
+                <Button
+                  startIcon={<Folder />}
+                  className="more-info"
+                  color="lightBlue"
+                  variant="contained"
+                  disableElevation
+                  target="_blank"
+                  href={vote.dossier_url}
+                >
+                  Dossier
+                </Button>
+              )}
+              {vote.debat_url && (
+                <Button
+                  startIcon={<QuestionAnswer />}
+                  className="more-info"
+                  color="lightBlue"
+                  variant="contained"
+                  disableElevation
+                  target="_blank"
+                  href={vote.debat_url}
+                >
+                  Débat
+                </Button>
+              )}
+              {vote.summary_url && (
+                <Button
+                  startIcon={<Article />}
+                  className="more-info"
+                  color="lightBlue"
+                  variant="contained"
+                  disableElevation
+                  target="_blank"
+                  href={vote.summary_url}
+                >
+                  Résumé
+                </Button>
+              )}
+            </div>
+            <Button
+              startIcon={<BarChart />}
+              className="more-info"
+              color="lightBlue"
+              variant="contained"
+              disableElevation
+              target="_blank"
+              onClick={() => context.setStatsPopup(vote.vote_id)}
+            >
+              Votes des partis
+            </Button>
+          </>
+        )}
         {editable && (
           <ToggleButtonGroup
             value={context.choices[vote_id]}
@@ -453,7 +440,6 @@ const share = async () => {
 };
 
 const ResultListe = ({ id, approval }) => {
-  // const [open, setOpen] = useState(false);
   const context = useContext(Context);
 
   return (
@@ -553,10 +539,7 @@ const ResultsDeputes = ({ results }) => {
 const Resultats = ({ visible }) => {
   const [tab, setTab] = useState(0);
   const context = useContext(Context);
-  const results = useMemo(
-    () => calculateResults(context.choices),
-    [context.choices],
-  );
+  const results = useMemo(() => getRanks(context.choices), [context.choices]);
   const minVotesReached = Object.keys(context.choices).length >= minVotes;
   const handleChange = (event, newValue) => setTab(newValue);
 
@@ -847,7 +830,7 @@ const StatsModal = () => {
         </ul>
         <div className="results">
           {vote &&
-            Object.entries(calculateVote(vote?.votes))
+            Object.entries(getListsVotes(vote?.votes))
               .filter(([, results]) => !Number.isNaN(results["-%"]))
               .map(([id, results]) => (
                 <div className="result" key={id}>
@@ -907,18 +890,6 @@ const ListVotesModal = () => {
       className="ListVotesModal"
     >
       <div className="content">
-        <Button
-          startIcon={<AccountBalance />}
-          color="secondary"
-          variant="contained"
-          size="large"
-          href={`https://www.assemblee-nationale.fr/dyn/org/${context.listVotesPopup}`}
-          target="_blank"
-          disableElevation
-        >
-          Présentation du parti
-        </Button>
-
         <div className="MesVotes">
           <div className="ResultsParVote">
             {choices.map((vote_id) => (
@@ -935,7 +906,20 @@ const ListVotesModal = () => {
             )}
           </div>
         </div>
-
+      </div>
+      <div className="listvotes-actions">
+        <h2>{data.lists[context.listVotesPopup]?.label}</h2>
+        <Button
+          startIcon={<AccountBalance />}
+          color="primary"
+          variant="contained"
+          size="large"
+          href={`https://www.assemblee-nationale.fr/dyn/org/${context.listVotesPopup}`}
+          target="_blank"
+          disableElevation
+        >
+          Fiche du parti
+        </Button>
         <Button
           endIcon={<Close />}
           variant="text"
@@ -951,10 +935,7 @@ const ListVotesModal = () => {
 
 const SharePopup = () => {
   const context = useContext(Context);
-  const results = useMemo(
-    () => calculateResults(context.choices),
-    [context.choices],
-  );
+  const results = useMemo(() => getRanks(context.choices), [context.choices]);
   return (
     <div className="SharePopup">
       <h1>{"Les partis qui votent comme moi à l'Assemblée Nationale 🏛️🇫🇷"}</h1>
