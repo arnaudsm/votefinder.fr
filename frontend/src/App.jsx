@@ -454,7 +454,6 @@ const share = async () => {
 
 const ResultListe = ({ id, approval }) => {
   // const [open, setOpen] = useState(false);
-  // TODO : Votes par liste
   const context = useContext(Context);
 
   return (
