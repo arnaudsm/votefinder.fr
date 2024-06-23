@@ -419,13 +419,10 @@ const Welcome = () => {
             {
               "Retrouvez plus d'informations et d'actualités de l'Assemblée Nationale chez notre partenaire"
             }
-            <br />
             <Button
-              color="primary"
-              variant="contained"
               target="_blank"
               href="https://datan.fr/"
-              startIcon={<AccountBalance />}
+              endIcon={<AccountBalance />}
             >
               Datan.fr
             </Button>

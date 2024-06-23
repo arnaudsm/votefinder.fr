@@ -261,16 +261,11 @@ body {
     .datan {
       border-top: 1px solid rgba(172, 172, 172, 0.5);
       padding-top: 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
       justify-content: center;
       align-items: center;
 
       .MuiButton-root {
-        max-width: 10rem;
-        width: 100%;
-        color: white;
+        margin-left: .5rem;
       }
     }
   }
