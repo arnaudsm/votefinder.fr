@@ -20,7 +20,8 @@ html {
       background-color: var(--mui-palette-background-paper) !important;
     }
 
-    .Welcome footer, .About .equipe {
+    .Welcome footer,
+    .About .equipe {
       a {
         color: #cccccc;
 
@@ -135,7 +136,7 @@ body {
       bottom: 1rem;
 
       &:hover {
-        background-color:var(--mui-palette-background-paper);
+        background-color: var(--mui-palette-background-paper);
         opacity: 0.8;
       }
 
@@ -255,6 +256,17 @@ body {
 
     a:visited {
       color: inherit;
+    }
+
+    .datan {
+      border-top: 1px solid rgba(172, 172, 172, 0.5);
+      padding-top: 1rem;
+      justify-content: center;
+      align-items: center;
+
+      .MuiButton-root {
+        margin-left: .5rem;
+      }
     }
   }
 
@@ -569,6 +581,7 @@ body {
     flex-wrap: wrap;
     gap: 1rem;
     justify-content: center;
+    width: 100%;
 
     div {
       width: calc(49% - 1rem);
@@ -990,7 +1003,7 @@ body {
 
       & + .MuiSwitch-track {
         opacity: 1;
-        background-color: #8796A5;
+        background-color: #8796a5;
       }
     }
   }
@@ -1000,7 +1013,7 @@ body {
     width: 32px;
     height: 32px;
     &::before {
-      content: '';
+      content: "";
       position: absolute;
       width: 100%;
       height: 100%;

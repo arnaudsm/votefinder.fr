@@ -413,6 +413,20 @@ const Welcome = () => {
             open-source
           </a>
           , et sans tracking.
+          <br />
+          <br />
+          <div className="datan">
+            {
+              "Retrouvez plus d'informations et d'actualités de l'Assemblée Nationale chez notre partenaire"
+            }
+            <Button
+              target="_blank"
+              href="https://datan.fr/"
+              endIcon={<AccountBalance />}
+            >
+              Datan.fr
+            </Button>
+          </div>
         </div>
       </div>
     </>
@@ -757,12 +771,20 @@ const About = ({ visible }) => {
           </div>
         </div>
         <h2>Remerciements</h2>
-        <div className="equipe" style={{ width: "80%" }}>
-          <div style={{ width: "80%" }}>
+        <div className="equipe">
+          <div>
             <h4>Théo Delemazure</h4>
             <h5>
-              <a href="https://theatrebourbon.delemazure.fr/">
+              <a target="_blank" href="https://theatrebourbon.delemazure.fr/">
                 Plateforme des débats
+              </a>
+            </h5>
+          </div>
+          <div>
+            <h4>Awenig Marié</h4>
+            <h5>
+              <a target="_blank" href="https://datan.fr/">
+                Datan.fr
               </a>
             </h5>
           </div>
