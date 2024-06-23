@@ -11,13 +11,13 @@ import {
   Toolbar,
   Button,
   Stack,
-  ThemeProvider,
   Tab,
   Tabs,
   Modal,
   ToggleButtonGroup,
   ToggleButton,
   SwipeableDrawer,
+  Switch,
 } from "@mui/material";
 import {
   HowToVote,
@@ -39,6 +39,10 @@ import {
   QuestionAnswer,
   FileDownload,
 } from "@mui/icons-material";
+import {
+  Experimental_CssVarsProvider as CssVarsProvider,
+  useColorScheme,
+} from "@mui/material/styles";
 import LogoURL from "./icons/logo_url.svg";
 import Pour from "./icons/pour.svg";
 import Contre from "./icons/contre.svg";
@@ -316,7 +320,7 @@ const Votes = ({ visible }) => {
         <Button
           variant="contained"
           disableElevation
-          color="secondary"
+          color="highlight"
           className="contre"
           onClick={() => {
             context.choose({ vote_id: id, type: "-" });
@@ -331,7 +335,7 @@ const Votes = ({ visible }) => {
         <Button
           variant="contained"
           disableElevation
-          color="secondary"
+          color="highlight"
           className="passer"
           onClick={() => {
             context.choose({ vote_id: id, type: "0" });
@@ -345,7 +349,7 @@ const Votes = ({ visible }) => {
         <Button
           variant="contained"
           disableElevation
-          color="secondary"
+          color="highlight"
           className="pour"
           onClick={() => {
             context.choose({ vote_id: id, type: "+" });
@@ -361,11 +365,13 @@ const Votes = ({ visible }) => {
 };
 
 const Navbar = () => (
-  <AppBar position="static" color="inherit" className="Navbar">
+  <AppBar position="static" color="white" className="Navbar">
     <Toolbar color="white">
       <a href="https://votefinder.fr">
         <LogoURL className="logo" />
       </a>
+
+      <ModeSwitcher />
     </Toolbar>
   </AppBar>
 );
@@ -990,6 +996,27 @@ const MesVotes = ({ visible }) => {
   );
 };
 
+// ModeSwitcher is an example interface for toggling between modes.
+// Material UI does not provide the toggle interface—you have to build it yourself.
+const ModeSwitcher = () => {
+  const { mode, setMode } = useColorScheme();
+
+  return (
+    <Switch
+      variant="outlined"
+      className="theme-switcher"
+      defaultChecked={mode === "dark"}
+      onClick={() => {
+        if (mode === "light") {
+          setMode("dark");
+        } else {
+          setMode("light");
+        }
+      }}
+    ></Switch>
+  );
+};
+
 function App() {
   const [tab, setTab] = useState(0);
   const [resultPopup, setResultPopup] = useState();
@@ -1022,7 +1049,7 @@ function App() {
   };
 
   return (
-    <ThemeProvider theme={theme}>
+    <CssVarsProvider theme={theme}>
       <Context.Provider
         value={{
           tab,
@@ -1069,7 +1096,7 @@ function App() {
         <ListVotesModal />
         {started && <BottomNav state={[tab, setTab]} />}
       </Context.Provider>
-    </ThemeProvider>
+    </CssVarsProvider>
   );
 }
 

@@ -4,6 +4,32 @@ html {
   height: 100%;
   width: 100%;
   font-family: "Roboto", sans-serif;
+
+  &[data-mui-color-scheme="light"] {
+    --result-bg-color: #c2c2c2;
+
+    .MuiToolbar-root {
+      background-color: var(--mui-palette-background-paper) !important;
+    }
+  }
+
+  &[data-mui-color-scheme="dark"] {
+    --result-bg-color: var(--mui-palette-background-main);
+
+    .MuiToolbar-root {
+      background-color: var(--mui-palette-background-paper) !important;
+    }
+
+    .Welcome footer, .About .equipe {
+      a {
+        color: #cccccc;
+
+        &:visited {
+          color: #cccccc;
+        }
+      }
+    }
+  }
 }
 
 @media (min-height: 1000px) {
@@ -19,14 +45,8 @@ html {
 }
 
 body {
-  --background: #ebebeb;
-  --primary: #0052b4;
-  --secondary: #dd5a5a;
-  --green: #63b85d;
-  --text: #3e3e3e;
-
-  color: var(--text);
-  background: var(--background);
+  color: var(--mui-palette-body-main);
+  background: var(--mui-palette-background-main);
   margin: 0;
   overflow: hidden;
   height: 100%;
@@ -90,8 +110,8 @@ body {
     .swipe-card__content {
       height: 100%;
       width: 100%;
-      background: var(--primary);
-      color: white;
+      background: var(--mui-palette-primary-main);
+      color: var(--mui-palette-white-main);
     }
   }
 
@@ -115,7 +135,7 @@ body {
       bottom: 1rem;
 
       &:hover {
-        background-color: white;
+        background-color:var(--mui-palette-background-paper);
         opacity: 0.8;
       }
 
@@ -203,7 +223,7 @@ body {
   }
 
   .progress {
-    background-color: white;
+    background-color: var(--mui-palette-background-paper);
     height: 1rem;
     border-radius: 1rem;
     width: 100%;
@@ -211,7 +231,7 @@ body {
     box-shadow: $shadow;
 
     .bar {
-      background-color: var(--primary);
+      background-color: var(--mui-palette-primary-main);
       position: absolute;
       transition: width 0.3s ease-in-out;
       border-radius: 1rem;
@@ -231,7 +251,7 @@ body {
 
   .footer {
     text-align: center;
-    color: #616161;
+    color: var(--mui-palette-body-main);
 
     a:visited {
       color: inherit;
@@ -241,7 +261,7 @@ body {
   .Card {
     display: flex;
     flex-direction: column;
-    color: white;
+    color: var(--mui-palette-white-main);
 
     h2 {
       text-align: center;
@@ -263,7 +283,7 @@ body {
     }
 
     .top {
-      background-color: var(--primary);
+      background-color: var(--mui-palette-primary-main);
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
     }
@@ -271,10 +291,10 @@ body {
     .bottom {
       border-top-left-radius: 0;
       border-top-right-radius: 0;
-      background-color: var(--secondary);
+      background-color: var(--mui-palette-secondary-main);
 
       .welcome-start {
-        color: white;
+        color: var(--mui-palette-white-main);
         height: 3.25rem;
         font-size: 1.25rem;
         width: 100%;
@@ -292,7 +312,7 @@ body {
 }
 
 .Resultats {
-  background-color: white;
+  background-color: var(--mui-palette-background-paper);
   width: 100%;
   box-sizing: border-box;
   padding: 1rem 0;
@@ -316,7 +336,7 @@ body {
   }
 
   .MuiTabs-fixed {
-    border-bottom: 1px solid #eaeaea;
+    border-bottom: 1px solid rgba(172, 172, 172, 0.5);
   }
 
   .list {
@@ -331,7 +351,7 @@ body {
 
     .result {
       display: flex;
-      background-color: #c2c2c2;
+      background-color: var(--result-bg-color);
       border-radius: 0.675rem;
       height: 3.375rem;
       box-shadow: $shadow;
@@ -342,7 +362,7 @@ body {
 
       img {
         object-fit: contain;
-        background-color: white;
+        background-color: var(--mui-palette-white-main);
         width: 3.375rem;
         height: 3.375rem;
         border-top-left-radius: 0.675rem;
@@ -365,7 +385,7 @@ body {
         }
 
         .bar {
-          background-color: var(--green);
+          background-color: var(--mui-palette-green-main);
           transition: width 0.3s ease-in-out;
           position: absolute;
           display: block;
@@ -378,7 +398,7 @@ body {
 
         .name {
           left: 1rem;
-          color: white;
+          color: var(--mui-palette-white-main);
           position: absolute;
           display: flex;
           flex-direction: column;
@@ -400,7 +420,7 @@ body {
         }
 
         .score {
-          color: white;
+          color: var(--mui-palette-white-main);
           position: absolute;
           right: 1rem;
           line-height: 3.375rem;
@@ -411,7 +431,7 @@ body {
     }
 
     .liste-result {
-      background-color: #c2c2c2;
+      background-color: var(--result-bg-color);
       border-radius: 0.675rem;
       cursor: pointer;
       box-shadow: $shadow;
@@ -427,7 +447,7 @@ body {
 
       img {
         object-fit: contain;
-        background-color: white;
+        background-color: var(--mui-palette-white-main);
         width: 3.375rem;
         height: 3.375rem;
         border-top-left-radius: 0.675rem;
@@ -450,7 +470,7 @@ body {
         }
 
         .bar {
-          background-color: var(--green);
+          background-color: var(--mui-palette-green-main);
           transition: width 0.3s ease-in-out;
           position: absolute;
           display: block;
@@ -463,7 +483,7 @@ body {
 
         .name {
           left: 1rem;
-          color: white;
+          color: var(--mui-palette-white-main);
           position: absolute;
           display: flex;
           flex-direction: column;
@@ -485,7 +505,7 @@ body {
         }
 
         .score {
-          color: white;
+          color: var(--mui-palette-white-main);
           position: absolute;
           right: 1rem;
           line-height: 3.375rem;
@@ -496,7 +516,7 @@ body {
     }
 
     .reset {
-      color: white;
+      color: var(--mui-palette-white-main);
       height: 3rem;
     }
   }
@@ -524,7 +544,7 @@ body {
 
   .Card {
     margin: 1rem;
-    background-color: white;
+    background-color: var(--mui-palette-background-paper);
     gap: 0.75rem;
     border-radius: 1rem;
     padding: 0.5rem 1.5rem 1.5rem 1.5rem;
@@ -576,8 +596,8 @@ body {
 }
 
 .ResultsModal .content {
-  background-color: var(--secondary);
-  color: white;
+  background-color: var(--mui-palette-secondary-main);
+  color: var(--mui-palette-white-main);
   margin: 4rem auto;
   padding: 2rem 1rem;
   border-radius: 1rem;
@@ -629,7 +649,7 @@ body {
   top: -2000px;
   left: 0;
   z-index: 2000;
-  background-color: white;
+  background-color: var(--mui-palette-background-paper);
   width: 25rem;
   padding-bottom: 1rem;
   transform: scale(2);
@@ -657,7 +677,7 @@ body {
 
     .result {
       display: flex;
-      background-color: #c2c2c2;
+      background-color: var(--result-bg-color);
       border-radius: 0.675rem;
       height: 3.375rem;
 
@@ -667,7 +687,7 @@ body {
 
       img {
         object-fit: contain;
-        background-color: white;
+        background-color: var(--mui-palette-background-paper);
         width: 3.375rem;
         height: 3.375rem;
         border-top-left-radius: 0.675rem;
@@ -684,7 +704,7 @@ body {
         position: relative;
 
         .bar {
-          background-color: var(--green);
+          background-color: var(--mui-palette-green-main);
           transition: width 0.3s ease-in-out;
           position: absolute;
           display: block;
@@ -695,7 +715,7 @@ body {
 
         .name {
           left: 1rem;
-          color: white;
+          color: var(--mui-palette-white-main);
           position: absolute;
           display: flex;
           flex-direction: column;
@@ -717,7 +737,7 @@ body {
         }
 
         .score {
-          color: white;
+          color: var(--mui-palette-white-main);
           position: absolute;
           right: 1rem;
           line-height: 3.375rem;
@@ -728,7 +748,7 @@ body {
     }
 
     .reset {
-      color: white;
+      color: var(--mui-palette-white-main);
       height: 3rem;
     }
   }
@@ -760,8 +780,8 @@ body {
 
 .StatsModal .content,
 .ListVotesModal .content {
-  background-color: white;
-  color: black;
+  background-color: var(--mui-palette-background-paper);
+  color: var(--mui-palette-body-main);
   margin: 0 auto;
   padding: 1.5rem;
   border-radius: 1rem;
@@ -792,7 +812,7 @@ body {
 
     .result {
       display: flex;
-      background-color: #c2c2c2;
+      background-color: var(--result-bg-color);
       border-radius: 0.675rem;
       height: 3.375rem;
 
@@ -820,17 +840,17 @@ body {
           animation-timing-function: ease-in-out;
 
           &.pour {
-            background-color: var(--green);
+            background-color: var(--mui-palette-green-main);
           }
 
           &.contre {
-            background-color: var(--secondary);
+            background-color: var(--mui-palette-secondary-main);
           }
         }
 
         .name {
           left: 1rem;
-          color: white;
+          color: var(--mui-palette-white-main);
           position: absolute;
           display: flex;
           flex-direction: column;
@@ -852,7 +872,7 @@ body {
         }
 
         .score {
-          color: white;
+          color: var(--mui-palette-white-main);
           position: absolute;
           text-align: right;
           right: 1rem;
@@ -873,8 +893,8 @@ body {
   }
 
   .Card {
-    background: var(--primary);
-    color: white;
+    background: var(--mui-palette-primary-main);
+    color: var(--mui-palette-white-main);
     height: 2px;
     padding: 1.2rem;
     margin: 0.5rem;
@@ -933,7 +953,7 @@ body {
       }
 
       .MuiToggleButtonGroup-root {
-        background-color: white;
+        background-color: var(--mui-palette-background-paper);
         border: none;
 
         .MuiButtonBase-root {
@@ -941,10 +961,59 @@ body {
         }
 
         .Mui-selected {
-          color: white;
+          color: var(--mui-palette-white-main);
           background-color: #5c90cf !important;
         }
       }
     }
+  }
+}
+
+.theme-switcher {
+  margin-left: auto !important;
+  width: 62px !important;
+  height: 34px !important;
+  padding: 7px !important;
+
+  .MuiSwitch-switchBase {
+    margin: 1px;
+    padding: 0;
+    transform: translateX(6px);
+
+    &.Mui-checked {
+      color: #fff;
+      transform: translateX(22px);
+
+      .MuiSwitch-thumb:before {
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 20 20"><path fill="%23fff" d="M4.2 2.5l-.7 1.8-1.8.7 1.8.7.7 1.8.6-1.8L6.7 5l-1.9-.7-.6-1.8zm15 8.3a6.7 6.7 0 11-6.6-6.6 5.8 5.8 0 006.6 6.6z"/></svg>');
+      }
+
+      & + .MuiSwitch-track {
+        opacity: 1;
+        background-color: #8796A5;
+      }
+    }
+  }
+
+  .MuiSwitch-thumb {
+    background-color: #003892;
+    width: 32px;
+    height: 32px;
+    &::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 20 20"><path fill="%23fff" d="M9.305 1.667V3.75h1.389V1.667h-1.39zm-4.707 1.95l-.982.982L5.09 6.072l.982-.982-1.473-1.473zm10.802 0L13.927 5.09l.982.982 1.473-1.473-.982-.982zM10 5.139a4.872 4.872 0 00-4.862 4.86A4.872 4.872 0 0010 14.862 4.872 4.872 0 0014.86 10 4.872 4.872 0 0010 5.139zm0 1.389A3.462 3.462 0 0113.471 10a3.462 3.462 0 01-3.473 3.472A3.462 3.462 0 016.527 10 3.462 3.462 0 0110 6.528zM1.665 9.305v1.39h2.083v-1.39H1.666zm14.583 0v1.39h2.084v-1.39h-2.084zM5.09 13.928L3.616 15.4l.982.982 1.473-1.473-.982-.982zm9.82 0l-.982.982 1.473 1.473.982-.982-1.473-1.473zM9.305 16.25v2.083h1.389V16.25h-1.39z"/></svg>');
+    }
+  }
+  .MuiSwitch-track {
+    opacity: 1;
+    background-color: #aab4be;
+    border-radius: calc(20px / 2);
   }
 }
