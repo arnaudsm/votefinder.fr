@@ -417,7 +417,7 @@ const Welcome = () => {
           <br />
           <div className="datan">
             {
-              "Retrouvez plus d'informations et d'actualités de l'Assemblée Nationale sur"
+              "Retrouvez plus d'informations et d'actualités de l'Assemblée Nationale chez notre partenaire"
             }
             <br />
             <Button
