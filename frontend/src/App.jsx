@@ -144,15 +144,15 @@ const Card = ({ vote_id, list_id, editable }) => {
             {vote && <ListVote vote_id={vote_id} list_id={list_id} />}
 
             <div className="my-vote">
-              <span>Vous avez voter : </span>
+              <span>Vous avez voté : </span>
               <strong>
-                {context.choices[vote_id] === "-"
-                  ? "👎 Contre"
-                  : context.choices[vote_id] === "0"
-                    ? "Passer"
-                    : context.choices[vote_id] === "+"
-                      ? "👍 Pour"
-                      : ""}
+                {
+                  {
+                    "-": "👎 Contre",
+                    0: "Passer",
+                    "+": "👍 Pour",
+                  }[context.choices[vote_id]]
+                }
               </strong>
             </div>
           </div>
