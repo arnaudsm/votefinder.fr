@@ -142,6 +142,19 @@ const Card = ({ vote_id, list_id, editable }) => {
         {list_id && (
           <div className="results">
             {vote && <ListVote vote_id={vote_id} list_id={list_id} />}
+
+            <div className="my-vote">
+              <span>Vous avez voter : </span>
+              <strong>
+                {context.choices[vote_id] === "-"
+                  ? "👎 Contre"
+                  : context.choices[vote_id] === "0"
+                    ? "Passer"
+                    : context.choices[vote_id] === "+"
+                      ? "👍 Pour"
+                      : ""}
+              </strong>
+            </div>
           </div>
         )}
         {!list_id && (
