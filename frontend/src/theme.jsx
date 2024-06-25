@@ -36,7 +36,7 @@ export const theme = extendTheme({
           contrastText: "#3E3E3E",
         },
         background: {
-          main: "#EBEBEB",
+          main: "#FFFFFF",
           paper: "#FFFFFF",
           contrastText: "#3E3E3E",
         },
