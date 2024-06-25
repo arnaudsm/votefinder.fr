@@ -8,12 +8,11 @@ import NoVotesLeft from "../components/NoVotesLeft.jsx";
 import Contre from "../assets/icons/contre.svg";
 import Pour from "../assets/icons/pour.svg";
 import { shuffle } from "../utils/utils";
-import { getRecommendedVotesLength } from "../utils/votes.jsx";
+import { recommendedVotesCount } from "../data/variables";
 
 export default function Votes({ visible }) {
   const vote_ids = shuffle(Object.keys(data.votes));
   const context = useContext(ThemeContext);
-  const recommendedVotes = getRecommendedVotesLength(data.votes);
   const [id, setId] = useState();
   const [unseen_vote_ids] = useState(
     vote_ids
@@ -34,7 +33,7 @@ export default function Votes({ visible }) {
     content: <Card vote_id={vote_id} />,
   }));
   const progress = Math.floor(
-    (Object.keys(context.choices).length / recommendedVotes) * 100,
+    (Object.keys(context.choices).length / recommendedVotesCount) * 100,
   );
   return (
     <div className={`Votes ${visible ? "" : "hide"}`}>

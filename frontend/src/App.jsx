@@ -9,9 +9,8 @@ import ConfettiExplosion from "react-confetti-explosion";
 import { Experimental_CssVarsProvider as CssVarsProvider } from "@mui/material/styles";
 import { theme } from "./theme";
 
-import data from "./data/data.json";
 import { ThemeContext } from "./context/ThemeContext";
-import { getRecommendedVotesLength } from "./utils/votes";
+import { recommendedVotesCount } from "./data/variables";
 
 import About from "./pages/About";
 import MesVotes from "./pages/MesVotes";
@@ -26,7 +25,6 @@ import ResultsModal from "./components/ResultsModal";
 import SharePopup from "./components/SharePopup";
 import StatsModal from "./components/StatsModal";
 
-const recommendedVotes = getRecommendedVotesLength(data.votes);
 const enableResultsPopup = false;
 
 function App() {
@@ -48,7 +46,10 @@ function App() {
     setChoices((prevChoices) => {
       const newChoices = { ...prevChoices, [vote_id]: type };
       localStorage.setItem("votes", JSON.stringify(newChoices));
-      if (Object.keys(newChoices).length === recommendedVotes && !noPopup) {
+      if (
+        Object.keys(newChoices).length === recommendedVotesCount &&
+        !noPopup
+      ) {
         if (!enableResultsPopup) setTab(1);
         setResultPopup(true);
       }

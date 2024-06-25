@@ -74,7 +74,3 @@ export function getListsVotes(votes) {
     ]),
   );
 }
-
-export function getRecommendedVotesLength(votes) {
-  return Object.values(votes).filter((x) => x.pinned).length;
-}

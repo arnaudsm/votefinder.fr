@@ -1,7 +1,7 @@
 import { useContext, useMemo, useState } from "react";
 import { ThemeContext } from "../context/ThemeContext.jsx";
 import { getRanks } from "../utils/votes.jsx";
-import { minVotes } from "../data/variables.jsx";
+import { minVotesCount } from "../data/variables.jsx";
 import { Button, Tab, Tabs } from "@mui/material";
 import { Share } from "@mui/icons-material";
 import ResultsListes from "../components/ResultsListes.jsx";
@@ -11,7 +11,7 @@ export default function Resultats({ visible }) {
   const [tab, setTab] = useState(0);
   const context = useContext(ThemeContext);
   const results = useMemo(() => getRanks(context.choices), [context.choices]);
-  const minVotesReached = Object.keys(context.choices).length >= minVotes;
+  const minVotesReached = Object.keys(context.choices).length >= minVotesCount;
   const handleChange = (event, newValue) => setTab(newValue);
 
   return (
@@ -48,7 +48,7 @@ export default function Resultats({ visible }) {
       </Tabs>
       {!minVotesReached ? (
         <div className="Resultats__list">
-          Réponds à plus de {minVotes} questions pour voir tes résultats!
+          Réponds à plus de {minVotesCount} questions pour voir tes résultats!
         </div>
       ) : tab == 0 ? (
         <ResultsListes results={results} choices={context.choices} />
