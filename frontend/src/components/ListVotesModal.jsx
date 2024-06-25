@@ -1,0 +1,63 @@
+import { useContext } from "react";
+import { ThemeContext } from "../context/ThemeContext.jsx";
+import data from "../data/data.json";
+import { Button, SwipeableDrawer } from "@mui/material";
+import Card from "./Card.jsx";
+import { AccountBalance, Close } from "@mui/icons-material";
+
+export default function ListVotesModal() {
+  const context = useContext(ThemeContext);
+  const choices = Object.keys(context.choices).filter(
+    (vote_id) => vote_id in data.votes,
+  );
+
+  return (
+    <SwipeableDrawer
+      anchor="top"
+      open={Boolean(context.listVotesPopup)}
+      onClose={() => context.setListVotesPopup(false)}
+      className="ListVotesModal"
+    >
+      <div className="content">
+        <div className="MesVotes">
+          <div className="ResultsParVote">
+            {choices.map((vote_id) => (
+              <Card
+                vote_id={vote_id}
+                key={vote_id}
+                list_id={context.listVotesPopup}
+              />
+            ))}
+            {choices.length == 0 && (
+              <div className="list">
+                {"Vous n'avez voté pour aucun texte pour l'instant !"}
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+      <div className="listvotes-actions">
+        <h2>{data.lists[context.listVotesPopup]?.label}</h2>
+        <Button
+          startIcon={<AccountBalance />}
+          color="primary"
+          variant="contained"
+          size="large"
+          href={`https://www.assemblee-nationale.fr/dyn/org/${context.listVotesPopup}`}
+          target="_blank"
+          disableElevation
+        >
+          Fiche du parti
+        </Button>
+        <Button
+          endIcon={<Close />}
+          variant="text"
+          disableElevation
+          onClick={() => context.setListVotesPopup(false)}
+        >
+          Fermer
+        </Button>
+      </div>
+    </SwipeableDrawer>
+  );
+}
