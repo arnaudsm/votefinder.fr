@@ -97,5 +97,5 @@ const dataset = {
   org_to_list,
 };
 
-fs.writeFileSync("../frontend/src/data.json", JSON.stringify(dataset));
+fs.writeFileSync("../frontend/src/data/data.json", JSON.stringify(dataset));
 console.log("✅ Données exportées");

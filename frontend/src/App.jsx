@@ -1,4 +1,4 @@
-import data from "./data";
+import data from "./data/data.json";
 import { useState, useMemo, useContext, createContext } from "react";
 import "./assets/styles/index.scss";
 import "@fontsource/roboto/300.css";

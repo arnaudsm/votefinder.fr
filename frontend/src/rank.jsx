@@ -1,4 +1,4 @@
-import data from "./data";
+import data from "./data/data.json";
 
 export const getRanks = (choices) => {
   let deputes = Object.fromEntries(
