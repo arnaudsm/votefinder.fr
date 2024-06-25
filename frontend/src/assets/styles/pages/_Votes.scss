@@ -125,6 +125,18 @@
   .swipe-card {
     &__container {
       border-radius: var(--card-border-radius);
+      overflow: unset !important;
+      background: transparent !important;
+
+      &:not(:last-child, :nth-last-child(2)) {
+        opacity: 0;
+      }
+
+      &:not(:last-child) {
+        .swipe-card__content {
+          filter: blur(3px) brightness(110%);
+        }
+      }
     }
 
     &__ribbon-like,
@@ -139,7 +151,17 @@
     &__content {
       height: 100%;
       width: 100%;
-      background: color-mix(in srgb, var(--card-bottom-bg-color) 70%, #000) !important;
+      background: transparent !important;
+      filter: blur(0) brightness(100%);
+      transition: filter 0.5s ease-out, opacity 0.5s ease-out;
+    }
+  }
+
+  .Card {
+    height: 100%;
+
+    &__front {
+      height: 100%;
     }
   }
 }
