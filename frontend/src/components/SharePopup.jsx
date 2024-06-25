@@ -16,22 +16,22 @@ export default function SharePopup() {
         </div>
         {results.lists.slice(0, 4).map(([id, approval]) => (
           <a
-            className="SharePopup__result"
+            className="SharePopup__result Result Result--simple"
             href={`https://www.assemblee-nationale.fr/dyn/org/${id}`}
             key={id}
             target="_blank"
           >
             <img src={`/lists/${id}.svg`} alt={data.lists[id].label} />
-            <div className="SharePopup__progress progress">
+            <div className="Result__progress">
               <div
-                className="progress__bar"
+                className="Result__bar"
                 style={{ width: `${Math.floor(approval * 100)}%` }}
               ></div>
-              <div className="progress__name">
+              <div className="Result__name">
                 <h4>{data.lists[id].label}</h4>
                 <h5>{data.lists[id].leader}</h5>
               </div>
-              <div className="progress__score">{`${Math.floor(approval * 100)}%`}</div>
+              <div className="Result__score">{`${Math.floor(approval * 100)}%`}</div>
             </div>
           </a>
         ))}

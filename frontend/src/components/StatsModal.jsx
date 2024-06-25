@@ -27,26 +27,29 @@ export default function StatsModal() {
             Object.entries(getListsVotes(vote?.votes))
               .filter(([, results]) => !Number.isNaN(results["-%"]))
               .map(([id, results]) => (
-                <div className="StatsModal__result" key={id}>
-                  <div className="StatsModal__progress progress">
+                <div
+                  className="StatsModal__result Result Result--multiple"
+                  key={id}
+                >
+                  <div className="Result__progress">
                     <div
-                      className="progress__bar progress__bar--pour"
+                      className="Result__bar Result__bar--pour"
                       style={{
                         width: `${Math.floor(results["+%"] * 100)}%`,
                       }}
                     ></div>
                     <div
-                      className="progress__bar progress__bar--contre"
+                      className="Result__bar Result__bar--contre"
                       style={{
                         width: `${Math.floor(results["-%"] * 100)}%`,
                         marginLeft: `${Math.floor(results["+%"] * 100)}%`,
                       }}
                     ></div>
-                    <div className="progress__name">
+                    <div className="Result__name">
                       <h4>{data.lists[id].label}</h4>
                       <h5>{data.lists[id].leader}</h5>
                     </div>
-                    <div className="progress__score">
+                    <div className="Result__score">
                       {`${Math.floor(results["+"])} pour`}
                       <br />
                       {`${Math.floor(results["-"])} contre`}

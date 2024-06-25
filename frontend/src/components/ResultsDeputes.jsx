@@ -18,21 +18,22 @@ export default function ResultsDeputes({ results }) {
         )
         .map(([id, approval]) => (
           <a
-            className="ResultsDeputes__result"
+            className="Result Result--simple"
             href={`https://www.assemblee-nationale.fr/dyn/deputes/${id}`}
             key={id}
             target="_blank"
           >
             <img
+              className="Result__img"
               src={`/deputes/${id.slice(2)}.jpg`}
               alt={data.deputes[id]?.l}
             />
-            <div className="ResultsDeputes__progress progress">
+            <div className="Result__progress">
               <div
-                className="progress__bar"
+                className="Result__bar"
                 style={{ width: `${Math.floor(approval * 100)}%` }}
               ></div>
-              <div className="progress__name">
+              <div className="Result__name">
                 <h4>{data.deputes[id]?.l}</h4>
                 <div>
                   {results?.deputesRaw?.[id]?.["+"]}/
@@ -41,7 +42,7 @@ export default function ResultsDeputes({ results }) {
                   votes
                 </div>
               </div>
-              <div className="progress__score">{`${Math.floor(approval * 100)}%`}</div>
+              <div className="Result__score">{`${Math.floor(approval * 100)}%`}</div>
             </div>
           </a>
         ))}

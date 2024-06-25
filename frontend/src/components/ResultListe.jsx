@@ -7,30 +7,32 @@ export default function ResultListe({ id, approval }) {
 
   return (
     <a
-      className="ResultListe"
+      className="ResultListe Result Result--simple"
       key={id}
       onClick={() => {
         context.setListVotesPopup(id);
         document.querySelector(".ListVotesModal .content").scrollTo(0, 0);
       }}
     >
-      <div className="ResultListe__top">
-        <img src={`/lists/${id}.svg`} alt={data.lists[id].label} />
-        <div className="ResultListe__progress progress">
-          <div
-            className="progress__bar"
-            style={{ width: `${Math.floor(approval * 100)}%` }}
-          ></div>
-          <div className="progress__name">
-            <h4>{data.lists[id].label}</h4>
-            <h5>{data.lists[id].leader}</h5>
-          </div>
-          <div className="progress__score">
-            {data.lists[id].etranger ? "* " : ""}
-            {data.lists[id].no_data
-              ? "Non Sortant"
-              : `${Math.floor(approval * 100)}%`}
-          </div>
+      <img
+        className="Result__img"
+        src={`/lists/${id}.svg`}
+        alt={data.lists[id].label}
+      />
+      <div className="Result__progress">
+        <div
+          className="Result__bar"
+          style={{ width: `${Math.floor(approval * 100)}%` }}
+        ></div>
+        <div className="Result__name">
+          <h4>{data.lists[id].label}</h4>
+          <h5>{data.lists[id].leader}</h5>
+        </div>
+        <div className="Result__score">
+          {data.lists[id].etranger ? "* " : ""}
+          {data.lists[id].no_data
+            ? "Non Sortant"
+            : `${Math.floor(approval * 100)}%`}
         </div>
       </div>
     </a>
