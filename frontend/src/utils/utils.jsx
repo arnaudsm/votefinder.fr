@@ -18,3 +18,16 @@ export function shuffle(arr) {
   }
   return newArr;
 }
+
+export function hexToRgb(hex) {
+  let bigint = parseInt(hex.slice(1), 16);
+  let r = (bigint >> 16) & 255;
+  let g = (bigint >> 8) & 255;
+  let b = bigint & 255;
+
+  return [r, g, b];
+}
+
+export function rgbToHex(r, g, b) {
+  return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+}

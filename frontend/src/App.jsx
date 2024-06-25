@@ -1,7 +1,9 @@
 import "./assets/styles/index.scss";
-import "@fontsource/roboto/300.css";
-import "@fontsource/roboto/400.css";
-import "@fontsource/roboto/700.css";
+import "@fontsource/poppins/500-italic.css";
+import "@fontsource/poppins/700-italic.css";
+import "@fontsource/poppins/800-italic.css";
+import "@fontsource/manrope/600.css";
+import "@fontsource/manrope/800.css";
 
 import { useState } from "react";
 import ConfettiExplosion from "react-confetti-explosion";
@@ -94,10 +96,10 @@ function App() {
           )}
           {started ? (
             <>
-              <Votes visible={tab == 0} />
-              <Resultats visible={tab == 1} />
-              <MesVotes visible={tab == 2} />
-              <About visible={tab == 3} />
+              <Votes visible={tab === 0} />
+              <Resultats visible={tab === 1} />
+              <MesVotes visible={tab === 2} />
+              <About visible={tab === 3} />
             </>
           ) : (
             <Welcome />
