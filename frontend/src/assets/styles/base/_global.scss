@@ -2,6 +2,18 @@ html {
   height: 100%;
   width: 100%;
   font-family: Roboto, sans-serif;
+
+  &[data-mui-color-scheme="light"] {
+    --result-bg-color: #c2c2c2;
+    --link-color: inherit;
+    --link-visited-color: inherit;
+  }
+
+  &[data-mui-color-scheme="dark"] {
+    --result-bg-color: var(--mui-palette-background-main);
+    --link-color: #ccc;
+    --link-visited-color: #ccc;
+  }
 }
 
 @media (min-height: 1000px) {
@@ -49,4 +61,8 @@ body {
 ul {
   margin-top: 1em;
   margin-bottom: 1em;
+}
+
+.hide {
+  display: none !important;
 }
