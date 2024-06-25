@@ -1,0 +1,52 @@
+html {
+  height: 100%;
+  width: 100%;
+  font-family: Roboto, sans-serif;
+}
+
+@media (min-height: 1000px) {
+  html {
+    zoom: 125%;
+  }
+}
+
+@media (max-height: 700px) {
+  html {
+    zoom: 75%;
+  }
+}
+
+body {
+  color: var(--mui-palette-body-main);
+  background: var(--mui-palette-background-main);
+  margin: 0;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden scroll;
+
+  & > * {
+    margin: 0 auto;
+    max-width: 30rem;
+  }
+}
+
+ul {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}

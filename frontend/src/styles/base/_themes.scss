@@ -1,0 +1,13 @@
+html {
+  &[data-mui-color-scheme="light"] {
+    --result-bg-color: #c2c2c2;
+    --link-color: inherit;
+    --link-visited-color: inherit;
+  }
+
+  &[data-mui-color-scheme="dark"] {
+    --result-bg-color: var(--mui-palette-background-main);
+    --link-color: #ccc;
+    --link-visited-color: #ccc;
+  }
+}

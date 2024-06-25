@@ -1,0 +1,158 @@
+.Votes {
+  padding: 1rem;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  gap: 1.2rem;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .swipe-card {
+    .swipe-card__container {
+      border-radius: 1.5rem;
+    }
+
+    .swipe-card__ribbon-like,
+    .swipe-card__ribbon-dislike {
+      border-radius: 1rem;
+    }
+
+    .swipe-card__image-container {
+      display: none;
+    }
+
+    .swipe-card__content {
+      height: 100%;
+      width: 100%;
+      background: var(--mui-palette-primary-main);
+      color: var(--mui-palette-white-main);
+    }
+  }
+
+  .actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: end;
+
+    .passer,
+    .pour,
+    .contre {
+      border-radius: 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 0.6rem 0 0.1rem;
+      text-transform: none;
+      font-weight: bold;
+      font-size: 1.125rem;
+      bottom: 1rem;
+
+      &:hover {
+        background-color: var(--mui-palette-background-paper);
+        opacity: 0.8;
+      }
+
+      &:hover,
+      & {
+        box-shadow: var(--shadow);
+      }
+
+      svg {
+        height: 2.4rem;
+        margin: 0.2rem;
+      }
+    }
+
+    .passer {
+      height: 2.5rem;
+      max-width: 6.5rem;
+      padding: 0 1rem;
+    }
+  }
+
+  .Stack {
+    flex: 1;
+    height: 70%;
+    width: 100%;
+    align-items: center;
+    justify-content: end;
+  }
+
+  .Card {
+    padding: 1.2rem;
+    border-radius: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    box-sizing: border-box;
+
+    h2 {
+      font-size: 1.375rem;
+      text-align: center;
+      margin: 0;
+      padding-bottom: 1rem;
+      border-bottom: #ffffff30 1px solid;
+    }
+
+    ul {
+      padding-left: 1rem;
+
+      li {
+        margin-bottom: 1rem;
+      }
+    }
+
+    .more-info {
+      height: 2.5rem;
+      width: 100%;
+
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+
+    .bottom {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+
+      .actions {
+        width: 100%;
+
+        & > div {
+          flex: auto;
+        }
+      }
+
+      .meta {
+        opacity: 0.7;
+        text-align: center;
+        font-size: 14px;
+      }
+    }
+  }
+
+  .progress {
+    background-color: var(--mui-palette-background-paper);
+    height: 1rem;
+    border-radius: 1rem;
+    width: 100%;
+    position: relative;
+    box-shadow: var(--shadow);
+
+    .bar {
+      background-color: var(--mui-palette-primary-main);
+      position: absolute;
+      transition: width 0.3s ease-in-out;
+      border-radius: 1rem;
+      display: block;
+      height: 1rem;
+      padding: 0;
+      margin: 0;
+    }
+  }
+}
