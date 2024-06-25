@@ -1,6 +1,6 @@
-import data from "./data";
+import data from "../data/data.json";
 
-export const getRanks = (choices) => {
+export function getRanks(choices) {
   let deputes = Object.fromEntries(
     Object.keys(data.deputes).map((group) => [group, { "+": 0, "-": 0 }]),
   );
@@ -46,9 +46,9 @@ export const getRanks = (choices) => {
     deputes: rank(deputes),
     deputesRaw: deputes,
   };
-};
+}
 
-export const getListsVotes = (votes) => {
+export function getListsVotes(votes) {
   let lists = Object.fromEntries(
     Object.keys(data.lists).map((group) => [group, { "+": 0, "-": 0, 0: 0 }]),
   );
@@ -73,4 +73,4 @@ export const getListsVotes = (votes) => {
       },
     ]),
   );
-};
+}

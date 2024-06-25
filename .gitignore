@@ -1,4 +1,4 @@
-frontend/src/data.json
+frontend/src/data/data.json
 dist
 legacy
 .env

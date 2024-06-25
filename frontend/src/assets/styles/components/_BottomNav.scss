@@ -1,0 +1,19 @@
+.BottomNav {
+  box-shadow: var(--shadow);
+  z-index: 5;
+
+  &__action {
+    &:hover {
+      opacity: 0.8;
+    }
+
+    .MuiBottomNavigationAction-label {
+      transition: margin 0.1s ease-in-out;
+
+      &.Mui-selected {
+        font-size: 0.75rem !important;
+        margin-top: 0.15rem;
+      }
+    }
+  }
+}

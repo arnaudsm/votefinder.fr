@@ -1,0 +1,13 @@
+.StatsModal {
+  .content {
+    padding: 1.5rem !important;
+  }
+
+  &__results {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    width: 100%;
+    margin: 0;
+  }
+}
