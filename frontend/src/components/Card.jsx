@@ -2,7 +2,7 @@ import data from "../data/data.json";
 import { useContext } from "react";
 import { ThemeContext } from "../context/ThemeContext";
 import { Button, ToggleButton, ToggleButtonGroup } from "@mui/material";
-import { Article, BarChart, Folder, QuestionAnswer } from "@mui/icons-material";
+import { Diversity3 } from "@mui/icons-material";
 import { formatDate } from "../utils/utils.jsx";
 import ListVote from "./ListVote";
 
@@ -13,19 +13,19 @@ export default function Card({ vote_id, list_id, editable }) {
   return (
     <div className="Card">
       <div className="Card__top">
-        <h2>{vote.titre}</h2>
-        <ul>
-          <li>{vote.sous_titre_1}</li>
-          <li>{vote.sous_titre_2}</li>
-        </ul>
-      </div>
-      <div className="Card__bottom">
         {!list_id && (
           <div className="Card__meta">
             {formatDate(vote.date)} - {vote.type}
           </div>
         )}
 
+        <h2 className="Card__title">{vote.titre}</h2>
+        <ul>
+          <li>{vote.sous_titre_1}</li>
+          <li>{vote.sous_titre_2}</li>
+        </ul>
+      </div>
+      <div className="Card__bottom">
         {list_id && (
           <div className="Card__results">
             {vote && <ListVote vote_id={vote_id} list_id={list_id} />}
@@ -47,7 +47,27 @@ export default function Card({ vote_id, list_id, editable }) {
         {!list_id && (
           <>
             <div className="Card__actions">
-              {vote.dossier_url && (
+              <Button
+                className="Card__btn"
+                disableElevation
+                target="_blank"
+                onClick={() => {}} // @TODO : affichage à l'arrière de la carte
+              >
+                {/* eslint-disable-next-line react/no-unescaped-entities */}+
+                d'infos
+              </Button>
+
+              <Button
+                startIcon={<Diversity3 />}
+                className="Card__btn"
+                disableElevation
+                target="_blank"
+                onClick={() => context.setStatsPopup(vote.vote_id)}
+              >
+                Votes des partis
+              </Button>
+
+              {/*              {vote.dossier_url && (
                 <Button
                   startIcon={<Folder />}
                   className="Card__more-info"
@@ -85,19 +105,8 @@ export default function Card({ vote_id, list_id, editable }) {
                 >
                   Résumé
                 </Button>
-              )}
+              )}*/}
             </div>
-            <Button
-              startIcon={<BarChart />}
-              className="Card__more-info"
-              color="lightBlue"
-              variant="contained"
-              disableElevation
-              target="_blank"
-              onClick={() => context.setStatsPopup(vote.vote_id)}
-            >
-              Votes des partis
-            </Button>
           </>
         )}
         {editable && (

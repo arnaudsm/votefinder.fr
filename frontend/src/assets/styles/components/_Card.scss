@@ -1,53 +1,46 @@
 .Card {
-  background: var(--mui-palette-primary-main);
+  background: linear-gradient(180deg, var(--card-top-bg-color) 0%, var(--card-bottom-bg-color) 100%);
   color: var(--mui-palette-white-main);
-  padding: 1.2rem;
-  border-radius: 1.5rem;
+  padding: 1rem 2.25rem 1.75rem;
+  border-radius: var(--card-border-radius);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
   box-sizing: border-box;
 
-  h2 {
-    font-size: 1.375rem;
+  &__meta {
+    opacity: 0.9;
     text-align: center;
-    margin: 0;
-    padding-bottom: 1rem;
-    border-bottom: #ffffff30 1px solid;
+    font-size: 1rem;
+    font-family: var(--font-title), sans-serif;
+    font-weight: 500;
+  }
+
+  &__title {
+    margin-top: 1.5rem;
+    font-family: var(--font-title), sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 2.2rem;
+    line-height: 2.7rem;
+    text-align: center;
   }
 
   ul {
+    margin-top: 2rem;
     padding-left: 1rem;
+    font-size: 1rem;
 
     li {
+      text-align: center;
       margin-bottom: 1rem;
     }
   }
 
-  &__user-vote {
-    margin-top: 1rem;
-  }
-
-  &__more-info {
-    height: 2.5rem;
-    width: 100%;
-
-    &:hover {
-      opacity: 0.9;
-    }
-  }
-
-  &__bottom {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
-
   &__actions {
     display: flex;
-    gap: 1rem;
+    justify-content: space-between;
     width: 100%;
 
     & > div {
@@ -55,10 +48,36 @@
     }
   }
 
-  &__meta {
-    opacity: 0.7;
-    text-align: center;
-    font-size: 14px;
+  &__btn {
+    height: 2.5rem;
+    border-radius: 2.5rem !important;
+    background-color: color-mix(in srgb, var(--mui-palette-white-main) 40%, transparent) !important;
+    color: var(--mui-palette-white-main) !important;
+    padding: 1.5rem 1.25rem !important;
+    font-family: var(--font-title), sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 1rem !important;
+    border: solid 0.125rem var(--mui-palette-white-main) !important;
+
+    .MuiSvgIcon-root {
+      font-size: 1.75rem !important;
+    }
+
+    &:hover {
+      background-color: var(--mui-palette-white-main) !important;
+      color: var(--mui-palette-primary-main) !important;
+    }
+  }
+
+  &__user-vote {
+    margin-top: 1rem;
+  }
+
+  &__bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
   }
 
   &__results {

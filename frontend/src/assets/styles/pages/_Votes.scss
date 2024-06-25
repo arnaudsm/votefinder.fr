@@ -1,10 +1,9 @@
 .Votes {
-  padding: 1rem;
+  padding: 1rem 1rem 2rem;
   box-sizing: border-box;
   height: 100%;
   width: 100%;
   display: flex;
-  gap: 1.2rem;
   flex-direction: column;
   justify-content: space-between;
 
@@ -18,64 +17,83 @@
 
   &__actions {
     display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    align-items: end;
+    gap: 3rem;
+    align-items: center;
+    justify-content: center;
 
     .actions {
-      &__passer,
       &__pour,
-      &__contre {
-        border-radius: 1.5rem;
-        flex: 1;
+      &__contre,
+      &__passer {
+        border-radius: 9999px;
         display: flex;
-        flex-direction: column;
-        padding: 0.6rem 0 0.1rem;
-        text-transform: none;
-        font-weight: bold;
-        font-size: 1.125rem;
-        bottom: 1rem;
+        align-items: center;
+        justify-content: center;
+        min-width: unset !important;
+        background-color: var(--mui-palette-white-main);
 
+        /* transition: 0.2s all linear !important; */
+
+        svg, img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+
+        &.blur {
+          filter: blur(5px);
+        }
+      }
+
+      &__pour, &__contre {
+        width: 5rem;
+        height: 5rem;
+        padding: 1.25rem !important;
+      }
+
+      &__pour {
         &:hover {
-          background-color: var(--mui-palette-background-paper);
-          opacity: 0.8;
-        }
+          background-color: var(--mui-palette-green-main);
 
-        &:hover,
-        & {
-          box-shadow: var(--shadow);
+          svg {
+            fill: var(--mui-palette-white-main);
+          }
         }
+      }
 
-        svg {
-          height: 2.4rem;
-          margin: 0.2rem;
+      &__contre {
+        &:hover {
+          background-color: var(--mui-palette-secondary-main);
+
+          svg {
+            fill: var(--mui-palette-white-main);
+          }
         }
       }
 
       &__passer {
-        height: 2.5rem;
-        max-width: 6.5rem;
-        padding: 0 1rem;
+        width: 3.5rem;
+        height: 3.5rem;
+        padding: 0.5rem !important;
       }
     }
   }
 
   &__progress {
-    background-color: var(--mui-palette-background-paper);
-    height: 1rem;
-    border-radius: 1rem;
+    position: fixed;
+    bottom: 56px;
+    left: 0;
+    height: 0.5rem;
     width: 100%;
-    position: relative;
-    box-shadow: var(--shadow);
 
     .progress {
       &__bar {
         background-color: var(--mui-palette-primary-main);
         position: absolute;
         transition: width 0.3s ease-in-out;
-        border-radius: 1rem;
+        border-radius: 0 0.5rem 0.5rem 0;
         display: block;
-        height: 1rem;
+        height: 0.5rem;
         padding: 0;
         margin: 0;
       }
@@ -84,7 +102,7 @@
 
   .swipe-card {
     &__container {
-      border-radius: 1.5rem;
+      border-radius: var(--card-border-radius);
     }
 
     &__ribbon-like,
@@ -99,7 +117,7 @@
     &__content {
       height: 100%;
       width: 100%;
-      background: var(--mui-palette-primary-main);
+      background: color-mix(in srgb, var(--card-bottom-bg-color) 70%, #000) !important;
     }
   }
 }

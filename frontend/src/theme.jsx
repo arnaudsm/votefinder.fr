@@ -1,10 +1,6 @@
 import { experimental_extendTheme as extendTheme } from "@mui/material/styles";
 
 const colors = {
-  primary: {
-    main: "#0052B4",
-    contrastText: "#fff",
-  },
   secondary: {
     main: "#DD5A5A",
     contrastText: "#fff",
@@ -28,6 +24,10 @@ export const theme = extendTheme({
     light: {
       palette: {
         ...colors,
+        primary: {
+          main: "#6000C1",
+          contrastText: "#fff",
+        },
         body: {
           main: "#3E3E3E",
         },
@@ -45,6 +45,10 @@ export const theme = extendTheme({
     dark: {
       palette: {
         ...colors,
+        primary: {
+          main: "#8948ca",
+          contrastText: "#fff",
+        },
         body: {
           main: "#FFFFFF",
         },
