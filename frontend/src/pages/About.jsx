@@ -179,6 +179,11 @@ export default function About({ visible }) {
             <h4>Clément Gayot</h4>
             <h5>Développeur</h5>
           </div>
+
+          <div>
+            <h4>Tiphaine Chomaz</h4>
+            <h5>Designer UX / UI</h5>
+          </div>
         </div>
         <h2>Remerciements</h2>
         <div className="About__team">
