@@ -133,6 +133,9 @@ export default function Votes({ visible }) {
 
   return (
     <div className={`Votes ${visible ? "" : "hide"}`}>
+      <div className="Votes__bg-color"></div>
+      <div className="Votes__bg-circle"></div>
+
       <Stack className="Votes__stack">
         <CardSwiper
           className="Votes__card-swiper"

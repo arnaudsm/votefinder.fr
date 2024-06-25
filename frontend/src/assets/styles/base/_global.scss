@@ -3,6 +3,8 @@ html {
   width: 100%;
   font-family: var(--font-body), sans-serif;
 
+  --zoom: 1;
+
   &[data-mui-color-scheme="light"] {
     --result-bg-color: #c2c2c2;
     --link-color: inherit;
@@ -19,12 +21,16 @@ html {
 @media (min-height: 1000px) {
   html {
     zoom: 125%;
+
+    --zoom: 1.25;
   }
 }
 
 @media (max-height: 700px) {
   html {
     zoom: 75%;
+
+    --zoom: 0.75;
   }
 }
 
