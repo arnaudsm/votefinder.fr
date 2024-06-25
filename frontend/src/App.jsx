@@ -1,6 +1,6 @@
 import data from "./data";
 import { useState, useMemo, useContext, createContext } from "react";
-import "./styles/index.scss";
+import "./assets/styles/index.scss";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/700.css";
@@ -43,10 +43,10 @@ import {
   Experimental_CssVarsProvider as CssVarsProvider,
   useColorScheme,
 } from "@mui/material/styles";
-import LogoURL from "./icons/logo_url.svg";
-import Pour from "./icons/pour.svg";
-import Contre from "./icons/contre.svg";
-import Trophy from "./icons/trophy.svg";
+import LogoURL from "./assets/icons/logo_url.svg";
+import Pour from "./assets/icons/pour.svg";
+import Contre from "./assets/icons/contre.svg";
+import Trophy from "./assets/icons/trophy.svg";
 import { CardSwiper } from "react-card-swiper";
 import ConfettiExplosion from "react-confetti-explosion";
 import { getRanks, getListsVotes } from "./rank";
