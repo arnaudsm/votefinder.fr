@@ -1,16 +1,26 @@
 .Navbar {
-  box-shadow: var(--shadow);
+  width: 100%;
   z-index: 5;
 
   &__toolbar {
-    background-color: var(--mui-palette-background-paper) !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 1rem;
+    height: var(--header-height);
   }
 
   &__logo {
-    height: 2.625rem;
+    height: calc(var(--header-height) - 2rem);
 
     &:hover {
       opacity: 0.85;
     }
+  }
+
+  .ThemeSwitcher {
+    position: absolute;
+    right: 1rem;
   }
 }
