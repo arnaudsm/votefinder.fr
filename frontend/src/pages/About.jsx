@@ -17,7 +17,7 @@ export default function About({ visible }) {
 
   return (
     <div className={`About ${visible ? "" : "hide"}`}>
-      <div className="Card">
+      <div className="About__card">
         <h2>À Propos</h2>
         <p>
           VoteFinder est un projet bénévole, <br />
@@ -112,7 +112,7 @@ export default function About({ visible }) {
         </Button>
 
         <h2>Réseaux Sociaux</h2>
-        <div className="socials">
+        <div className="About__socials">
           <Button
             color="primary"
             variant="contained"
@@ -139,7 +139,7 @@ export default function About({ visible }) {
         </div>
 
         <h2>L’Équipe</h2>
-        <div className="equipe">
+        <div className="About__team">
           <div style={{ width: "80%" }}>
             <h4>Arnaud de Saint Méloir</h4>
             <h5>Créateur/Ingénieur</h5>
@@ -181,7 +181,7 @@ export default function About({ visible }) {
           </div>
         </div>
         <h2>Remerciements</h2>
-        <div className="equipe">
+        <div className="About__team">
           <div>
             <h4>Théo Delemazure</h4>
             <h5>

@@ -14,7 +14,7 @@ export default function StatsModal() {
       anchor="top"
       open={Boolean(context.statsPopup)}
       onClose={() => context.setStatsPopup(false)}
-      className="StatsModal"
+      className="StatsModal TopModal"
     >
       <div className="content">
         <h2>{vote?.titre}</h2>
@@ -22,31 +22,31 @@ export default function StatsModal() {
           <li>{vote?.sous_titre_1}</li>
           <li>{vote?.sous_titre_2}</li>
         </ul>
-        <div className="results">
+        <div className="StatsModal__results">
           {vote &&
             Object.entries(getListsVotes(vote?.votes))
               .filter(([, results]) => !Number.isNaN(results["-%"]))
               .map(([id, results]) => (
-                <div className="result" key={id}>
-                  <div className="progress">
+                <div className="StatsModal__result" key={id}>
+                  <div className="StatsModal__progress progress">
                     <div
-                      className="bar pour"
+                      className="progress__bar progress__bar--pour"
                       style={{
                         width: `${Math.floor(results["+%"] * 100)}%`,
                       }}
                     ></div>
                     <div
-                      className="bar contre"
+                      className="progress__bar progress__bar--contre"
                       style={{
                         width: `${Math.floor(results["-%"] * 100)}%`,
                         marginLeft: `${Math.floor(results["+%"] * 100)}%`,
                       }}
                     ></div>
-                    <div className="name">
+                    <div className="progress__name">
                       <h4>{data.lists[id].label}</h4>
                       <h5>{data.lists[id].leader}</h5>
                     </div>
-                    <div className="score">
+                    <div className="progress__score">
                       {`${Math.floor(results["+"])} pour`}
                       <br />
                       {`${Math.floor(results["-"])} contre`}

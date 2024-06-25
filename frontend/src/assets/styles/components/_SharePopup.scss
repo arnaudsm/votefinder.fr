@@ -1,0 +1,106 @@
+.SharePopup {
+  position: absolute;
+  top: -2000px;
+  left: 0;
+  z-index: 2000;
+  background-color: var(--mui-palette-background-paper);
+  width: 25rem;
+  padding-bottom: 1rem;
+  transform: scale(2);
+
+  h1 {
+    font-size: 25px;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  &__logo {
+    width: 25rem;
+  }
+
+  &__list {
+    padding: 1rem;
+    gap: 0.75rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__explanation {
+    font-size: 0.875rem;
+    text-align: center;
+  }
+
+  &__result {
+    display: flex;
+    background-color: var(--result-bg-color);
+    border-radius: 0.675rem;
+    height: 3.375rem;
+
+    &:hover {
+      opacity: 0.85;
+    }
+
+    img {
+      object-fit: contain;
+      background-color: var(--mui-palette-background-paper);
+      width: 3.375rem;
+      height: 3.375rem;
+      border-top-left-radius: 0.675rem;
+      border-bottom-left-radius: 0.675rem;
+    }
+  }
+
+  &__progress {
+    .progress {
+      height: 3.375rem;
+      border-radius: 0.675rem;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      overflow: hidden;
+      width: 100%;
+      position: relative;
+
+      &__bar {
+        background-color: var(--mui-palette-green-main);
+        transition: width 0.3s ease-in-out;
+        position: absolute;
+        display: block;
+        height: 3.375rem;
+        padding: 0;
+        margin: 0;
+      }
+
+      &__name {
+        left: 1rem;
+        color: var(--mui-palette-white-main);
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        height: 3.375rem;
+        justify-content: center;
+
+        h4 {
+          margin: 0;
+          font-size: 1rem;
+          white-space: pre;
+        }
+
+        h5 {
+          margin: 0;
+          font-weight: normal;
+          font-size: 1rem;
+          white-space: pre;
+        }
+      }
+
+      &__score {
+        color: var(--mui-palette-white-main);
+        position: absolute;
+        right: 1rem;
+        line-height: 3.375rem;
+        font-weight: lighter;
+        font-size: 1.25rem;
+      }
+    }
+  }
+}

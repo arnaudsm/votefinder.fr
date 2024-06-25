@@ -1,14 +1,14 @@
 .About {
   max-width: 35rem;
 
-  .socials {
+  &__socials {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
     justify-content: center;
   }
 
-  .Card {
+  &__card {
     margin: 1rem;
     background-color: var(--mui-palette-background-paper);
     gap: 0.75rem;
@@ -30,7 +30,7 @@
     }
   }
 
-  .equipe {
+  &__team {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;

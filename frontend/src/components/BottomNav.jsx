@@ -15,7 +15,12 @@ export default function BottomNav({ state: [tab, setTab] }) {
         { key: "mes-votes", label: "Mes Votes", icon: <ViewStream /> },
         { key: "a-propos", label: "À Propos", icon: <Info /> },
       ].map(({ label, icon, key }) => (
-        <BottomNavigationAction label={label} icon={icon} key={key} />
+        <BottomNavigationAction
+          className="BottomNav__action"
+          label={label}
+          icon={icon}
+          key={key}
+        />
       ))}
     </BottomNavigation>
   );

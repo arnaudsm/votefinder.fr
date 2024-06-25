@@ -2,8 +2,8 @@ import ResultListe from "./ResultListe";
 
 export default function ResultsListes({ results, choices }) {
   return (
-    <div className="list">
-      <div className="explanation">
+    <div className="ResultsListes">
+      <div className="ResultsListes__explanation">
         Pourcentage d’accord avec les listes sortantes.
         <br />
         Calculé sur {Object.keys(choices).length} votes. Continuez à voter pour

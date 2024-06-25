@@ -1,0 +1,13 @@
+.MesVotes {
+  &__results {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .Card {
+    &:not(:first-child) {
+      margin-top: 1rem;
+    }
+  }
+}

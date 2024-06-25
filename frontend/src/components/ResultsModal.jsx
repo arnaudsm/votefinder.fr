@@ -16,9 +16,8 @@ export default function ResultsModal() {
         <h2>Vous avez voté assez de lois pour découvrir vos résultats !</h2>
         <ConfettiExplosion zIndex="1400" />
         <Trophy />
-        <div className="actions">
+        <div className="ResultsModal__actions">
           <Button
-            className="welcome-start"
             variant="white"
             disableElevation
             size="large"
@@ -29,7 +28,6 @@ export default function ResultsModal() {
             Continuer à voter
           </Button>
           <Button
-            className="welcome-start"
             color="lightRed"
             variant="contained"
             disableElevation

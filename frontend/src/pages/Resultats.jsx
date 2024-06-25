@@ -16,7 +16,7 @@ export default function Resultats({ visible }) {
 
   return (
     <div className={`Resultats ${visible ? "" : "hide"}`}>
-      <div className="header">
+      <div className="Resultats__header">
         <h2>🏆 Mes Résultats</h2>
 
         {minVotesReached && navigator.canShare && (
@@ -24,6 +24,7 @@ export default function Resultats({ visible }) {
             startIcon={<Share />}
             color="primary"
             variant="contained"
+            className="Resultats__share"
             onClick={async () => {
               context.setShowShare(true);
               await share();
@@ -36,12 +37,17 @@ export default function Resultats({ visible }) {
           </Button>
         )}
       </div>
-      <Tabs value={tab} onChange={handleChange} variant="fullWidth">
+      <Tabs
+        className="Resultats__tabs"
+        value={tab}
+        onChange={handleChange}
+        variant="fullWidth"
+      >
         <Tab label="Listes" />
         <Tab label="Députés" />
       </Tabs>
       {!minVotesReached ? (
-        <div className="list">
+        <div className="Resultats__list">
           Réponds à plus de {minVotes} questions pour voir tes résultats!
         </div>
       ) : tab == 0 ? (

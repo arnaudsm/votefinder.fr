@@ -1,0 +1,16 @@
+.Navbar {
+  box-shadow: var(--shadow);
+  z-index: 5;
+
+  &__toolbar {
+    background-color: var(--mui-palette-background-paper) !important;
+  }
+
+  &__logo {
+    height: 2.625rem;
+
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+}

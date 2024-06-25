@@ -1,0 +1,85 @@
+.Card {
+  background: var(--mui-palette-primary-main);
+  color: var(--mui-palette-white-main);
+  padding: 1.2rem;
+  border-radius: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  box-sizing: border-box;
+
+  h2 {
+    font-size: 1.375rem;
+    text-align: center;
+    margin: 0;
+    padding-bottom: 1rem;
+    border-bottom: #ffffff30 1px solid;
+  }
+
+  ul {
+    padding-left: 1rem;
+
+    li {
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__user-vote {
+    margin-top: 1rem;
+  }
+
+  &__more-info {
+    height: 2.5rem;
+    width: 100%;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+
+    & > div {
+      flex: auto;
+    }
+  }
+
+  &__meta {
+    opacity: 0.7;
+    text-align: center;
+    font-size: 14px;
+  }
+
+  &__results {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    width: 100%;
+    margin: 0;
+  }
+
+  &__toggle-group {
+    background-color: var(--mui-palette-background-paper);
+    border: none;
+
+    button {
+      border: none;
+
+      &.Mui-selected {
+        color: var(--mui-palette-white-main);
+        background-color: #5c90cf !important;
+      }
+    }
+  }
+}

@@ -1,0 +1,105 @@
+.Votes {
+  padding: 1rem;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  gap: 1.2rem;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__stack {
+    flex: 1;
+    height: 70%;
+    width: 100%;
+    align-items: center;
+    justify-content: end;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: end;
+
+    .actions {
+      &__passer,
+      &__pour,
+      &__contre {
+        border-radius: 1.5rem;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 0.6rem 0 0.1rem;
+        text-transform: none;
+        font-weight: bold;
+        font-size: 1.125rem;
+        bottom: 1rem;
+
+        &:hover {
+          background-color: var(--mui-palette-background-paper);
+          opacity: 0.8;
+        }
+
+        &:hover,
+        & {
+          box-shadow: var(--shadow);
+        }
+
+        svg {
+          height: 2.4rem;
+          margin: 0.2rem;
+        }
+      }
+
+      &__passer {
+        height: 2.5rem;
+        max-width: 6.5rem;
+        padding: 0 1rem;
+      }
+    }
+  }
+
+  &__progress {
+    background-color: var(--mui-palette-background-paper);
+    height: 1rem;
+    border-radius: 1rem;
+    width: 100%;
+    position: relative;
+    box-shadow: var(--shadow);
+
+    .progress {
+      &__bar {
+        background-color: var(--mui-palette-primary-main);
+        position: absolute;
+        transition: width 0.3s ease-in-out;
+        border-radius: 1rem;
+        display: block;
+        height: 1rem;
+        padding: 0;
+        margin: 0;
+      }
+    }
+  }
+
+  .swipe-card {
+    &__container {
+      border-radius: 1.5rem;
+    }
+
+    &__ribbon-like,
+    &__ribbon-dislike {
+      border-radius: 1rem;
+    }
+
+    &__image-container {
+      display: none;
+    }
+
+    &__content {
+      height: 100%;
+      width: 100%;
+      background: var(--mui-palette-primary-main);
+    }
+  }
+}

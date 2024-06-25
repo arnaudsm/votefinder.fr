@@ -39,12 +39,16 @@ export default function Votes({ visible }) {
   return (
     <div className={`Votes ${visible ? "" : "hide"}`}>
       {progress < 100 && (
-        <div className="progress">
-          <div className="bar" style={{ width: `${progress}%` }}></div>
+        <div className="Votes__progress progress">
+          <div
+            className="progress__bar"
+            style={{ width: `${progress}%` }}
+          ></div>
         </div>
       )}
-      <Stack className="Stack">
+      <Stack className="Votes__stack">
         <CardSwiper
+          className="Votes__card-swiper"
           data={cardData}
           onEnter={handleEnter}
           onFinish={() => null}
@@ -63,12 +67,12 @@ export default function Votes({ visible }) {
           emptyState={<NoVotesLeft />}
         />
       </Stack>
-      <div className="actions">
+      <div className="Votes__actions actions">
         <Button
           variant="contained"
           disableElevation
           color="highlight"
-          className="contre"
+          className="actions__contre"
           onClick={() => {
             context.choose({ vote_id: id, type: "-" });
             document
@@ -83,7 +87,7 @@ export default function Votes({ visible }) {
           variant="contained"
           disableElevation
           color="highlight"
-          className="passer"
+          className="actions__passer"
           onClick={() => {
             context.choose({ vote_id: id, type: "0" });
             document
@@ -97,7 +101,7 @@ export default function Votes({ visible }) {
           variant="contained"
           disableElevation
           color="highlight"
-          className="pour"
+          className="actions__pour"
           onClick={() => {
             context.choose({ vote_id: id, type: "+" });
             document.getElementById("swipe-card__like-action-button")?.click();

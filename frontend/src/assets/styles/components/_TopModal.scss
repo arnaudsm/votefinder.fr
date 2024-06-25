@@ -1,0 +1,25 @@
+.TopModal {
+  .content {
+    background-color: var(--mui-palette-background-paper);
+    color: var(--mui-palette-body-main);
+    margin: 0 auto;
+    border-radius: 1rem;
+    max-width: 32rem;
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-between;
+    overflow: auto;
+    min-height: 30rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  ul {
+    font-size: 0.875rem;
+    text-align: left;
+  }
+}

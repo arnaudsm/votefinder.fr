@@ -1,0 +1,25 @@
+.ListVotesModal {
+  .content {
+    padding: 1rem 0.5rem 0 !important;
+  }
+
+  .MuiPaper-root {
+    max-height: calc(100% - 100px) !important;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
+    border-top: 1px solid #eaeaea;
+
+    h2 {
+      width: 100%;
+      text-align: center;
+      margin: 0;
+    }
+  }
+}

@@ -1,13 +1,13 @@
 import { useColorScheme } from "@mui/material/styles";
 import { Switch } from "@mui/material";
 
-export default function ModeSwitcher() {
+export default function ThemeSwitcher() {
   const { mode, setMode } = useColorScheme();
 
   return (
     <Switch
       variant="outlined"
-      className="theme-switcher"
+      className="ThemeSwitcher"
       defaultChecked={mode === "dark"}
       onClick={() => {
         if (mode === "light") {

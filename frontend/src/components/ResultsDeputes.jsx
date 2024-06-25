@@ -2,8 +2,8 @@ import data from "../data/data.json";
 
 export default function ResultsDeputes({ results }) {
   return (
-    <div className="list">
-      <div className="explanation">
+    <div className="ResultsDeputes">
+      <div className="ResultsDeputes__explanation">
         Pourcentage d’accord avec les députés français sortants.
         <br />
         Trié par accords - désaccords.
@@ -18,7 +18,7 @@ export default function ResultsDeputes({ results }) {
         )
         .map(([id, approval]) => (
           <a
-            className="result"
+            className="ResultsDeputes__result"
             href={`https://www.assemblee-nationale.fr/dyn/deputes/${id}`}
             key={id}
             target="_blank"
@@ -27,12 +27,12 @@ export default function ResultsDeputes({ results }) {
               src={`/deputes/${id.slice(2)}.jpg`}
               alt={data.deputes[id]?.l}
             />
-            <div className="progress">
+            <div className="ResultsDeputes__progress progress">
               <div
-                className="bar"
+                className="progress__bar"
                 style={{ width: `${Math.floor(approval * 100)}%` }}
               ></div>
-              <div className="name">
+              <div className="progress__name">
                 <h4>{data.deputes[id]?.l}</h4>
                 <div>
                   {results?.deputesRaw?.[id]?.["+"]}/
@@ -41,7 +41,7 @@ export default function ResultsDeputes({ results }) {
                   votes
                 </div>
               </div>
-              <div className="score">{`${Math.floor(approval * 100)}%`}</div>
+              <div className="progress__score">{`${Math.floor(approval * 100)}%`}</div>
             </div>
           </a>
         ))}

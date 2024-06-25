@@ -1,0 +1,88 @@
+.StatsModal {
+  .content {
+    padding: 1.5rem !important;
+  }
+
+  &__results {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    width: 100%;
+    margin: 0;
+  }
+
+  &__result {
+    display: flex;
+    background-color: var(--result-bg-color);
+    border-radius: 0.675rem;
+    height: 3.375rem;
+  }
+
+  &__progress {
+    height: 3.375rem;
+    border-radius: 0.675rem;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+
+    .progress {
+      @keyframes progress-bar {
+        0% {
+          width: 0%;
+        }
+      }
+
+      &__bar {
+        transition: width 0.3s ease-in-out;
+        position: absolute;
+        display: block;
+        height: 3.375rem;
+        padding: 0;
+        margin: 0;
+        animation: progress-bar 0.3s;
+        animation-timing-function: ease-in-out;
+
+        &--pour {
+          background-color: var(--mui-palette-green-main);
+        }
+
+        &--contre {
+          background-color: var(--mui-palette-secondary-main);
+        }
+      }
+
+      &__name {
+        left: 1rem;
+        color: var(--mui-palette-white-main);
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        height: 3.375rem;
+        justify-content: center;
+
+        h4 {
+          margin: 0;
+          font-size: 1rem;
+          white-space: pre;
+        }
+
+        h5 {
+          margin: 0;
+          font-weight: normal;
+          font-size: 1rem;
+          white-space: pre;
+        }
+      }
+
+      &__score {
+        color: var(--mui-palette-white-main);
+        position: absolute;
+        text-align: right;
+        right: 1rem;
+        line-height: 0.8rem;
+        font-size: 0.7rem;
+        padding-top: 0.6rem;
+      }
+    }
+  }
+}

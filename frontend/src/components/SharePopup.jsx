@@ -10,31 +10,33 @@ export default function SharePopup() {
   return (
     <div className="SharePopup">
       <h1>{"Les partis qui votent comme moi à l'Assemblée Nationale 🏛️🇫🇷"}</h1>
-      <div className="list">
-        <div className="explanation">Pourcentage de votes d’accord</div>
+      <div className="SharePopup__list">
+        <div className="SharePopup__explanation">
+          Pourcentage de votes d’accord
+        </div>
         {results.lists.slice(0, 4).map(([id, approval]) => (
           <a
-            className="result"
+            className="SharePopup__result"
             href={`https://www.assemblee-nationale.fr/dyn/org/${id}`}
             key={id}
             target="_blank"
           >
             <img src={`/lists/${id}.jpg`} alt={data.lists[id].label} />
-            <div className="progress">
+            <div className="SharePopup__progress progress">
               <div
-                className="bar"
+                className="progress__bar"
                 style={{ width: `${Math.floor(approval * 100)}%` }}
               ></div>
-              <div className="name">
+              <div className="progress__name">
                 <h4>{data.lists[id].label}</h4>
                 <h5>{data.lists[id].leader}</h5>
               </div>
-              <div className="score">{`${Math.floor(approval * 100)}%`}</div>
+              <div className="progress__score">{`${Math.floor(approval * 100)}%`}</div>
             </div>
           </a>
         ))}
       </div>
-      <LogoURL className="logo" />
+      <LogoURL className="SharePopup__logo" />
     </div>
   );
 }

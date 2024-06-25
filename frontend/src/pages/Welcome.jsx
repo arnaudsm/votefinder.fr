@@ -8,16 +8,16 @@ export default function Welcome() {
   const context = useContext(ThemeContext);
 
   return (
-    <>
-      <div className="Welcome">
-        <div className="Card">
-          <div className="top">
+    <div className="Welcome">
+      <div className="Welcome__container">
+        <div className="Welcome__card">
+          <div className="Welcome__top">
             <h2>{"Votez les textes de l'Assemblée Nationale 🏛️🇫🇷"}</h2>
           </div>
-          <div className="bottom">
+          <div className="Welcome__bottom">
             <h2>Et découvrez quel parti a voté comme vous✌️</h2>
             <Button
-              className="welcome-start"
+              className="Welcome__start"
               color="lightRed"
               variant="contained"
               disableElevation
@@ -30,7 +30,7 @@ export default function Welcome() {
             </Button>
           </div>
         </div>
-        <div className="footer">
+        <div className="Welcome__footer">
           Textes issus de la 16<sup>ème</sup> législature (2022-2024).
           <br />
           Résumés non-exhaustifs, cliquez pour plus de contexte !
@@ -43,7 +43,7 @@ export default function Welcome() {
           , et sans tracking.
           <br />
           <br />
-          <div className="datan">
+          <div className="Welcome__datan">
             {
               "Retrouvez plus d'informations et d'actualités de l'Assemblée Nationale chez notre partenaire"
             }
@@ -57,6 +57,6 @@ export default function Welcome() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

@@ -11,14 +11,12 @@ export default function MesVotes({ visible }) {
 
   return (
     <div className={`MesVotes ${visible ? "" : "hide"}`}>
-      <div className="ResultsParVote">
+      <div className="MesVotes__results">
         {choices.map((vote_id) => (
           <Card vote_id={vote_id} key={vote_id} editable />
         ))}
         {choices.length == 0 && (
-          <div className="list">
-            {"Vous n'avez voté pour aucun texte pour l'instant !"}
-          </div>
+          <div>{"Vous n'avez voté pour aucun texte pour l'instant !"}</div>
         )}
       </div>
     </div>

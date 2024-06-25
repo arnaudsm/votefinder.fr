@@ -16,11 +16,11 @@ export default function ListVotesModal() {
       anchor="top"
       open={Boolean(context.listVotesPopup)}
       onClose={() => context.setListVotesPopup(false)}
-      className="ListVotesModal"
+      className="ListVotesModal TopModal"
     >
       <div className="content">
         <div className="MesVotes">
-          <div className="ResultsParVote">
+          <div className="MesVotes__results">
             {choices.map((vote_id) => (
               <Card
                 vote_id={vote_id}
@@ -29,14 +29,12 @@ export default function ListVotesModal() {
               />
             ))}
             {choices.length == 0 && (
-              <div className="list">
-                {"Vous n'avez voté pour aucun texte pour l'instant !"}
-              </div>
+              <div>{"Vous n'avez voté pour aucun texte pour l'instant !"}</div>
             )}
           </div>
         </div>
       </div>
-      <div className="listvotes-actions">
+      <div className="ListVotesModal__actions">
         <h2>{data.lists[context.listVotesPopup]?.label}</h2>
         <Button
           startIcon={<AccountBalance />}

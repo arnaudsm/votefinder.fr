@@ -12,25 +12,25 @@ export default function Card({ vote_id, list_id, editable }) {
 
   return (
     <div className="Card">
-      <div className="top">
+      <div className="Card__top">
         <h2>{vote.titre}</h2>
         <ul>
           <li>{vote.sous_titre_1}</li>
           <li>{vote.sous_titre_2}</li>
         </ul>
       </div>
-      <div className="bottom">
+      <div className="Card__bottom">
         {!list_id && (
-          <div className="meta">
+          <div className="Card__meta">
             {formatDate(vote.date)} - {vote.type}
           </div>
         )}
 
         {list_id && (
-          <div className="results">
+          <div className="Card__results">
             {vote && <ListVote vote_id={vote_id} list_id={list_id} />}
 
-            <div className="my-vote">
+            <div className="Card__user-vote">
               <span>Vous avez voté : </span>
               <strong>
                 {
@@ -46,11 +46,11 @@ export default function Card({ vote_id, list_id, editable }) {
         )}
         {!list_id && (
           <>
-            <div className="actions">
+            <div className="Card__actions">
               {vote.dossier_url && (
                 <Button
                   startIcon={<Folder />}
-                  className="more-info"
+                  className="Card__more-info"
                   color="lightBlue"
                   variant="contained"
                   disableElevation
@@ -63,7 +63,7 @@ export default function Card({ vote_id, list_id, editable }) {
               {vote.debat_url && (
                 <Button
                   startIcon={<QuestionAnswer />}
-                  className="more-info"
+                  className="Card__more-info"
                   color="lightBlue"
                   variant="contained"
                   disableElevation
@@ -76,7 +76,7 @@ export default function Card({ vote_id, list_id, editable }) {
               {vote.summary_url && (
                 <Button
                   startIcon={<Article />}
-                  className="more-info"
+                  className="Card__more-info"
                   color="lightBlue"
                   variant="contained"
                   disableElevation
@@ -89,7 +89,7 @@ export default function Card({ vote_id, list_id, editable }) {
             </div>
             <Button
               startIcon={<BarChart />}
-              className="more-info"
+              className="Card__more-info"
               color="lightBlue"
               variant="contained"
               disableElevation
@@ -102,6 +102,7 @@ export default function Card({ vote_id, list_id, editable }) {
         )}
         {editable && (
           <ToggleButtonGroup
+            className="Card__toggle-group"
             value={context.choices[vote_id]}
             exclusive
             fullWidth={true}

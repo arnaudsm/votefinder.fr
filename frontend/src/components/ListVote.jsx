@@ -7,25 +7,25 @@ export default function ListVote({ vote_id, list_id }) {
 
   return (
     <>
-      <div className="result">
-        <div className="progress">
+      <div className="ListVote">
+        <div className="ListVote__progress progress">
           <div
-            className="bar pour"
+            className="progress__bar progress__bar--pour"
             style={{
               width: `${Math.floor(results["+%"] * 100)}%`,
             }}
           ></div>
           <div
-            className="bar contre"
+            className="progress__bar progress__bar--contre"
             style={{
               width: `${Math.floor(results["-%"] * 100)}%`,
               marginLeft: `${Math.floor(results["+%"] * 100)}%`,
             }}
           ></div>
-          <div className="name">
+          <div className="progress__name">
             <h4>{data.lists[list_id].label}</h4>
           </div>
-          <div className="score">
+          <div className="progress__score">
             {`${Math.floor(results["+"])} pour`}
             <br />
             {`${Math.floor(results["-"])} contre`}
