@@ -1,6 +1,6 @@
 # VoteFinder
 
-![Logo](frontend/src/icons/logo.svg)
+![Logo](frontend/src/assets/icons/logo.svg)
 
 Une application web de statistiques sur les votes de l'assemblée nationale pour aider à choisir son candidat.
 
