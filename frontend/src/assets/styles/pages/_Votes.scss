@@ -71,9 +71,6 @@
           height: 100%;
           object-fit: contain;
         }
-
-        &.blur {
-        }
       }
 
       &__pour,
@@ -167,11 +164,6 @@
 
       &:not(:last-child, :nth-last-child(2)) {
         opacity: 0;
-      }
-
-      &:not(:last-child) {
-        .swipe-card__content {
-        }
       }
     }
 
