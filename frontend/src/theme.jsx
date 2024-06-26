@@ -30,6 +30,9 @@ const colors = {
 };
 
 export const theme = extendTheme({
+  typography: {
+    fontFamily: ["var(--font-body)", "sans-serif"].join(","),
+  },
   colorSchemes: {
     light: {
       palette: {
