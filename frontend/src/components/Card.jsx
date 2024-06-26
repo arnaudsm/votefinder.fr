@@ -21,7 +21,7 @@ export default function Card({ vote_id, list_id, editable }) {
   const cardRef = useRef(null);
 
   return (
-    <div ref={cardRef} className="Card">
+    <div ref={cardRef} className={`Card ${editable ? "Card--editable" : ""}`}>
       <div className="Card__front">
         <div className="Card__container">
           <div className="Card__top">
@@ -92,27 +92,36 @@ export default function Card({ vote_id, list_id, editable }) {
                 </Button>
               </div>
             )}
-            {editable && (
-              <ToggleButtonGroup
-                className="Card__toggle-group"
-                value={context.choices[vote_id]}
-                exclusive
-                fullWidth={true}
-                onChange={(event) =>
-                  context.choose({
-                    vote_id,
-                    type: event.target.value,
-                    noPopup: true,
-                  })
-                }
-              >
-                <ToggleButton value="-">👎 Contre</ToggleButton>
-                <ToggleButton value="0">Passer</ToggleButton>
-                <ToggleButton value="+">👍 Pour</ToggleButton>
-              </ToggleButtonGroup>
-            )}
           </div>
         </div>
+
+        {editable && (
+          <div className="Card__toggle-container">
+            <ToggleButtonGroup
+              className="Card__toggle-group"
+              value={context.choices[vote_id]}
+              exclusive
+              fullWidth={true}
+              onChange={(event) =>
+                context.choose({
+                  vote_id,
+                  type: event.target.value,
+                  noPopup: true,
+                })
+              }
+            >
+              <ToggleButton value="-">
+                <ThumbDownIcon /> Contre
+              </ToggleButton>
+              <ToggleButton value="0">
+                <CrossIcon /> Passer
+              </ToggleButton>
+              <ToggleButton value="+">
+                <ThumbUpIcon /> Pour
+              </ToggleButton>
+            </ToggleButtonGroup>
+          </div>
+        )}
       </div>
       <div className="Card__back">
         <div className="Card__container">
