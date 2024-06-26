@@ -11,6 +11,9 @@ import {
 } from "@mui/icons-material";
 import { formatDate } from "../utils/utils.jsx";
 import ListVote from "./ListVote";
+import CrossIcon from "../assets/icons/cross.svg";
+import ThumbUpIcon from "@mui/icons-material/ThumbUp";
+import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 
 export default function Card({ vote_id, list_id, editable }) {
   const vote = data.votes[vote_id];
@@ -39,14 +42,25 @@ export default function Card({ vote_id, list_id, editable }) {
               <div className="Card__results">
                 {vote && <ListVote vote_id={vote_id} list_id={list_id} />}
 
-                <div className="Card__user-vote">
+                <div className="Card__user-vote user-vote">
                   <span>Vous avez voté : </span>
-                  <strong>
+
+                  <div className="user-vote__icon">
                     {
                       {
-                        "-": "👎 Contre",
+                        "-": <ThumbDownIcon />,
+                        0: <CrossIcon />,
+                        "+": <ThumbUpIcon />,
+                      }[context.choices[vote_id]]
+                    }
+                  </div>
+
+                  <strong className="user-vote__label">
+                    {
+                      {
+                        "-": "Contre",
                         0: "Passer",
-                        "+": "👍 Pour",
+                        "+": "Pour",
                       }[context.choices[vote_id]]
                     }
                   </strong>

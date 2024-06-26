@@ -179,6 +179,32 @@
 
   &__user-vote {
     margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+
+    .user-vote {
+      &__icon {
+        margin-left: 0.5rem;
+        width: 1.5rem;
+        height: 1.5rem;
+
+        svg {
+          width: 100%;
+          height: 100%;
+
+          path {
+            fill: var(--mui-palette-white-main);
+          }
+        }
+      }
+
+      &__label {
+        margin-left: 0.4rem;
+        text-transform: uppercase;
+        font-family: var(--font-title), sans-serif;
+        font-weight: 700;
+      }
+    }
   }
 
   &__results {
