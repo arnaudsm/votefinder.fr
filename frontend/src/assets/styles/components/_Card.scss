@@ -1,41 +1,71 @@
+@use '../base/breakpoints' as breakpoints;
+
 .Card {
-  background: var(--mui-palette-primary-main);
-  color: var(--mui-palette-white-main);
-  padding: 1.2rem;
-  border-radius: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-  box-sizing: border-box;
+  --card-top-bg-color: var(--mui-palette-lightPurple-main);
+  --card-bottom-bg-color: var(--mui-palette-purple-main);
+  --card-border-radius: 2rem;
 
-  h2 {
-    font-size: 1.375rem;
-    text-align: center;
-    margin: 0;
-    padding-bottom: 1rem;
-    border-bottom: #ffffff30 1px solid;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  position: relative;
+
+  &__front, &__back {
+    backface-visibility: hidden;
+    transition: transform 0.5s ease-in-out;
+    overflow: hidden;
   }
 
-  ul {
-    padding-left: 1rem;
-
-    li {
-      margin-bottom: 1rem;
-    }
+  &__front {
+    position: relative;
+    z-index: 2;
   }
 
-  &__user-vote {
-    margin-top: 1rem;
-  }
-
-  &__more-info {
-    height: 2.5rem;
+  &__back {
+    transform: rotateY(180deg);
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 100%;
 
-    &:hover {
-      opacity: 0.9;
+    .Card {
+      &__actions {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+      }
+
+      &__title {
+        font-size: 1.25rem;
+
+        @media only screen and (min-width: breakpoints.$breakpoint-sm) {
+          font-size: 1.5rem;
+        }
+      }
     }
+  }
+
+  &__container {
+    background: linear-gradient(180deg, var(--card-top-bg-color) 0%, var(--card-bottom-bg-color) 100%);
+    color: var(--mui-palette-white-main);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 0.75rem 1rem 2rem;
+    box-sizing: border-box;
+    border-radius: var(--card-border-radius);
+
+    @media only screen and (min-width: breakpoints.$breakpoint-sm) {
+      padding: 1rem 1.25rem 1.5rem;
+    }
+  }
+
+  &__top {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
   }
 
   &__bottom {
@@ -45,20 +75,132 @@
     gap: 1rem;
   }
 
-  &__actions {
-    display: flex;
-    gap: 1rem;
-    width: 100%;
+  &__meta {
+    opacity: 0.9;
+    text-align: center;
+    font-size: 0.75rem;
+    font-family: var(--font-title), sans-serif;
+    font-weight: 500;
 
-    & > div {
-      flex: auto;
+    @media only screen and (min-width: breakpoints.$breakpoint-sm) {
+      font-size: 1rem;
     }
   }
 
-  &__meta {
-    opacity: 0.7;
+  &__title {
+    margin-top: 1rem;
+    font-family: var(--font-title), sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 1.375rem;
+    line-height: 1.36;
     text-align: center;
-    font-size: 14px;
+
+    @media only screen and (min-width: breakpoints.$breakpoint-sm) {
+      font-size: 2rem;
+    }
+  }
+
+  &__subtitles {
+    margin-top: 2rem;
+    padding-left: 0;
+    list-style-type: none;
+  }
+
+  &__subtitle {
+    text-align: center;
+    font-weight: 800;
+    font-size: 0.8125rem;
+
+    @media only screen and (min-width: breakpoints.$breakpoint-sm) {
+      font-size: 1rem;
+    }
+
+    &:not(:first-child) {
+      margin-top: 1.25rem;
+    }
+  }
+
+  &__back-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: center;
+    gap: 0.9rem;
+    width: 100%;
+  }
+
+  &__btn {
+    height: 2.5rem;
+    width: fit-content;
+    border-radius: 2.5rem !important;
+    background-color: color-mix(in srgb, var(--mui-palette-white-main) 40%, transparent) !important;
+    color: var(--mui-palette-white-main) !important;
+    padding: 0.5rem 0.75rem !important;
+    font-family: var(--font-title), sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 0.75rem !important;
+    border: solid 0.125rem var(--mui-palette-white-main) !important;
+
+    @media only screen and (min-width: breakpoints.$breakpoint-sm) {
+      padding: 1.25rem 1rem !important;
+      font-size: 1rem !important;
+    }
+
+    .MuiSvgIcon-root {
+      font-size: 1.75rem !important;
+    }
+
+    &:hover {
+      background-color: var(--mui-palette-white-main) !important;
+      color: var(--mui-palette-purple-main) !important;
+    }
+
+    &--highlight {
+      background-color: var(--mui-palette-white-main) !important;
+      color: var(--mui-palette-purple-main) !important;
+    }
+
+    &--large {
+      padding-left: 4rem !important;
+      padding-right: 4rem !important;
+    }
+  }
+
+  &__user-vote {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+
+    .user-vote {
+      &__icon {
+        margin-left: 0.5rem;
+        width: 1.5rem;
+        height: 1.5rem;
+
+        svg {
+          width: 100%;
+          height: 100%;
+
+          path {
+            fill: var(--mui-palette-white-main);
+          }
+        }
+      }
+
+      &__label {
+        margin-left: 0.4rem;
+        text-transform: uppercase;
+        font-family: var(--font-title), sans-serif;
+        font-weight: 700;
+      }
+    }
   }
 
   &__results {
@@ -70,15 +212,66 @@
   }
 
   &__toggle-group {
-    background-color: var(--mui-palette-background-paper);
-    border: none;
+    background-color: var(--card-top-bg-color);
+    border-radius: 0 !important;
 
     button {
       border: none;
+      border-radius: 0 !important;
+      color: var(--mui-palette-white-main);
+      font-family: var(--font-title), sans-serif;
+      font-weight: 700;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+
+      svg {
+        width: 1.5rem;
+        height: 1.5rem;
+        margin-right: 0.5rem;
+
+        path {
+          fill: var(--mui-palette-white-main);
+        }
+      }
 
       &.Mui-selected {
-        color: var(--mui-palette-white-main);
-        background-color: #5c90cf !important;
+        color: var(--mui-palette-purple-main);
+        background-color: var(--mui-palette-white-main) !important;
+
+        svg {
+          path {
+            fill: var(--mui-palette-purple-main);
+          }
+        }
+      }
+    }
+  }
+
+  &--revert {
+    .Card__front {
+      transform: rotateY(180deg) !important;
+    }
+
+    .Card__back {
+      transform: rotateY(360deg) !important;
+    }
+  }
+
+  &--editable {
+    .Card__front {
+      .Card {
+        &__container {
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+
+        &__toggle-container {
+          border: solid 0.3rem var(--mui-palette-purple-main);
+          border-radius: var(--card-border-radius);
+          border-top-left-radius: 0;
+          border-top-right-radius: 0;
+          overflow: hidden;
+        }
       }
     }
   }

@@ -22,7 +22,7 @@ export default function Resultats({ visible }) {
         {minVotesReached && navigator.canShare && (
           <Button
             startIcon={<Share />}
-            color="primary"
+            color="secondary"
             variant="contained"
             className="Resultats__share"
             onClick={async () => {
@@ -41,6 +41,8 @@ export default function Resultats({ visible }) {
         className="Resultats__tabs"
         value={tab}
         onChange={handleChange}
+        indicatorColor="secondary"
+        textColor="secondary"
         variant="fullWidth"
       >
         <Tab label="Listes" />

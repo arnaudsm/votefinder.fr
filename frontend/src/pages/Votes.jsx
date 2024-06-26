@@ -1,16 +1,26 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect, useRef } from "react";
 import { ThemeContext } from "../context/ThemeContext.jsx";
 import data from "../data/data.json";
 import Card from "../components/Card.jsx";
 import { Button, Stack } from "@mui/material";
 import { CardSwiper } from "react-card-swiper";
 import NoVotesLeft from "../components/NoVotesLeft.jsx";
-import Contre from "../assets/icons/contre.svg";
-import Pour from "../assets/icons/pour.svg";
+import ThumbUpIcon from "@mui/icons-material/ThumbUp";
+import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import { shuffle } from "../utils/utils";
 import { recommendedVotesCount } from "../data/variables";
+import gsap from "gsap";
+import { hexToRgb, rgbToHex } from "../utils/utils";
+import CrossIcon from "../assets/icons/cross.svg";
 
 export default function Votes({ visible }) {
+  let currentSwipeCardRef = useRef(null);
+  let currentCardRef = useRef(null);
+  const tickerRef = useRef(null);
+  const actionContreRef = useRef(null);
+  const actionPasserRef = useRef(null);
+  const actionPourRef = useRef(null);
+
   const vote_ids = shuffle(Object.keys(data.votes));
   const context = useContext(ThemeContext);
   const [id, setId] = useState();
@@ -25,9 +35,13 @@ export default function Votes({ visible }) {
   );
   const handleDismiss = (el, meta, id, action, operation) => {
     if (operation !== "swipe") return;
-    context.choose({ vote_id: id, type: action == "like" ? "+" : "-" });
+    context.choose({ vote_id: id, type: action === "like" ? "+" : "-" });
   };
-  const handleEnter = (el, meta, id) => setId(id);
+  const handleEnter = (el, meta, id) => {
+    setId(id);
+    currentSwipeCardRef.current = el;
+    currentCardRef.current = el.querySelector(".Card");
+  };
   const cardData = unseen_vote_ids.map((vote_id) => ({
     id: vote_id,
     content: <Card vote_id={vote_id} />,
@@ -35,16 +49,110 @@ export default function Votes({ visible }) {
   const progress = Math.floor(
     (Object.keys(context.choices).length / recommendedVotesCount) * 100,
   );
+
+  const progressMinValueAnimTrigger = 0.2;
+  const progressMinValueTrigger = 0.05;
+  const maxTranslateX = 140;
+
+  const baseColor = hexToRgb("#6000C1");
+  const acceptColor = hexToRgb("#31CA93");
+  const refuseColor = hexToRgb("#ED2579");
+
+  useEffect(() => {
+    let actionContreEl = actionContreRef.current;
+    let actionPourEl = actionPourRef.current;
+    let actionPasserEl = actionPasserRef.current;
+
+    if (visible) {
+      // Démarrer le ticker GSAP
+      tickerRef.current = gsap.ticker.add(() => {
+        if (!currentSwipeCardRef.current || !currentCardRef.current || !visible)
+          return;
+
+        const computedStyle = window.getComputedStyle(
+          currentSwipeCardRef.current,
+        );
+        const matrix = new DOMMatrix(computedStyle.transform);
+        const translateX = matrix.m41;
+
+        const percent =
+          Math.min(Math.abs((translateX / maxTranslateX) * 100), 100) / 100;
+
+        const interpolatedColor = gsap.utils.interpolate(
+          baseColor,
+          translateX > 0 ? acceptColor : refuseColor,
+          percent,
+        );
+
+        const interpolatedHex = rgbToHex(
+          Math.round(interpolatedColor[0]),
+          Math.round(interpolatedColor[1]),
+          Math.round(interpolatedColor[2]),
+        );
+
+        const blurValue = (percent - progressMinValueAnimTrigger) * 10;
+        const scaleValue = blurValue / 70;
+        if (percent > progressMinValueTrigger) {
+          gsap.set(actionContreRef.current, {
+            scale:
+              percent > progressMinValueAnimTrigger && translateX < 0
+                ? 1 + scaleValue
+                : 1,
+            filter:
+              percent > progressMinValueAnimTrigger && translateX > 0
+                ? `blur(${blurValue}px)`
+                : "blur(0px)",
+          });
+
+          gsap.set(actionPourRef.current, {
+            scale:
+              percent > progressMinValueAnimTrigger && translateX > 0
+                ? 1 + scaleValue
+                : 1,
+            filter:
+              percent > progressMinValueAnimTrigger && translateX < 0
+                ? `blur(${blurValue}px)`
+                : "blur(0px)",
+          });
+
+          gsap.set(actionPasserRef.current, {
+            filter: percent > 0.2 ? `blur(${blurValue}px)` : "blur(0px)",
+            scale:
+              percent > progressMinValueAnimTrigger ? 1 - blurValue / 50 : 1,
+          });
+        }
+
+        gsap.set(currentCardRef.current, {
+          "--card-bottom-bg-color": interpolatedHex,
+        });
+      });
+    } else {
+      // Arrêter et retirer le ticker GSAP
+      if (tickerRef.current) {
+        gsap.ticker.remove(tickerRef.current);
+        tickerRef.current = null; // Réinitialiser la référence du ticker
+      }
+    }
+
+    // Cleanup lors du démontage du composant
+    return () => {
+      if (tickerRef.current) {
+        gsap.ticker.remove(tickerRef.current);
+      }
+
+      gsap.to([actionContreEl, actionPasserEl, actionPourEl], {
+        filter: "blur(0px)",
+        scale: 1,
+        duration: 0.3,
+      });
+    };
+  }, [visible, id, acceptColor, baseColor, refuseColor]);
+
   return (
     <div className={`Votes ${visible ? "" : "hide"}`}>
-      {progress < 100 && (
-        <div className="Votes__progress progress">
-          <div
-            className="progress__bar"
-            style={{ width: `${progress}%` }}
-          ></div>
-        </div>
-      )}
+      <div className="Votes__bg-color"></div>
+      <div className="Votes__bg-circle"></div>
+
       <Stack className="Votes__stack">
         <CardSwiper
           className="Votes__card-swiper"
@@ -59,8 +167,8 @@ export default function Votes({ visible }) {
           likeRibbonText="POUR"
           dislikeRibbonText="CONTRE"
           ribbonColors={{
-            bgLike: "#63B85D",
-            bgDislike: "#DD5A5A",
+            bgLike: "var(--mui-palette-green-main)",
+            bgDislike: "var(--mui-palette-red-main)",
             textColor: "white",
           }}
           emptyState={<NoVotesLeft />}
@@ -68,10 +176,9 @@ export default function Votes({ visible }) {
       </Stack>
       <div className="Votes__actions actions">
         <Button
-          variant="contained"
           disableElevation
-          color="highlight"
           className="actions__contre"
+          ref={actionContreRef}
           onClick={() => {
             context.choose({ vote_id: id, type: "-" });
             document
@@ -79,14 +186,13 @@ export default function Votes({ visible }) {
               ?.click();
           }}
         >
-          <Contre />
-          Contre
+          <ThumbDownIcon color="red" />
         </Button>
+
         <Button
-          variant="contained"
           disableElevation
-          color="highlight"
           className="actions__passer"
+          ref={actionPasserRef}
           onClick={() => {
             context.choose({ vote_id: id, type: "0" });
             document
@@ -94,22 +200,30 @@ export default function Votes({ visible }) {
               ?.click();
           }}
         >
-          Passer
+          <CrossIcon />
         </Button>
+
         <Button
-          variant="contained"
           disableElevation
-          color="highlight"
           className="actions__pour"
+          ref={actionPourRef}
           onClick={() => {
             context.choose({ vote_id: id, type: "+" });
             document.getElementById("swipe-card__like-action-button")?.click();
           }}
         >
-          <Pour />
-          Pour
+          <ThumbUpIcon color="green" />
         </Button>
       </div>
+
+      {progress < 100 && (
+        <div className="Votes__progress progress">
+          <div
+            className="progress__bar"
+            style={{ width: `${progress}%` }}
+          ></div>
+        </div>
+      )}
     </div>
   );
 }

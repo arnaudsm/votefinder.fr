@@ -1,35 +1,35 @@
+@use '../base/breakpoints' as breakpoints;
+
 html {
   height: 100%;
   width: 100%;
-  font-family: Roboto, sans-serif;
+  font-family: var(--font-body), sans-serif;
+  font-weight: 600;
+
+  /* https://clamp.font-size.app/ */
+  font-size: clamp(1rem, 0.2895rem + 0.7895vw, 1.375rem); /* 16px at 1200, 22px at 2200 */
+
+  @media only screen and (max-width: #{breakpoints.$breakpoint-xs - 1px}) {
+    font-size: 15px;
+  }
 
   &[data-mui-color-scheme="light"] {
     --result-bg-color: #c2c2c2;
     --link-color: inherit;
     --link-visited-color: inherit;
+    --logo-svg-text-vote-color: #3E3E3E;
   }
 
   &[data-mui-color-scheme="dark"] {
     --result-bg-color: var(--mui-palette-background-main);
     --link-color: #ccc;
     --link-visited-color: #ccc;
-  }
-}
-
-@media (min-height: 1000px) {
-  html {
-    zoom: 125%;
-  }
-}
-
-@media (max-height: 700px) {
-  html {
-    zoom: 75%;
+    --logo-svg-text-vote-color: #C1C1C1;
   }
 }
 
 body {
-  color: var(--mui-palette-body-main);
+  color: var(--mui-palette-primary-main);
   background: var(--mui-palette-background-main);
   margin: 0;
   overflow: hidden;

@@ -1,12 +1,36 @@
+@use '../base/breakpoints' as breakpoints;
+
 .Votes {
-  padding: 1rem;
+  padding: 1rem 1rem 2rem;
   box-sizing: border-box;
   height: 100%;
   width: 100%;
   display: flex;
-  gap: 1.2rem;
+  align-items: center;
   flex-direction: column;
   justify-content: space-between;
+
+  &__bg-color {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background-color: color-mix(in srgb, var(--mui-palette-secondary-main) 40%, transparent) !important;
+  }
+
+  &__bg-circle {
+    position: absolute;
+    bottom: 20vh;
+    left: 0;
+    width: 200vw;
+    height: 200vw;
+    z-index: -2;
+    background-color: var(--mui-palette-background-main);
+    border-radius: 200vw;
+    transform: translateX(-25%);
+  }
 
   &__stack {
     flex: 1;
@@ -18,64 +42,113 @@
 
   &__actions {
     display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    align-items: end;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+
+    @media only screen and (min-width: breakpoints.$breakpoint-sm) {
+      gap: 3rem;
+    }
 
     .actions {
-      &__passer,
       &__pour,
-      &__contre {
-        border-radius: 1.5rem;
-        flex: 1;
+      &__contre,
+      &__passer {
+        border-radius: 9999px;
         display: flex;
-        flex-direction: column;
-        padding: 0.6rem 0 0.1rem;
-        text-transform: none;
-        font-weight: bold;
-        font-size: 1.125rem;
-        bottom: 1rem;
+        align-items: center;
+        justify-content: center;
+        min-width: unset !important;
+        background-color: var(--mui-palette-white-main);
 
-        &:hover {
-          background-color: var(--mui-palette-background-paper);
-          opacity: 0.8;
+        svg, img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
         }
 
-        &:hover,
-        & {
-          box-shadow: var(--shadow);
+        &.blur {
+          filter: blur(5px);
         }
+      }
 
-        svg {
-          height: 2.4rem;
-          margin: 0.2rem;
+      &__pour, &__contre {
+        width: 4.5rem;
+        height: 4.5rem;
+        padding: 1rem;
+
+        @media only screen and (min-width: breakpoints.$breakpoint-sm) {
+          width: 6rem;
+          height: 6rem;
+          padding: 1.25rem;
         }
       }
 
       &__passer {
-        height: 2.5rem;
-        max-width: 6.5rem;
-        padding: 0 1rem;
+        width: 3.25rem;
+        height: 3.25rem;
+        padding: 0.875rem !important;
+
+        @media only screen and (min-width: breakpoints.$breakpoint-sm) {
+          width: 4.5rem;
+          height: 4.5rem;
+          padding: 1.25rem !important;
+        }
+
+        svg {
+          path {
+            transition: fill 0.25s linear;
+          }
+        }
+
+        &:hover {
+          background-color: var(--mui-palette-blue-main);
+
+          svg {
+            path {
+              fill: var(--mui-palette-white-main);
+            }
+          }
+        }
+      }
+
+      &__pour {
+        &:hover {
+          background-color: var(--mui-palette-green-main);
+
+          svg {
+            fill: var(--mui-palette-white-main);
+          }
+        }
+      }
+
+      &__contre {
+        &:hover {
+          background-color: var(--mui-palette-red-main);
+
+          svg {
+            fill: var(--mui-palette-white-main);
+          }
+        }
       }
     }
   }
 
   &__progress {
-    background-color: var(--mui-palette-background-paper);
-    height: 1rem;
-    border-radius: 1rem;
+    position: fixed;
+    bottom: 56px;
+    left: 0;
+    height: 0.5rem;
     width: 100%;
-    position: relative;
-    box-shadow: var(--shadow);
 
     .progress {
       &__bar {
-        background-color: var(--mui-palette-primary-main);
+        background-color: var(--mui-palette-secondary-main);
         position: absolute;
         transition: width 0.3s ease-in-out;
-        border-radius: 1rem;
+        border-radius: 0 0.5rem 0.5rem 0;
         display: block;
-        height: 1rem;
+        height: 0.5rem;
         padding: 0;
         margin: 0;
       }
@@ -84,12 +157,25 @@
 
   .swipe-card {
     &__container {
-      border-radius: 1.5rem;
+      overflow: unset !important;
+      background: transparent !important;
+
+      &:not(:last-child, :nth-last-child(2)) {
+        opacity: 0;
+      }
+
+      &:not(:last-child) {
+        .swipe-card__content {
+          filter: blur(3px) brightness(110%);
+        }
+      }
     }
 
     &__ribbon-like,
     &__ribbon-dislike {
       border-radius: 1rem;
+      width: 10.625rem;
+      height: 3.75rem;
     }
 
     &__image-container {
@@ -99,7 +185,17 @@
     &__content {
       height: 100%;
       width: 100%;
-      background: var(--mui-palette-primary-main);
+      background: transparent !important;
+      filter: blur(0) brightness(100%);
+      transition: filter 0.5s ease-out, opacity 0.5s ease-out;
+    }
+  }
+
+  .Card {
+    height: 100%;
+
+    &__front {
+      height: 100%;
     }
   }
 }
