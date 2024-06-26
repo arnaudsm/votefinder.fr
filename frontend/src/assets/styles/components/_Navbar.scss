@@ -21,10 +21,11 @@
     &:hover {
       opacity: 0.85;
     }
-  }
 
-  .ThemeSwitcher {
-    position: absolute;
-    right: 1rem;
+    .Logo-svg {
+      &__vote {
+        fill: var(--logo-svg-text-vote-color);
+      }
+    }
   }
 }

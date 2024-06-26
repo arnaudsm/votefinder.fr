@@ -18,6 +18,7 @@ export default function ResultsModal() {
         <Trophy />
         <div className="ResultsModal__actions">
           <Button
+            color="secondary"
             variant="white"
             disableElevation
             size="large"
@@ -28,7 +29,7 @@ export default function ResultsModal() {
             Continuer à voter
           </Button>
           <Button
-            color="lightRed"
+            color="red"
             variant="contained"
             disableElevation
             size="large"

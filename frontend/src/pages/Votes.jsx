@@ -167,8 +167,8 @@ export default function Votes({ visible }) {
           likeRibbonText="POUR"
           dislikeRibbonText="CONTRE"
           ribbonColors={{
-            bgLike: "#63B85D",
-            bgDislike: "#DD5A5A",
+            bgLike: "var(--mui-palette-green-main)",
+            bgDislike: "var(--mui-palette-red-main)",
             textColor: "white",
           }}
           emptyState={<NoVotesLeft />}
