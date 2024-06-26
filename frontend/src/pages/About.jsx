@@ -11,6 +11,7 @@ import {
   X,
 } from "@mui/icons-material";
 import { projectURL } from "../data/variables.jsx";
+import ThemeSwitcher from "../components/ThemeSwitcher.jsx";
 
 export default function About({ visible }) {
   const context = useContext(ThemeContext);
@@ -69,6 +70,11 @@ export default function About({ visible }) {
         </Button>
 
         <h2>Paramètres</h2>
+        <div>
+          Choix du thème
+          <ThemeSwitcher />
+        </div>
+
         <Button
           className="reset"
           startIcon={<Delete />}
