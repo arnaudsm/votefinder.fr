@@ -5,13 +5,19 @@
   display: flex;
   height: 3.375rem;
 
-  &__img {
-    object-fit: contain;
-    background-color: var(--mui-palette-white-main);
-    width: 3.375rem;
-    height: 3.375rem;
+  &__img-container {
     border-top-left-radius: 0.675rem;
     border-bottom-left-radius: 0.675rem;
+    aspect-ratio: 1 / 1;
+    height: 100%;
+    overflow: hidden;
+    background-color: var(--mui-palette-white-main);
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
 
   &__progress {
@@ -21,10 +27,11 @@
       }
     }
 
-    height: 3.375rem;
+    height: 100%;
     border-radius: 0.675rem;
     overflow: hidden;
     width: 100%;
+    flex: 1;
     position: relative;
   }
 
@@ -32,7 +39,7 @@
     transition: width 0.3s ease-in-out;
     position: absolute;
     display: block;
-    height: 3.375rem;
+    height: 100%;
     padding: 0;
     margin: 0;
     animation: progress-bar 0.3s;
@@ -48,25 +55,25 @@
   }
 
   &__name {
-    left: 1rem;
     color: var(--mui-palette-white-main);
     position: absolute;
     display: flex;
     flex-direction: column;
-    height: 3.375rem;
+    width: calc(100% - 4rem);
+    height: 100%;
+    padding-left: 1rem;
     justify-content: center;
+    text-align: left;
 
     h4 {
       margin: 0;
       font-size: 1rem;
-      white-space: pre;
     }
 
     h5 {
       margin: 0;
       font-weight: normal;
       font-size: 1rem;
-      white-space: pre;
     }
   }
 
@@ -88,10 +95,6 @@
       }
 
       &__score {
-        color: var(--mui-palette-white-main);
-        position: absolute;
-        right: 1rem;
-        line-height: 3.375rem;
         font-weight: lighter;
         font-size: 1.25rem;
       }
@@ -101,14 +104,20 @@
   &--multiple {
     .Result {
       &__score {
-        color: var(--mui-palette-white-main);
-        position: absolute;
         text-align: right;
-        right: 1rem;
         line-height: 0.8rem;
         font-size: 0.7rem;
-        padding-top: 0.6rem;
       }
     }
+  }
+
+  &__score {
+    color: var(--mui-palette-white-main);
+    position: absolute;
+    right: 1rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
   }
 }

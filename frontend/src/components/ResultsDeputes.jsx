@@ -23,11 +23,13 @@ export default function ResultsDeputes({ results }) {
             key={id}
             target="_blank"
           >
-            <img
-              className="Result__img"
-              src={`/deputes/${id.slice(2)}.jpg`}
-              alt={data.deputes[id]?.l}
-            />
+            <div className="Result__img-container">
+              <img
+                className="Result__img"
+                src={`/deputes/${id.slice(2)}.jpg`}
+                alt={data.deputes[id]?.l}
+              />
+            </div>
             <div className="Result__progress">
               <div
                 className="Result__bar"

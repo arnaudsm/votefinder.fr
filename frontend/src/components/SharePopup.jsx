@@ -21,7 +21,13 @@ export default function SharePopup() {
             key={id}
             target="_blank"
           >
-            <img src={`/lists/${id}.svg`} alt={data.lists[id].label} />
+            <div className="Result__img-container">
+              <img
+                className="Result__img"
+                src={`/lists/${id}.svg`}
+                alt={data.lists[id].label}
+              />
+            </div>
             <div className="Result__progress">
               <div
                 className="Result__bar"
