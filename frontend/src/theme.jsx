@@ -2,11 +2,14 @@ import { experimental_extendTheme as extendTheme } from "@mui/material/styles";
 
 const colors = {
   secondary: {
-    main: "#DD5A5A",
+    main: "#06093F",
     contrastText: "#fff",
   },
   lightBlue: {
     main: "#6697D2",
+  },
+  red: {
+    main: "#DD5A5A",
   },
   lightRed: {
     main: "#E78B8B",
@@ -36,7 +39,7 @@ export const theme = extendTheme({
           contrastText: "#3E3E3E",
         },
         background: {
-          main: "#FFFFFF",
+          main: "#f0f1f9",
           paper: "#FFFFFF",
           contrastText: "#3E3E3E",
         },
@@ -57,7 +60,7 @@ export const theme = extendTheme({
           contrastText: "#FFFFFF",
         },
         background: {
-          main: "#262626",
+          main: "#1e1e1e",
           paper: "#121212",
           contrastText: "#FFFFFF",
         },

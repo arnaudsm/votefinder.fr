@@ -169,7 +169,7 @@ export default function Votes({ visible }) {
               ?.click();
           }}
         >
-          <ThumbDownIcon color="secondary" />
+          <ThumbDownIcon color="red" />
         </Button>
 
         <Button
