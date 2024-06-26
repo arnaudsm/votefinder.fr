@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect, useRef } from "react";
+import { useContext, useState, useRef } from "react";
 import { ThemeContext } from "../context/ThemeContext.jsx";
 import data from "../data/data.json";
 import Card from "../components/Card.jsx";

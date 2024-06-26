@@ -1,4 +1,4 @@
-@use '../base/breakpoints' as breakpoints;
+@use "../base/breakpoints" as breakpoints;
 
 .Card {
   --card-top-bg-color: var(--mui-palette-lightPurple-main);
@@ -9,7 +9,8 @@
   transform-style: preserve-3d;
   position: relative;
 
-  &__front, &__back {
+  &__front,
+  &__back {
     backface-visibility: hidden;
     transition: transform 0.5s ease-in-out;
     overflow: hidden;
@@ -48,7 +49,11 @@
   }
 
   &__container {
-    background: linear-gradient(180deg, var(--card-top-bg-color) 0%, var(--card-bottom-bg-color) 100%);
+    background: linear-gradient(
+      180deg,
+      var(--card-top-bg-color) 0%,
+      var(--card-bottom-bg-color) 100%
+    );
     color: var(--mui-palette-white-main);
     display: flex;
     flex-direction: column;
@@ -141,7 +146,11 @@
     height: 2.5rem;
     width: fit-content;
     border-radius: 2.5rem !important;
-    background-color: color-mix(in srgb, var(--mui-palette-white-main) 40%, transparent) !important;
+    background-color: color-mix(
+      in srgb,
+      var(--mui-palette-white-main) 40%,
+      transparent
+    ) !important;
     color: var(--mui-palette-white-main) !important;
     padding: 0.5rem 0.75rem !important;
     font-family: var(--font-title), sans-serif !important;
@@ -223,8 +232,8 @@
       color: var(--mui-palette-white-main);
       font-family: var(--font-title), sans-serif;
       font-weight: 700;
-      padding-top: .75  rem;
-      padding-bottom: .75 rem;
+      padding-top: 0.75 rem;
+      padding-bottom: 0.75 rem;
 
       svg {
         width: 1.125rem;

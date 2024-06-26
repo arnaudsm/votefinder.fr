@@ -1,4 +1,4 @@
-@use '../base/breakpoints' as breakpoints;
+@use "../base/breakpoints" as breakpoints;
 
 .BottomNav {
   box-shadow: var(--shadow);
@@ -7,7 +7,11 @@
 
   &__action {
     padding: 0 !important;
-    color: color-mix(in srgb, var(--mui-palette-primary-main) 54%, transparent) !important;
+    color: color-mix(
+      in srgb,
+      var(--mui-palette-primary-main) 54%,
+      transparent
+    ) !important;
 
     &:hover {
       color: var(--mui-palette-primary-main) !important;
@@ -21,9 +25,6 @@
       transition: margin 0.1s ease-in-out;
       font-size: 0.75rem !important;
       margin-top: 0 !important;
-
-      @media only screen and (min-width: breakpoints.$breakpoint-sm) {
-      }
     }
   }
 }
