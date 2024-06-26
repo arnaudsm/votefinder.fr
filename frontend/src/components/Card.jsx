@@ -119,7 +119,7 @@ export default function Card({ vote_id, list_id, editable }) {
                   <Button
                     startIcon={<StickyNote2 />}
                     className="Card__btn Card__btn--highlight"
-                    color="primary"
+                    color="secondary"
                     variant="contained"
                     disableElevation
                     target="_blank"
@@ -132,7 +132,7 @@ export default function Card({ vote_id, list_id, editable }) {
                   <Button
                     startIcon={<Article />}
                     className="Card__btn Card__btn--highlight"
-                    color="primary"
+                    color="secondary"
                     variant="contained"
                     disableElevation
                     target="_blank"
@@ -145,7 +145,7 @@ export default function Card({ vote_id, list_id, editable }) {
                   <Button
                     startIcon={<QuestionAnswer />}
                     className="Card__btn Card__btn--highlight"
-                    color="primary"
+                    color="secondary"
                     variant="contained"
                     disableElevation
                     target="_blank"

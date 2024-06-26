@@ -38,7 +38,7 @@ export default function ListVotesModal() {
         <h2>{data.lists[context.listVotesPopup]?.label}</h2>
         <Button
           startIcon={<AccountBalance />}
-          color="primary"
+          color="secondary"
           variant="contained"
           size="large"
           href={`https://www.assemblee-nationale.fr/dyn/org/${context.listVotesPopup}`}

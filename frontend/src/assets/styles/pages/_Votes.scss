@@ -17,7 +17,7 @@
     width: 100%;
     height: 100%;
     z-index: -2;
-    background-color: color-mix(in srgb, var(--mui-palette-primary-main) 40%, transparent) !important;
+    background-color: color-mix(in srgb, var(--mui-palette-secondary-main) 40%, transparent) !important;
   }
 
   &__bg-circle {
@@ -102,7 +102,7 @@
         }
 
         &:hover {
-          background-color: var(--mui-palette-secondary-main);
+          background-color: var(--mui-palette-blue-main);
 
           svg {
             path {
@@ -143,7 +143,7 @@
 
     .progress {
       &__bar {
-        background-color: var(--mui-palette-primary-main);
+        background-color: var(--mui-palette-secondary-main);
         position: absolute;
         transition: width 0.3s ease-in-out;
         border-radius: 0 0.5rem 0.5rem 0;

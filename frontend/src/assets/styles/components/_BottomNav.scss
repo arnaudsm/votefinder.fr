@@ -7,14 +7,14 @@
 
   &__action {
     padding: 0 !important;
-    color: color-mix(in srgb, var(--mui-palette-secondary-main) 54%, transparent) !important;
+    color: color-mix(in srgb, var(--mui-palette-primary-main) 54%, transparent) !important;
 
     &:hover {
-      color: var(--mui-palette-secondary-main) !important;
+      color: var(--mui-palette-primary-main) !important;
     }
 
     &.Mui-selected {
-      color: var(--mui-palette-secondary-main) !important;
+      color: var(--mui-palette-primary-main) !important;
     }
 
     .MuiBottomNavigationAction-label {

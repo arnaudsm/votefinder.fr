@@ -27,7 +27,7 @@ export default function About({ visible }) {
 
         <Button
           startIcon={<PictureAsPdf />}
-          color="primary"
+          color="secondary"
           variant="contained"
           size="large"
           href="Communique-de-Presse-VoteFinder.fr.pdf"
@@ -41,7 +41,7 @@ export default function About({ visible }) {
         </p>
         <Button
           startIcon={<Email />}
-          color="primary"
+          color="secondary"
           variant="contained"
           size="large"
           href="mailto:contact@votefinder.fr"
@@ -51,7 +51,7 @@ export default function About({ visible }) {
         </Button>
         <Button
           startIcon={<GitHub />}
-          color="primary"
+          color="secondary"
           variant="contained"
           size="large"
           disableElevation
@@ -61,7 +61,7 @@ export default function About({ visible }) {
           contribuer sur github
         </Button>
         <Button
-          color="primary"
+          color="secondary"
           variant="contained"
           size="large"
           href="https://votefinder.eu"
@@ -79,7 +79,7 @@ export default function About({ visible }) {
           className="reset"
           startIcon={<Delete />}
           size="large"
-          color="primary"
+          color="secondary"
           variant="contained"
           onClick={() => {
             if (!confirm("Voulez vous supprimer toutes vos données locales?"))
@@ -97,7 +97,7 @@ export default function About({ visible }) {
           className="reset"
           startIcon={<FileDownload />}
           size="large"
-          color="primary"
+          color="secondary"
           variant="contained"
           onClick={() => {
             const data = new Blob([JSON.stringify(context.choices)], {
@@ -120,7 +120,7 @@ export default function About({ visible }) {
         <h2>Réseaux Sociaux</h2>
         <div className="About__socials">
           <Button
-            color="primary"
+            color="secondary"
             variant="contained"
             href="https://twitter.com/VoteFinder_eu"
             startIcon={<X />}
@@ -128,7 +128,7 @@ export default function About({ visible }) {
             Twitter
           </Button>
           <Button
-            color="primary"
+            color="secondary"
             variant="contained"
             href="https://www.instagram.com/votefinder.eu"
             startIcon={<Instagram />}
@@ -136,7 +136,7 @@ export default function About({ visible }) {
             instagram
           </Button>
           <Button
-            color="primary"
+            color="secondary"
             variant="contained"
             href="https://www.tiktok.com/@votefinder.eu"
           >

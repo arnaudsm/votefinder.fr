@@ -8,7 +8,7 @@
 
   &__footer {
     text-align: center;
-    color: var(--mui-palette-body-main);
+    color: var(--mui-palette-primary-main);
 
     a {
       color: var(--link-color);
@@ -56,7 +56,7 @@
   }
 
   &__top {
-    background-color: var(--mui-palette-primary-main);
+    background-color: var(--mui-palette-secondary-main);
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }
