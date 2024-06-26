@@ -2,17 +2,20 @@
   width: 100%;
   z-index: 5;
 
+  --header-height: 3.5rem;
+  --navbar-padding: 0.5rem;
+
   &__toolbar {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
-    padding: 1rem;
+    padding: var(--navbar-padding);
     height: var(--header-height);
   }
 
   &__logo {
-    height: calc(var(--header-height) - 2rem);
+    height: calc(var(--header-height) - (var(--navbar-padding) * 2));
 
     &:hover {
       opacity: 0.85;

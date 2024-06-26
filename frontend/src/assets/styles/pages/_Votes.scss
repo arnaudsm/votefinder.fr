@@ -1,9 +1,12 @@
+@use '../base/breakpoints' as breakpoints;
+
 .Votes {
   padding: 1rem 1rem 2rem;
   box-sizing: border-box;
   height: 100%;
   width: 100%;
   display: flex;
+  align-items: center;
   flex-direction: column;
   justify-content: space-between;
 
@@ -21,8 +24,8 @@
     position: absolute;
     bottom: 20vh;
     left: 0;
-    width: calc(200vw / var(--zoom));
-    height: calc(200vw / var(--zoom));
+    width: 200vw;
+    height: 200vw;
     z-index: -2;
     background-color: var(--mui-palette-background-main);
     border-radius: 200vw;
@@ -39,9 +42,13 @@
 
   &__actions {
     display: flex;
-    gap: 3rem;
+    gap: 2rem;
     align-items: center;
     justify-content: center;
+
+    @media only screen and (min-width: breakpoints.$breakpoint-sm) {
+      gap: 3rem;
+    }
 
     .actions {
       &__pour,
@@ -68,9 +75,27 @@
       }
 
       &__pour, &__contre {
-        width: 5rem;
-        height: 5rem;
-        padding: 1.25rem !important;
+        width: 4.5rem;
+        height: 4.5rem;
+        padding: 1rem;
+
+        @media only screen and (min-width: breakpoints.$breakpoint-sm) {
+          width: 6rem;
+          height: 6rem;
+          padding: 1.25rem;
+        }
+      }
+
+      &__passer {
+        width: 3.25rem;
+        height: 3.25rem;
+        padding: 1rem !important;
+
+        @media only screen and (min-width: breakpoints.$breakpoint-sm) {
+          width: 4.5rem;
+          height: 4.5rem;
+          padding: 1.25rem !important;
+        }
       }
 
       &__pour {
@@ -91,12 +116,6 @@
             fill: var(--mui-palette-white-main);
           }
         }
-      }
-
-      &__passer {
-        width: 3.5rem;
-        height: 3.5rem;
-        padding: 0.5rem !important;
       }
     }
   }

@@ -1,9 +1,16 @@
+@use '../base/breakpoints' as breakpoints;
+
 html {
   height: 100%;
   width: 100%;
   font-family: var(--font-body), sans-serif;
 
-  --zoom: 1;
+  /* https://clamp.font-size.app/ */
+  font-size: clamp(1rem, 0.2895rem + 0.7895vw, 1.375rem); /* 16px at 1200, 22px at 2200 */
+
+  @media only screen and (max-width: #{breakpoints.$breakpoint-xs - 1px}) {
+    font-size: 15px;
+  }
 
   &[data-mui-color-scheme="light"] {
     --result-bg-color: #c2c2c2;
@@ -15,22 +22,6 @@ html {
     --result-bg-color: var(--mui-palette-background-main);
     --link-color: #ccc;
     --link-visited-color: #ccc;
-  }
-}
-
-@media (min-height: 1000px) {
-  html {
-    zoom: 125%;
-
-    --zoom: 1.25;
-  }
-}
-
-@media (max-height: 700px) {
-  html {
-    zoom: 75%;
-
-    --zoom: 0.75;
   }
 }
 
