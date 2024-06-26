@@ -11,5 +11,8 @@ lint: init
 dev: init
 	(cd frontend && yarn dev)
 
+dev-host: init
+	(cd frontend && yarn dev --host)
+
 build: init
 	(cd frontend && yarn build)
