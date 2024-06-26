@@ -1,9 +1,15 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import svgr from "vite-plugin-svgr";
-import mkcert from "vite-plugin-mkcert";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), mkcert(), svgr({ include: "**/*.svg" })],
+  plugins: [
+    react(),
+    svgr({ include: "**/*.svg" }),
+    // eslint-disable-next-line no-undef
+    ...(process.env.USE_HTTPS === "true"
+      ? [await import("vite-plugin-mkcert").then((plugin) => plugin.default())]
+      : []),
+  ],
 });
