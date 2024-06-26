@@ -21,5 +21,11 @@
     &:hover {
       opacity: 0.85;
     }
+
+    .Logo-svg {
+      &__vote {
+        fill: var(--logo-svg-text-vote-color);
+      }
+    }
   }
 }
