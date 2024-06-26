@@ -50,6 +50,10 @@ export default function Votes({ visible }) {
     (Object.keys(context.choices).length / recommendedVotesCount) * 100,
   );
 
+  const progressMinValueAnimTrigger = 0.2;
+  const progressMinValueTrigger = 0.05;
+  const maxTranslateX = 140;
+
   const baseColor = hexToRgb("#6000C1");
   const acceptColor = hexToRgb("#31CA93");
   const refuseColor = hexToRgb("#ED2579");
@@ -71,7 +75,8 @@ export default function Votes({ visible }) {
         const matrix = new DOMMatrix(computedStyle.transform);
         const translateX = matrix.m41;
 
-        const percent = Math.min(Math.abs(translateX), 100) / 100;
+        const percent =
+          Math.min(Math.abs((translateX / maxTranslateX) * 100), 100) / 100;
 
         const interpolatedColor = gsap.utils.interpolate(
           baseColor,
@@ -85,24 +90,35 @@ export default function Votes({ visible }) {
           Math.round(interpolatedColor[2]),
         );
 
-        const blurValue = percent * 10 - 0.2;
-        if (percent > 0.05) {
+        const blurValue = (percent - progressMinValueAnimTrigger) * 10;
+        const scaleValue = blurValue / 70;
+        if (percent > progressMinValueTrigger) {
           gsap.set(actionContreRef.current, {
+            scale:
+              percent > progressMinValueAnimTrigger && translateX < 0
+                ? 1 + scaleValue
+                : 1,
             filter:
-              percent > 0.2 && translateX > 0
+              percent > progressMinValueAnimTrigger && translateX > 0
                 ? `blur(${blurValue}px)`
                 : "blur(0px)",
           });
 
           gsap.set(actionPourRef.current, {
+            scale:
+              percent > progressMinValueAnimTrigger && translateX > 0
+                ? 1 + scaleValue
+                : 1,
             filter:
-              percent > 0.2 && translateX < 0
+              percent > progressMinValueAnimTrigger && translateX < 0
                 ? `blur(${blurValue}px)`
                 : "blur(0px)",
           });
 
           gsap.set(actionPasserRef.current, {
             filter: percent > 0.2 ? `blur(${blurValue}px)` : "blur(0px)",
+            scale:
+              percent > progressMinValueAnimTrigger ? 1 - blurValue / 50 : 1,
           });
         }
 
@@ -126,6 +142,7 @@ export default function Votes({ visible }) {
 
       gsap.to([actionContreEl, actionPasserEl, actionPourEl], {
         filter: "blur(0px)",
+        scale: 1,
         duration: 0.3,
       });
     };
