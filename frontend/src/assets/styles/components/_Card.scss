@@ -103,7 +103,8 @@
 
   &__subtitles {
     margin-top: 2rem;
-    padding-left: 1rem;
+    padding-left: 0;
+    list-style-type: none;
   }
 
   &__subtitle {
