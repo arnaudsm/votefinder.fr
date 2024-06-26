@@ -18,7 +18,7 @@ export default function Welcome() {
             <h2>Et découvrez quel parti a voté comme vous✌️</h2>
             <Button
               className="Welcome__start"
-              color="lightRed"
+              color="background"
               variant="contained"
               disableElevation
               onClick={() => {
