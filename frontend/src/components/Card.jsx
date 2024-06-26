@@ -33,8 +33,8 @@ export default function Card({ vote_id, list_id, editable }) {
 
             <h2 className="Card__title">{vote.titre}</h2>
             <ul className="Card__subtitles">
-              <li className="Card__subtitle">{vote.sous_titre_1}</li>
-              <li className="Card__subtitle">{vote.sous_titre_2}</li>
+              <li className="Card__subtitle">• {vote.sous_titre_1}</li>
+              <li className="Card__subtitle">• {vote.sous_titre_2}</li>
             </ul>
           </div>
           <div className="Card__bottom">

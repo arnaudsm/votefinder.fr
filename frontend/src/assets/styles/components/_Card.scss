@@ -1,6 +1,10 @@
 @use '../base/breakpoints' as breakpoints;
 
 .Card {
+  --card-top-bg-color: var(--mui-palette-lightPurple-main);
+  --card-bottom-bg-color: var(--mui-palette-purple-main);
+  --card-border-radius: 2rem;
+
   perspective: 1000px;
   transform-style: preserve-3d;
   position: relative;
@@ -99,7 +103,8 @@
 
   &__subtitles {
     margin-top: 2rem;
-    padding-left: 1rem;
+    padding-left: 0;
+    list-style-type: none;
   }
 
   &__subtitle {
