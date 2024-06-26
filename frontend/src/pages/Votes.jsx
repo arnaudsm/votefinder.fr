@@ -11,7 +11,7 @@ import { shuffle } from "../utils/utils";
 import { recommendedVotesCount } from "../data/variables";
 import gsap from "gsap";
 import { hexToRgb, rgbToHex } from "../utils/utils";
-import shrugIcon from "../assets/icons/shrug.png";
+import CrossIcon from "../assets/icons/cross.svg";
 
 export default function Votes({ visible }) {
   let currentSwipeCardRef = useRef(null);
@@ -183,7 +183,7 @@ export default function Votes({ visible }) {
               ?.click();
           }}
         >
-          <img src={shrugIcon} alt={"Woman Shrugging"} />
+          <CrossIcon />
         </Button>
 
         <Button
