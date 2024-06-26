@@ -20,9 +20,6 @@ const colors = {
     main: "#FFFFFF",
     background: "#f0f1f9",
   },
-  gray: {
-    main: "#3E3E3E",
-  },
   black: {
     main: "#121212",
     background: "#1e1e1e",
@@ -30,6 +27,9 @@ const colors = {
 };
 
 export const theme = extendTheme({
+  typography: {
+    fontFamily: ["var(--font-body)", "sans-serif"].join(","),
+  },
   colorSchemes: {
     light: {
       palette: {

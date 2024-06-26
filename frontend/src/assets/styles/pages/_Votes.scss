@@ -87,12 +87,12 @@
       &__passer {
         width: 3.25rem;
         height: 3.25rem;
-        padding: 1rem !important;
+        padding: 0.875rem !important;
 
         @media only screen and (min-width: breakpoints.$breakpoint-sm) {
           width: 4.5rem;
           height: 4.5rem;
-          padding: 1.5rem !important;
+          padding: 1.25rem !important;
         }
 
         svg {
@@ -157,7 +157,6 @@
 
   .swipe-card {
     &__container {
-      border-radius: var(--card-border-radius);
       overflow: unset !important;
       background: transparent !important;
 

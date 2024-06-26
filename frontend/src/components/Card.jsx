@@ -11,6 +11,9 @@ import {
 } from "@mui/icons-material";
 import { formatDate } from "../utils/utils.jsx";
 import ListVote from "./ListVote";
+import CrossIcon from "../assets/icons/cross.svg";
+import ThumbUpIcon from "@mui/icons-material/ThumbUp";
+import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 
 export default function Card({ vote_id, list_id, editable }) {
   const vote = data.votes[vote_id];
@@ -18,7 +21,7 @@ export default function Card({ vote_id, list_id, editable }) {
   const cardRef = useRef(null);
 
   return (
-    <div ref={cardRef} className="Card">
+    <div ref={cardRef} className={`Card ${editable ? "Card--editable" : ""}`}>
       <div className="Card__front">
         <div className="Card__container">
           <div className="Card__top">
@@ -30,8 +33,8 @@ export default function Card({ vote_id, list_id, editable }) {
 
             <h2 className="Card__title">{vote.titre}</h2>
             <ul className="Card__subtitles">
-              <li className="Card__subtitle">{vote.sous_titre_1}</li>
-              <li className="Card__subtitle">{vote.sous_titre_2}</li>
+              <li className="Card__subtitle">• {vote.sous_titre_1}</li>
+              <li className="Card__subtitle">• {vote.sous_titre_2}</li>
             </ul>
           </div>
           <div className="Card__bottom">
@@ -39,14 +42,25 @@ export default function Card({ vote_id, list_id, editable }) {
               <div className="Card__results">
                 {vote && <ListVote vote_id={vote_id} list_id={list_id} />}
 
-                <div className="Card__user-vote">
+                <div className="Card__user-vote user-vote">
                   <span>Vous avez voté : </span>
-                  <strong>
+
+                  <div className="user-vote__icon">
                     {
                       {
-                        "-": "👎 Contre",
+                        "-": <ThumbDownIcon />,
+                        0: <CrossIcon />,
+                        "+": <ThumbUpIcon />,
+                      }[context.choices[vote_id]]
+                    }
+                  </div>
+
+                  <strong className="user-vote__label">
+                    {
+                      {
+                        "-": "Contre",
                         0: "Passer",
-                        "+": "👍 Pour",
+                        "+": "Pour",
                       }[context.choices[vote_id]]
                     }
                   </strong>
@@ -78,27 +92,36 @@ export default function Card({ vote_id, list_id, editable }) {
                 </Button>
               </div>
             )}
-            {editable && (
-              <ToggleButtonGroup
-                className="Card__toggle-group"
-                value={context.choices[vote_id]}
-                exclusive
-                fullWidth={true}
-                onChange={(event) =>
-                  context.choose({
-                    vote_id,
-                    type: event.target.value,
-                    noPopup: true,
-                  })
-                }
-              >
-                <ToggleButton value="-">👎 Contre</ToggleButton>
-                <ToggleButton value="0">Passer</ToggleButton>
-                <ToggleButton value="+">👍 Pour</ToggleButton>
-              </ToggleButtonGroup>
-            )}
           </div>
         </div>
+
+        {editable && (
+          <div className="Card__toggle-container">
+            <ToggleButtonGroup
+              className="Card__toggle-group"
+              value={context.choices[vote_id]}
+              exclusive
+              fullWidth={true}
+              onChange={(event) =>
+                context.choose({
+                  vote_id,
+                  type: event.target.value,
+                  noPopup: true,
+                })
+              }
+            >
+              <ToggleButton value="-">
+                <ThumbDownIcon /> Contre
+              </ToggleButton>
+              <ToggleButton value="0">
+                <CrossIcon /> Passer
+              </ToggleButton>
+              <ToggleButton value="+">
+                <ThumbUpIcon /> Pour
+              </ToggleButton>
+            </ToggleButtonGroup>
+          </div>
+        )}
       </div>
       <div className="Card__back">
         <div className="Card__container">

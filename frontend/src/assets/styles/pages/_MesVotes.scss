@@ -1,4 +1,11 @@
 .MesVotes {
+  &__title {
+    margin-top: 1rem;
+    text-align: center;
+    font-family: var(--font-title), sans-serif;
+    font-weight: 700;
+  }
+
   &__results {
     display: flex;
     flex-direction: column;

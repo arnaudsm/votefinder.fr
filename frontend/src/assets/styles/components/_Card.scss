@@ -1,6 +1,10 @@
 @use '../base/breakpoints' as breakpoints;
 
 .Card {
+  --card-top-bg-color: var(--mui-palette-lightPurple-main);
+  --card-bottom-bg-color: var(--mui-palette-purple-main);
+  --card-border-radius: 2rem;
+
   perspective: 1000px;
   transform-style: preserve-3d;
   position: relative;
@@ -12,6 +16,7 @@
   }
 
   &__front {
+    position: relative;
     z-index: 2;
   }
 
@@ -41,26 +46,16 @@
     }
   }
 
-  &--revert {
-    .Card__front {
-      transform: rotateY(180deg) !important;
-    }
-
-    .Card__back {
-      transform: rotateY(360deg) !important;
-    }
-  }
-
   &__container {
     background: linear-gradient(180deg, var(--card-top-bg-color) 0%, var(--card-bottom-bg-color) 100%);
     color: var(--mui-palette-white-main);
-    padding: 0.75rem 1rem 2rem;
-    border-radius: var(--card-border-radius);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
+    padding: 0.75rem 1rem 2rem;
     box-sizing: border-box;
+    border-radius: var(--card-border-radius);
 
     @media only screen and (min-width: breakpoints.$breakpoint-sm) {
       padding: 1rem 1.25rem 1.5rem;
@@ -108,7 +103,8 @@
 
   &__subtitles {
     margin-top: 2rem;
-    padding-left: 1rem;
+    padding-left: 0;
+    list-style-type: none;
   }
 
   &__subtitle {
@@ -179,6 +175,32 @@
 
   &__user-vote {
     margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+
+    .user-vote {
+      &__icon {
+        margin-left: 0.5rem;
+        width: 1.5rem;
+        height: 1.5rem;
+
+        svg {
+          width: 100%;
+          height: 100%;
+
+          path {
+            fill: var(--mui-palette-white-main);
+          }
+        }
+      }
+
+      &__label {
+        margin-left: 0.4rem;
+        text-transform: uppercase;
+        font-family: var(--font-title), sans-serif;
+        font-weight: 700;
+      }
+    }
   }
 
   &__results {
@@ -190,15 +212,66 @@
   }
 
   &__toggle-group {
-    background-color: var(--mui-palette-background-paper);
-    border: none;
+    background-color: var(--card-top-bg-color);
+    border-radius: 0 !important;
 
     button {
       border: none;
+      border-radius: 0 !important;
+      color: var(--mui-palette-white-main);
+      font-family: var(--font-title), sans-serif;
+      font-weight: 700;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+
+      svg {
+        width: 1.5rem;
+        height: 1.5rem;
+        margin-right: 0.5rem;
+
+        path {
+          fill: var(--mui-palette-white-main);
+        }
+      }
 
       &.Mui-selected {
-        color: var(--mui-palette-white-main);
-        background-color: #5c90cf !important;
+        color: var(--mui-palette-purple-main);
+        background-color: var(--mui-palette-white-main) !important;
+
+        svg {
+          path {
+            fill: var(--mui-palette-purple-main);
+          }
+        }
+      }
+    }
+  }
+
+  &--revert {
+    .Card__front {
+      transform: rotateY(180deg) !important;
+    }
+
+    .Card__back {
+      transform: rotateY(360deg) !important;
+    }
+  }
+
+  &--editable {
+    .Card__front {
+      .Card {
+        &__container {
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+
+        &__toggle-container {
+          border: solid 0.3rem var(--mui-palette-purple-main);
+          border-radius: var(--card-border-radius);
+          border-top-left-radius: 0;
+          border-top-right-radius: 0;
+          overflow: hidden;
+        }
       }
     }
   }
