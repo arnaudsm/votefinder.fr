@@ -71,7 +71,7 @@ export default function About({ visible }) {
 
         <h2>Paramètres</h2>
         <div>
-          Choix du thème :
+          Choix du thème
           <ThemeSwitcher />
         </div>
 
@@ -191,7 +191,7 @@ export default function About({ visible }) {
             <h5>Designer UX / UI</h5>
           </div>
         </div>
-        <h2>Remerciements</h2>
+        <h2>Partenariats</h2>
         <div className="About__team">
           <div>
             <h4>Théo Delemazure</h4>

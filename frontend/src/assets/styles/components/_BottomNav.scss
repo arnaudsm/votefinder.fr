@@ -20,11 +20,9 @@
     .MuiBottomNavigationAction-label {
       transition: margin 0.1s ease-in-out;
       font-size: 0.75rem !important;
-      font-weight: 800;
       margin-top: 0 !important;
 
       @media only screen and (min-width: breakpoints.$breakpoint-sm) {
-        font-size: 0.85rem !important;
       }
     }
   }

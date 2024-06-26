@@ -9,14 +9,11 @@ import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import { shuffle } from "../utils/utils";
 import { recommendedVotesCount } from "../data/variables";
-import gsap from "gsap";
-import { hexToRgb, rgbToHex } from "../utils/utils";
 import CrossIcon from "../assets/icons/cross.svg";
 
 export default function Votes({ visible }) {
   let currentSwipeCardRef = useRef(null);
   let currentCardRef = useRef(null);
-  const tickerRef = useRef(null);
   const actionContreRef = useRef(null);
   const actionPasserRef = useRef(null);
   const actionPourRef = useRef(null);
@@ -49,104 +46,6 @@ export default function Votes({ visible }) {
   const progress = Math.floor(
     (Object.keys(context.choices).length / recommendedVotesCount) * 100,
   );
-
-  const progressMinValueAnimTrigger = 0.2;
-  const progressMinValueTrigger = 0.05;
-  const maxTranslateX = 140;
-
-  const baseColor = hexToRgb("#6000C1");
-  const acceptColor = hexToRgb("#31CA93");
-  const refuseColor = hexToRgb("#ED2579");
-
-  useEffect(() => {
-    let actionContreEl = actionContreRef.current;
-    let actionPourEl = actionPourRef.current;
-    let actionPasserEl = actionPasserRef.current;
-
-    if (visible) {
-      // Démarrer le ticker GSAP
-      tickerRef.current = gsap.ticker.add(() => {
-        if (!currentSwipeCardRef.current || !currentCardRef.current || !visible)
-          return;
-
-        const computedStyle = window.getComputedStyle(
-          currentSwipeCardRef.current,
-        );
-        const matrix = new DOMMatrix(computedStyle.transform);
-        const translateX = matrix.m41;
-
-        const percent =
-          Math.min(Math.abs((translateX / maxTranslateX) * 100), 100) / 100;
-
-        const interpolatedColor = gsap.utils.interpolate(
-          baseColor,
-          translateX > 0 ? acceptColor : refuseColor,
-          percent,
-        );
-
-        const interpolatedHex = rgbToHex(
-          Math.round(interpolatedColor[0]),
-          Math.round(interpolatedColor[1]),
-          Math.round(interpolatedColor[2]),
-        );
-
-        const blurValue = (percent - progressMinValueAnimTrigger) * 10;
-        const scaleValue = blurValue / 70;
-        if (percent > progressMinValueTrigger) {
-          gsap.set(actionContreRef.current, {
-            scale:
-              percent > progressMinValueAnimTrigger && translateX < 0
-                ? 1 + scaleValue
-                : 1,
-            filter:
-              percent > progressMinValueAnimTrigger && translateX > 0
-                ? `blur(${blurValue}px)`
-                : "blur(0px)",
-          });
-
-          gsap.set(actionPourRef.current, {
-            scale:
-              percent > progressMinValueAnimTrigger && translateX > 0
-                ? 1 + scaleValue
-                : 1,
-            filter:
-              percent > progressMinValueAnimTrigger && translateX < 0
-                ? `blur(${blurValue}px)`
-                : "blur(0px)",
-          });
-
-          gsap.set(actionPasserRef.current, {
-            filter: percent > 0.2 ? `blur(${blurValue}px)` : "blur(0px)",
-            scale:
-              percent > progressMinValueAnimTrigger ? 1 - blurValue / 50 : 1,
-          });
-        }
-
-        gsap.set(currentCardRef.current, {
-          "--card-bottom-bg-color": interpolatedHex,
-        });
-      });
-    } else {
-      // Arrêter et retirer le ticker GSAP
-      if (tickerRef.current) {
-        gsap.ticker.remove(tickerRef.current);
-        tickerRef.current = null; // Réinitialiser la référence du ticker
-      }
-    }
-
-    // Cleanup lors du démontage du composant
-    return () => {
-      if (tickerRef.current) {
-        gsap.ticker.remove(tickerRef.current);
-      }
-
-      gsap.to([actionContreEl, actionPasserEl, actionPourEl], {
-        filter: "blur(0px)",
-        scale: 1,
-        duration: 0.3,
-      });
-    };
-  }, [visible, id, acceptColor, baseColor, refuseColor]);
 
   return (
     <div className={`Votes ${visible ? "" : "hide"}`}>

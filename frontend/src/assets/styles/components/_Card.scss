@@ -32,6 +32,7 @@
     .Card {
       &__actions {
         flex-direction: column;
+        margin-top: 1rem;
         gap: 1rem;
         align-items: center;
       }
@@ -53,7 +54,7 @@
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
-    padding: 0.75rem 1rem 2rem;
+    padding: 0.75rem 1rem 1.5rem;
     box-sizing: border-box;
     border-radius: var(--card-border-radius);
 
@@ -92,12 +93,12 @@
     font-family: var(--font-title), sans-serif;
     font-weight: 800;
     text-transform: uppercase;
-    font-size: 1.375rem;
-    line-height: 1.36;
+    font-size: 1.25rem;
+    line-height: 1.25;
     text-align: center;
 
     @media only screen and (min-width: breakpoints.$breakpoint-sm) {
-      font-size: 2rem;
+      font-size: 1.5rem;
     }
   }
 
@@ -177,6 +178,7 @@
     margin-top: 1rem;
     display: flex;
     justify-content: center;
+    align-items: center;
 
     .user-vote {
       &__icon {
@@ -221,13 +223,13 @@
       color: var(--mui-palette-white-main);
       font-family: var(--font-title), sans-serif;
       font-weight: 700;
-      padding-top: 1rem;
-      padding-bottom: 1rem;
+      padding-top: .75  rem;
+      padding-bottom: .75 rem;
 
       svg {
-        width: 1.5rem;
-        height: 1.5rem;
-        margin-right: 0.5rem;
+        width: 1.125rem;
+        height: 1.125rem;
+        margin-right: 0.4rem;
 
         path {
           fill: var(--mui-palette-white-main);

@@ -1,4 +1,4 @@
-@use '../base/breakpoints' as breakpoints;
+@use "../base/breakpoints" as breakpoints;
 
 .Votes {
   padding: 1rem 1rem 2rem;
@@ -17,7 +17,11 @@
     width: 100%;
     height: 100%;
     z-index: -2;
-    background-color: color-mix(in srgb, var(--mui-palette-secondary-main) 40%, transparent) !important;
+    background-color: color-mix(
+      in srgb,
+      var(--mui-palette-secondary-main) 40%,
+      transparent
+    ) !important;
   }
 
   &__bg-circle {
@@ -61,18 +65,19 @@
         min-width: unset !important;
         background-color: var(--mui-palette-white-main);
 
-        svg, img {
+        svg,
+        img {
           width: 100%;
           height: 100%;
           object-fit: contain;
         }
 
         &.blur {
-          filter: blur(5px);
         }
       }
 
-      &__pour, &__contre {
+      &__pour,
+      &__contre {
         width: 4.5rem;
         height: 4.5rem;
         padding: 1rem;
@@ -166,7 +171,6 @@
 
       &:not(:last-child) {
         .swipe-card__content {
-          filter: blur(3px) brightness(110%);
         }
       }
     }
@@ -186,8 +190,9 @@
       height: 100%;
       width: 100%;
       background: transparent !important;
-      filter: blur(0) brightness(100%);
-      transition: filter 0.5s ease-out, opacity 0.5s ease-out;
+      transition:
+        filter 0.5s ease-out,
+        opacity 0.5s ease-out;
     }
   }
 
