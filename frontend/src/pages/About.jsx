@@ -71,7 +71,7 @@ export default function About({ visible }) {
 
         <h2>Paramètres</h2>
         <div>
-          Choix du thème
+          Choix du thème :
           <ThemeSwitcher />
         </div>
 
