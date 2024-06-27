@@ -131,11 +131,7 @@
   &__subtitle {
     text-align: center;
     font-weight: 600;
-    font-size: 0.8125rem;
-
-    @media only screen and (min-width: breakpoints.$breakpoint-sm) {
-      font-size: 0.875rem;
-    }
+    font-size: 0.875rem;
 
     &:not(:first-child) {
       margin-top: 1.25rem;

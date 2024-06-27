@@ -6,13 +6,6 @@ html {
   font-family: var(--font-body), sans-serif;
   font-weight: 700;
 
-  /* https://clamp.font-size.app/ */
-  font-size: clamp(1rem, 0.2895rem + 0.7895vw, 1.375rem); /* 16px at 1440, 22px at 2200 */
-
-  @media only screen and (max-width: #{breakpoints.$breakpoint-xs - 1px}) {
-    font-size: 15px;
-  }
-
   &[data-mui-color-scheme="light"] {
     --link-color: #4751FD;
     --link-visited-color: #4751FD;
@@ -23,6 +16,18 @@ html {
     --link-color: #4751FD;
     --link-visited-color: #4751FD;
     --logo-svg-text-vote-color: #C1C1C1;
+  }
+
+  @media (max-height: 700px) {
+    font-size: 14px;
+  }
+
+  @media (min-height: 1000px) {
+    font-size: 22px;
+  }
+
+  @media (min-height: 1300px) {
+    font-size: 24px;
   }
 }
 
