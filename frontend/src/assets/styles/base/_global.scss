@@ -14,14 +14,14 @@ html {
   }
 
   &[data-mui-color-scheme="light"] {
-    --link-color: inherit;
-    --link-visited-color: inherit;
+    --link-color: #4751FD;
+    --link-visited-color: #4751FD;
     --logo-svg-text-vote-color: #3E3E3E;
   }
 
   &[data-mui-color-scheme="dark"] {
-    --link-color: #ccc;
-    --link-visited-color: #ccc;
+    --link-color: #4751FD;
+    --link-visited-color: #4751FD;
     --logo-svg-text-vote-color: #C1C1C1;
   }
 }
