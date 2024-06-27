@@ -1,8 +1,8 @@
 import "./assets/styles/index.scss";
-import "@fontsource/poppins/500-italic.css";
+import "@fontsource/poppins/600-italic.css";
 import "@fontsource/poppins/700-italic.css";
 import "@fontsource/poppins/800-italic.css";
-import "@fontsource/manrope/600.css";
+import "@fontsource/manrope/700.css";
 import "@fontsource/manrope/800.css";
 
 import { useState, Suspense } from "react";
