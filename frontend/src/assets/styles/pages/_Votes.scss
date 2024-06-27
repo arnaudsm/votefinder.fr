@@ -160,7 +160,7 @@
       overflow: unset !important;
       background: transparent !important;
 
-      &:not(:last-child, :nth-last-child(2)) {
+      &:not(:last-child, :nth-last-child(2), :nth-last-child(3), :nth-last-child(4)) {
         opacity: 0;
       }
 
