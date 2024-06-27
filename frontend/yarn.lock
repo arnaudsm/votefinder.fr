@@ -3210,10 +3210,11 @@ queue-microtask@^1.2.2:
   resolved "https://registry.yarnpkg.com/queue-microtask/-/queue-microtask-1.2.3.tgz#4929228bbc724dfac43e0efb058caf7b6cfb6243"
   integrity sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==
 
-"react-card-swiper@git+https://github.com/Striffly/react-card-swiper.git#dfac8086517563140ba77d9d28a926c537380f3d":
+"react-card-swiper@git+https://github.com/Striffly/react-card-swiper.git#6598d5a0d7e6038a69a80750e3f56e8da95fcf09":
   version "1.1.25"
-  resolved "git+https://github.com/Striffly/react-card-swiper.git#dfac8086517563140ba77d9d28a926c537380f3d"
+  resolved "git+https://github.com/Striffly/react-card-swiper.git#6598d5a0d7e6038a69a80750e3f56e8da95fcf09"
   dependencies:
+    gsap "^3.12.5"
     react "^18.2.0"
     react-dom "^18.2.0"
 
