@@ -5,7 +5,7 @@ import "@fontsource/poppins/800-italic.css";
 import "@fontsource/manrope/600.css";
 import "@fontsource/manrope/800.css";
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import ConfettiExplosion from "react-confetti-explosion";
 
 import { Experimental_CssVarsProvider as CssVarsProvider } from "@mui/material/styles";
@@ -95,12 +95,12 @@ function App() {
             />
           )}
           {started ? (
-            <>
-              <Votes visible={tab === 0} />
-              <Resultats visible={tab === 1} />
-              <MesVotes visible={tab === 2} />
-              <About visible={tab === 3} />
-            </>
+            <Suspense>
+              {tab === 0 && <Votes />}
+              {tab === 1 && <Resultats />}
+              {tab === 2 && <MesVotes />}
+              {tab === 3 && <About />}
+            </Suspense>
           ) : (
             <Welcome />
           )}

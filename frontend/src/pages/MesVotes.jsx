@@ -3,14 +3,14 @@ import { ThemeContext } from "../context/ThemeContext.jsx";
 import data from "../data/data.json";
 import Card from "../components/Card.jsx";
 
-export default function MesVotes({ visible }) {
+export default function MesVotes() {
   const context = useContext(ThemeContext);
   const choices = Object.keys(context.choices).filter(
     (vote_id) => vote_id in data.votes,
   );
 
   return (
-    <div className={`MesVotes ${visible ? "" : "hide"}`}>
+    <div className={`MesVotes`}>
       <h1 className="MesVotes__title">Mes votes</h1>
       <div className="MesVotes__results">
         {choices.map((vote_id) => (

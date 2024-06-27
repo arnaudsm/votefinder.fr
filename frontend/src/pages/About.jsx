@@ -13,11 +13,11 @@ import {
 import { projectURL } from "../data/variables.jsx";
 import ThemeSwitcher from "../components/ThemeSwitcher.jsx";
 
-export default function About({ visible }) {
+export default function About() {
   const context = useContext(ThemeContext);
 
   return (
-    <div className={`About ${visible ? "" : "hide"}`}>
+    <div className={`About`}>
       <div className="About__card">
         <h2>À Propos</h2>
         <p>

@@ -7,7 +7,7 @@ import { Share } from "@mui/icons-material";
 import ResultsListes from "../components/ResultsListes.jsx";
 import ResultsDeputes from "../components/ResultsDeputes.jsx";
 import html2canvas from "html2canvas";
-export default function Resultats({ visible }) {
+export default function Resultats() {
   const [tab, setTab] = useState(0);
   const context = useContext(ThemeContext);
   const results = useMemo(() => getRanks(context.choices), [context.choices]);
@@ -15,7 +15,7 @@ export default function Resultats({ visible }) {
   const handleChange = (event, newValue) => setTab(newValue);
 
   return (
-    <div className={`Resultats ${visible ? "" : "hide"}`}>
+    <div className={`Resultats`}>
       <div className="Resultats__header">
         <h2>🏆 Mes Résultats</h2>
 

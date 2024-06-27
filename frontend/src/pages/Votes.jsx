@@ -19,7 +19,7 @@ import { recommendedVotesCount } from "../data/variables";
 import gsap from "gsap";
 import CrossIcon from "../assets/icons/cross.svg";
 
-export default function Votes({ visible }) {
+export default function Votes() {
   let currentSwipeCardRef = useRef(null);
   let currentCardRef = useRef(null);
   const tickerRef = useRef(null);
@@ -68,7 +68,7 @@ export default function Votes({ visible }) {
   // const actionPasserEl = actionPasserRef.current;
 
   const updateCardGradient = useCallback(() => {
-    if (!currentSwipeCardRef.current || !currentCardRef.current || !visible) {
+    if (!currentSwipeCardRef.current || !currentCardRef.current) {
       return;
     }
 
@@ -118,17 +118,10 @@ export default function Votes({ visible }) {
     //       percent > progressMinValueAnimTrigger ? 1 - blurValue / 50 : 1,
     //   });
     // }
-  }, [cardMatrix, visible]);
+  }, [cardMatrix]);
 
   useEffect(() => {
-    if (visible) {
-      tickerRef.current = gsap.ticker.add(updateCardGradient);
-    } else {
-      if (tickerRef.current) {
-        gsap.ticker.remove(tickerRef.current);
-        tickerRef.current = null;
-      }
-    }
+    tickerRef.current = gsap.ticker.add(updateCardGradient);
 
     // Cleanup
     return () => {
@@ -143,10 +136,10 @@ export default function Votes({ visible }) {
       //   duration: 0.3,
       // });
     };
-  }, [visible, updateCardGradient]);
+  }, [updateCardGradient]);
 
   return (
-    <div className={`Votes ${visible ? "" : "hide"}`}>
+    <div className={`Votes`}>
       <div className="Votes__bg-color"></div>
       <div className="Votes__bg-circle"></div>
 
@@ -192,6 +185,7 @@ export default function Votes({ visible }) {
           ref={actionPasserRef}
           onClick={() => {
             context.choose({ vote_id: id, type: "0" });
+
             document
               .getElementById("swipe-card__dislike-action-button")
               ?.click();
