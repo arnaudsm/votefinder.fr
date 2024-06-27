@@ -61,7 +61,8 @@ export default function StatsModal() {
               ))}
         </div>
         <Button
-          endIcon={<Close />}
+          className="Btn Btn--purple Btn--bordered Btn--centered"
+          startIcon={<Close />}
           variant="text"
           disableElevation
           onClick={() => context.setStatsPopup(false)}

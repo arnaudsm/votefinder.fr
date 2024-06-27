@@ -1,0 +1,66 @@
+@use '../base/breakpoints' as breakpoints;
+
+.Btn {
+  height: 2.5rem;
+  width: fit-content;
+  border-radius: 2.5rem !important;
+  padding: 0.5rem 0.75rem !important;
+  font-family: var(--font-title), sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 0.75rem !important;
+  border: solid 0.125rem transparent !important;
+
+  @media only screen and (min-width: breakpoints.$breakpoint-sm) {
+    padding: 1.25rem 1rem !important;
+    font-size: 1rem !important;
+  }
+
+  .MuiSvgIcon-root {
+    font-size: 1.75rem !important;
+  }
+
+  &--white {
+    background-color: var(--mui-palette-white-main) !important;
+    color: var(--mui-palette-purple-main) !important;
+
+    &.Btn--transparent {
+      background-color: color-mix(in srgb, var(--mui-palette-white-main) 40%, transparent) !important;
+    }
+
+    &.Btn--bordered {
+      color: var(--mui-palette-white-main) !important;
+    }
+  }
+
+  &--purple {
+    background-color: var(--mui-palette-purple-main) !important;
+    color: var(--mui-palette-white-main) !important;
+
+    &.Btn--bordered {
+      color: var(--mui-palette-purple-main) !important;
+    }
+  }
+
+  &--blue {
+    background-color: var(--mui-palette-primary-main) !important;
+    color: var(--mui-palette-white-main) !important;
+
+    &.Btn--bordered {
+      color: var(--mui-palette-primary-main) !important;
+    }
+  }
+
+  &--bordered {
+    background-color: transparent !important;
+    border-color: currentColor !important;
+  }
+
+  &--centered {
+    margin: 0 auto !important;
+  }
+
+  &--large {
+    padding-left: 4rem !important;
+    padding-right: 4rem !important;
+  }
+}

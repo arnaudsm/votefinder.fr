@@ -38,6 +38,7 @@ export default function ListVotesModal() {
         <h2>{data.lists[context.listVotesPopup]?.label}</h2>
         <Button
           startIcon={<AccountBalance />}
+          className="Btn Btn--purple"
           color="secondary"
           variant="contained"
           size="large"
@@ -48,7 +49,8 @@ export default function ListVotesModal() {
           Fiche du parti
         </Button>
         <Button
-          endIcon={<Close />}
+          className="Btn Btn--purple Btn--bordered"
+          startIcon={<Close />}
           variant="text"
           disableElevation
           onClick={() => context.setListVotesPopup(false)}

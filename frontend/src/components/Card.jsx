@@ -77,7 +77,7 @@ export default function Card({ vote_id, list_id, is_votes_page, editable }) {
             {!list_id && (
               <div className="Card__actions">
                 <Button
-                  className="Card__btn"
+                  className="Card__btn Btn Btn--white Btn--bordered Btn--transparent"
                   disableElevation
                   target="_blank"
                   onClick={() => {
@@ -90,7 +90,7 @@ export default function Card({ vote_id, list_id, is_votes_page, editable }) {
 
                 <Button
                   startIcon={<Diversity3 />}
-                  className="Card__btn Card__btn--highlight"
+                  className="Card__btn Btn Btn--white"
                   disableElevation
                   target="_blank"
                   onClick={() => context.setStatsPopup(vote.vote_id)}
@@ -155,7 +155,7 @@ export default function Card({ vote_id, list_id, is_votes_page, editable }) {
                 {vote.summary_url && (
                   <Button
                     startIcon={<StickyNote2 />}
-                    className="Card__btn Card__btn--highlight"
+                    className="Card__btn Btn Btn--white"
                     color="secondary"
                     variant="contained"
                     disableElevation
@@ -168,7 +168,7 @@ export default function Card({ vote_id, list_id, is_votes_page, editable }) {
                 {vote.dossier_url && (
                   <Button
                     startIcon={<Article />}
-                    className="Card__btn Card__btn--highlight"
+                    className="Card__btn Btn Btn--white"
                     color="secondary"
                     variant="contained"
                     disableElevation
@@ -181,7 +181,7 @@ export default function Card({ vote_id, list_id, is_votes_page, editable }) {
                 {vote.debat_url && (
                   <Button
                     startIcon={<QuestionAnswer />}
-                    className="Card__btn Card__btn--highlight"
+                    className="Card__btn Btn Btn--white"
                     color="secondary"
                     variant="contained"
                     disableElevation
@@ -200,7 +200,7 @@ export default function Card({ vote_id, list_id, is_votes_page, editable }) {
               <div className="Card__actions">
                 <Button
                   startIcon={<Sync />}
-                  className="Card__btn Card__btn--large"
+                  className="Card__btn Btn Btn--white Btn--large Btn--bordered Btn--transparent"
                   disableElevation
                   target="_blank"
                   onClick={() => {
