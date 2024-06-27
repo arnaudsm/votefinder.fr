@@ -17,14 +17,14 @@ export default function Resultats() {
   return (
     <div className={`Resultats`}>
       <div className="Resultats__header">
-        <h2>🏆 Mes Résultats</h2>
+        <h1>Mes Résultats</h1>
 
         {minVotesReached && navigator.canShare && (
           <Button
             startIcon={<Share />}
             color="secondary"
             variant="contained"
-            className="Resultats__share"
+            className="Resultats__share Btn Btn--purple"
             onClick={async () => {
               context.setShowShare(true);
               await share();
@@ -37,26 +37,29 @@ export default function Resultats() {
           </Button>
         )}
       </div>
-      <Tabs
-        className="Resultats__tabs"
-        value={tab}
-        onChange={handleChange}
-        indicatorColor="secondary"
-        textColor="secondary"
-        variant="fullWidth"
-      >
-        <Tab label="Listes" />
-        <Tab label="Députés" />
-      </Tabs>
-      {!minVotesReached ? (
-        <div className="Resultats__list">
-          Réponds à plus de {minVotesCount} questions pour voir tes résultats!
-        </div>
-      ) : tab == 0 ? (
-        <ResultsListes results={results} choices={context.choices} />
-      ) : tab == 1 ? (
-        <ResultsDeputes results={results} />
-      ) : null}
+
+      <div className="Resultats__container">
+        <Tabs
+          className="Resultats__tabs"
+          value={tab}
+          onChange={handleChange}
+          indicatorColor="secondary"
+          textColor="secondary"
+          variant="fullWidth"
+        >
+          <Tab className="Resultats__tab" label="Listes" />
+          <Tab className="Resultats__tab" label="Députés" />
+        </Tabs>
+        {!minVotesReached ? (
+          <div className="Resultats__list">
+            Réponds à plus de {minVotesCount} questions pour voir tes résultats!
+          </div>
+        ) : tab == 0 ? (
+          <ResultsListes results={results} choices={context.choices} />
+        ) : tab == 1 ? (
+          <ResultsDeputes results={results} />
+        ) : null}
+      </div>
     </div>
   );
 }

@@ -1,25 +1,24 @@
 .Resultats {
-  background-color: var(--mui-palette-background-paper);
   width: 100%;
   box-sizing: border-box;
-  padding: 1rem 0;
-  border-bottom-left-radius: 1rem;
-  border-bottom-right-radius: 1rem;
-  margin-bottom: 1rem;
+  padding: 1rem;
 
   &__header {
-    margin: 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    h2 {
-      margin: 0;
+    h1 {
+      font-family: var(--font-title), sans-serif;
+      font-weight: 600;
     }
   }
 
-  &__share {
-    height: 3rem;
+  &__container {
+    background-color: var(--mui-palette-background-paper);
+    border-radius: 1rem;
+    padding-top: 0.5rem;
+    margin-top: 2rem;
   }
 
   &__list {
@@ -31,7 +30,33 @@
 
   &__tabs {
     .MuiTabs-fixed {
-      border-bottom: 1px solid rgba(172, 172, 172, 0.5);
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: 1px;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: color-mix(in srgb, var(--mui-palette-primary-main) 54%, transparent) !important;
+        z-index: 1;
+      }
+    }
+
+    .MuiTabs-indicator {
+      z-index: 2;
+      height: 3px;
+    }
+  }
+
+  &__tab {
+    font-family: var(--font-title), sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 1.25rem !important;
+    color: color-mix(in srgb, var(--mui-palette-primary-main) 54%, transparent) !important;
+
+    &.Mui-selected {
+      font-weight: 700 !important;
+      color: var(--mui-palette-secondary-main) !important;
     }
   }
 }
