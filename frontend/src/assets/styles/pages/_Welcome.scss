@@ -1,3 +1,5 @@
+@use '../base/breakpoints' as breakpoints;
+
 .Welcome {
   display: flex;
   flex-direction: column;
@@ -13,6 +15,7 @@
     align-items: center;
     flex: 1;
     max-width: 26rem;
+    padding: 0 1.5rem;
   }
 
   &__bottom {
@@ -23,9 +26,14 @@
 
   &__illustration {
     width: 100%;
+    max-width: 100%;
+    flex-shrink: 1;
+    flex-basis: auto;
+    height: auto;
+    max-height: 40vh;
 
-    img {
-      width: 100%;
+    @media only screen and (min-width: breakpoints.$breakpoint-sm) {
+      max-height: unset;
     }
   }
 
@@ -34,9 +42,13 @@
     text-align: center;
 
     strong {
-      font-size: 1.5rem;
+      font-size: 1.25rem;
       line-height: 1.375;
       font-weight: 900;
+
+      @media only screen and (min-width: breakpoints.$breakpoint-sm) {
+        font-size: 1.5rem;
+      }
     }
 
     p {
