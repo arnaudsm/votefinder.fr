@@ -14,14 +14,12 @@ html {
   }
 
   &[data-mui-color-scheme="light"] {
-    --result-bg-color: #c2c2c2;
     --link-color: inherit;
     --link-visited-color: inherit;
     --logo-svg-text-vote-color: #3E3E3E;
   }
 
   &[data-mui-color-scheme="dark"] {
-    --result-bg-color: var(--mui-palette-background-main);
     --link-color: #ccc;
     --link-visited-color: #ccc;
     --logo-svg-text-vote-color: #C1C1C1;
