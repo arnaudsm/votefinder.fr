@@ -80,12 +80,24 @@
         width: 4.5rem;
         height: 4.5rem;
         padding: 1rem;
+
+        @media (min-height: 800px) {
+          width: 5.5rem;
+          height: 5.5rem;
+          padding: 1.25rem;
+        }
       }
 
       &__passer {
         width: 3.25rem;
         height: 3.25rem;
         padding: 0.875rem !important;
+
+        @media (min-height: 800px) {
+          width: 4rem;
+          height: 4rem;
+          padding: 1.25rem !important;
+        }
 
         svg {
           path {
