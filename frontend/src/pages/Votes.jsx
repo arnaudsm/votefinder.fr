@@ -79,6 +79,10 @@ export default function Votes() {
   // const actionPourEl = actionPourRef.current;
   // const actionPasserEl = actionPasserRef.current;
 
+  useEffect(() => {
+    context.contentRef.current.scrollTo(0, 0);
+  }, [context.contentRef]);
+
   const updateCardGradient = useCallback(() => {
     if (!currentSwipeCardRef.current || !currentCardRef.current) {
       return;

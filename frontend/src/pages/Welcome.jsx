@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { ThemeContext } from "../context/ThemeContext.jsx";
 import { projectURL } from "../data/variables.jsx";
 import { Button } from "@mui/material";
@@ -8,6 +8,10 @@ import WelcomeIllustrationPath from "../assets/images/welcome-illustration.svg";
 
 export default function Welcome() {
   const context = useContext(ThemeContext);
+
+  useEffect(() => {
+    context.contentRef.current.scrollTo(0, 0);
+  }, [context.contentRef]);
 
   return (
     <div className="Welcome">

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { ThemeContext } from "../context/ThemeContext.jsx";
 import { Button } from "@mui/material";
 import {
@@ -15,6 +15,10 @@ import ThemeSwitcher from "../components/ThemeSwitcher.jsx";
 
 export default function About() {
   const context = useContext(ThemeContext);
+
+  useEffect(() => {
+    context.contentRef.current.scrollTo(0, 0);
+  }, [context.contentRef]);
 
   return (
     <div className={`About`}>

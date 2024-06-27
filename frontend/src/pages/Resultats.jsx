@@ -1,4 +1,4 @@
-import { useContext, useMemo, useState } from "react";
+import { useContext, useMemo, useState, useEffect } from "react";
 import { ThemeContext } from "../context/ThemeContext.jsx";
 import { getRanks } from "../utils/votes.jsx";
 import { minVotesCount } from "../data/variables.jsx";
@@ -13,6 +13,10 @@ export default function Resultats() {
   const results = useMemo(() => getRanks(context.choices), [context.choices]);
   const minVotesReached = Object.keys(context.choices).length >= minVotesCount;
   const handleChange = (event, newValue) => setTab(newValue);
+
+  useEffect(() => {
+    context.contentRef.current.scrollTo(0, 0);
+  }, [context.contentRef]);
 
   return (
     <div className={`Resultats`}>

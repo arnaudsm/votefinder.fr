@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { ThemeContext } from "../context/ThemeContext.jsx";
 import data from "../data/data.json";
 import Card from "../components/Card.jsx";
@@ -8,6 +8,10 @@ export default function MesVotes() {
   const choices = Object.keys(context.choices).filter(
     (vote_id) => vote_id in data.votes,
   );
+
+  useEffect(() => {
+    context.contentRef.current.scrollTo(0, 0);
+  }, [context.contentRef]);
 
   return (
     <div className={`MesVotes`}>
