@@ -23,13 +23,13 @@
   &__bg-circle {
     position: absolute;
     bottom: 20vh;
-    left: 0;
+    left: 50%;
     width: 200vw;
     height: 200vw;
     z-index: -2;
     background-color: var(--mui-palette-background-main);
     border-radius: 200vw;
-    transform: translateX(-25%);
+    transform: translateX(-50%);
   }
 
   &__stack {
@@ -80,24 +80,12 @@
         width: 4.5rem;
         height: 4.5rem;
         padding: 1rem;
-
-        @media only screen and (min-width: breakpoints.$breakpoint-sm) {
-          width: 6rem;
-          height: 6rem;
-          padding: 1.25rem;
-        }
       }
 
       &__passer {
         width: 3.25rem;
         height: 3.25rem;
         padding: 0.875rem !important;
-
-        @media only screen and (min-width: breakpoints.$breakpoint-sm) {
-          width: 4.5rem;
-          height: 4.5rem;
-          padding: 1.25rem !important;
-        }
 
         svg {
           path {

@@ -7,7 +7,7 @@ html {
   font-weight: 700;
 
   /* https://clamp.font-size.app/ */
-  font-size: clamp(1rem, 0.2895rem + 0.7895vw, 1.375rem); /* 16px at 1200, 22px at 2200 */
+  font-size: clamp(1rem, 0.2895rem + 0.7895vw, 1.375rem); /* 16px at 1440, 22px at 2200 */
 
   @media only screen and (max-width: #{breakpoints.$breakpoint-xs - 1px}) {
     font-size: 15px;

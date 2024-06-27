@@ -21,7 +21,10 @@ export default function Card({ vote_id, list_id, is_votes_page, editable }) {
   const cardRef = useRef(null);
 
   return (
-    <div ref={cardRef} className={`Card ${editable ? "Card--editable" : ""}`}>
+    <div
+      ref={cardRef}
+      className={`Card ${editable ? "Card--editable" : ""} ${is_votes_page ? "Card--votes" : ""}`}
+    >
       <div className="Card__front">
         <div className="Card__container">
           <div className="Card__bg"></div>

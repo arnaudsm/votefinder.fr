@@ -35,7 +35,9 @@ export default function ListVotesModal() {
         </div>
       </div>
       <div className="ListVotesModal__actions">
-        <h2>{data.lists[context.listVotesPopup]?.label}</h2>
+        <h2 className="TopModal__title">
+          {data.lists[context.listVotesPopup]?.label}
+        </h2>
         <Button
           startIcon={<AccountBalance />}
           className="Btn Btn--purple"

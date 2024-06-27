@@ -17,8 +17,8 @@ export default function StatsModal() {
       className="StatsModal TopModal"
     >
       <div className="content">
-        <h2>{vote?.titre}</h2>
-        <ul>
+        <h2 className="TopModal__title">{vote?.titre}</h2>
+        <ul className="TopModal__list">
           <li>{vote?.sous_titre_1}</li>
           <li>{vote?.sous_titre_2}</li>
         </ul>

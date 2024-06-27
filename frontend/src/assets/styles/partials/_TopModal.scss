@@ -13,14 +13,23 @@
     min-height: 30rem;
   }
 
-  h2 {
+  &__title {
     font-family: var(--font-title), sans-serif;
     font-weight: 800;
     font-size: 1.25rem;
     text-align: center;
   }
 
-  ul {
+  &__list {
     text-align: left;
+    padding-left: 1.5rem;
+
+    li {
+      &:not(:first-child) {
+        margin-top: 0.5rem;
+      }
+
+      font-size: 0.875rem;
+    }
   }
 }

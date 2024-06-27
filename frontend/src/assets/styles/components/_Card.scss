@@ -94,6 +94,7 @@
   }
 
   &__bottom {
+    margin-top: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -106,23 +107,18 @@
     font-size: 0.75rem;
     font-family: var(--font-title), sans-serif;
     font-weight: 600;
-
-    @media only screen and (min-width: breakpoints.$breakpoint-sm) {
-      font-size: 1rem;
-    }
   }
 
   &__title {
     margin-top: 1rem;
     font-family: var(--font-title), sans-serif;
-    font-weight: 800;
-    text-transform: uppercase;
-    font-size: 1.375rem;
-    line-height: 1.36;
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 1.125;
     text-align: center;
 
     @media only screen and (min-width: breakpoints.$breakpoint-sm) {
-      font-size: 2rem;
+      font-size: 1.5rem;
     }
   }
 
@@ -134,11 +130,11 @@
 
   &__subtitle {
     text-align: center;
-    font-weight: 800;
+    font-weight: 600;
     font-size: 0.8125rem;
 
     @media only screen and (min-width: breakpoints.$breakpoint-sm) {
-      font-size: 1rem;
+      font-size: 0.875rem;
     }
 
     &:not(:first-child) {
@@ -225,6 +221,18 @@
       &.Mui-selected {
         color: var(--mui-palette-purple-main);
         background-color: var(--mui-palette-white-main) !important;
+      }
+    }
+  }
+
+  &--votes {
+    .Card {
+      &__title {
+        font-size: 1.375rem;
+
+        @media only screen and (min-width: breakpoints.$breakpoint-sm) {
+          font-size: 1.75rem;
+        }
       }
     }
   }
