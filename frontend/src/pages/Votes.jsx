@@ -27,6 +27,8 @@ export default function Votes() {
   const actionPasserRef = useRef(null);
   const actionPourRef = useRef(null);
 
+  const canPressActionRef = useRef(true);
+
   const vote_ids = shuffle(Object.keys(data.votes));
   const context = useContext(ThemeContext);
   const [id, setId] = useState();
@@ -41,7 +43,9 @@ export default function Votes() {
   );
   const handleDismiss = (el, meta, id, action, operation) => {
     if (operation !== "swipe") return;
-    context.choose({ vote_id: id, type: action === "like" ? "+" : "-" });
+    setTimeout(() => {
+      context.choose({ vote_id: id, type: action === "like" ? "+" : "-" });
+    }, 0);
   };
   const handleEnter = (el, meta, id) => {
     setId(id);
@@ -55,6 +59,14 @@ export default function Votes() {
   const progress = Math.floor(
     (Object.keys(context.choices).length / recommendedVotesCount) * 100,
   );
+
+  // Prevent glitch if speedrunning
+  const delayNextActionPress = () => {
+    canPressActionRef.current = false;
+    setTimeout(() => {
+      canPressActionRef.current = true;
+    }, 200);
+  };
 
   const cardMatrix = useMemo(() => new DOMMatrix(), []);
   const cardTranslateXRef = useRef(0);
@@ -170,10 +182,17 @@ export default function Votes() {
           className="actions__contre"
           ref={actionContreRef}
           onClick={() => {
-            context.choose({ vote_id: id, type: "-" });
+            if (canPressActionRef.current === false) return;
+
+            delayNextActionPress();
+
             document
               .getElementById("swipe-card__dislike-action-button")
               ?.click();
+
+            setTimeout(() => {
+              context.choose({ vote_id: id, type: "-" });
+            }, 0);
           }}
         >
           <ThumbDownIcon color="red" />
@@ -184,11 +203,17 @@ export default function Votes() {
           className="actions__passer"
           ref={actionPasserRef}
           onClick={() => {
-            context.choose({ vote_id: id, type: "0" });
+            if (canPressActionRef.current === false) return;
+
+            delayNextActionPress();
 
             document
               .getElementById("swipe-card__dislike-action-button")
               ?.click();
+
+            setTimeout(() => {
+              context.choose({ vote_id: id, type: "0" });
+            }, 0);
           }}
         >
           <CrossIcon />
@@ -199,8 +224,15 @@ export default function Votes() {
           className="actions__pour"
           ref={actionPourRef}
           onClick={() => {
-            context.choose({ vote_id: id, type: "+" });
+            if (canPressActionRef.current === false) return;
+
+            delayNextActionPress();
+
             document.getElementById("swipe-card__like-action-button")?.click();
+
+            setTimeout(() => {
+              context.choose({ vote_id: id, type: "+" });
+            }, 0);
           }}
         >
           <ThumbUpIcon color="green" />
