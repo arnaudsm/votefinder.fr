@@ -156,6 +156,7 @@
         background-color: var(--mui-palette-secondary-main);
         position: absolute;
         transition: width 0.3s ease-in-out;
+        transition-delay: 0.3s;
         border-radius: 0 0.5rem 0.5rem 0;
         display: block;
         height: 0.5rem;
