@@ -8,18 +8,19 @@
     gap: 1rem;
     display: flex;
     flex-direction: column;
-    text-align: center;
     justify-content: space-between;
     overflow: auto;
     min-height: 30rem;
   }
 
   h2 {
+    font-family: var(--font-title), sans-serif;
+    font-weight: 800;
     font-size: 1.25rem;
+    text-align: center;
   }
 
   ul {
-    font-size: 0.875rem;
     text-align: left;
   }
 }
