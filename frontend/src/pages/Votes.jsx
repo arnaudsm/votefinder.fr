@@ -1,4 +1,11 @@
-import { useContext, useState, useEffect, useRef } from "react";
+import {
+  useContext,
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  useMemo,
+} from "react";
 import { ThemeContext } from "../context/ThemeContext.jsx";
 import data from "../data/data.json";
 import Card from "../components/Card.jsx";
@@ -10,7 +17,6 @@ import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import { shuffle } from "../utils/utils";
 import { recommendedVotesCount } from "../data/variables";
 import gsap from "gsap";
-import { hexToRgb, rgbToHex } from "../utils/utils";
 import CrossIcon from "../assets/icons/cross.svg";
 
 export default function Votes({ visible }) {
@@ -44,109 +50,100 @@ export default function Votes({ visible }) {
   };
   const cardData = unseen_vote_ids.map((vote_id) => ({
     id: vote_id,
-    content: <Card vote_id={vote_id} />,
+    content: <Card vote_id={vote_id} is_votes_page={true} />,
   }));
   const progress = Math.floor(
     (Object.keys(context.choices).length / recommendedVotesCount) * 100,
   );
 
-  const progressMinValueAnimTrigger = 0.2;
-  const progressMinValueTrigger = 0.05;
+  const cardMatrix = useMemo(() => new DOMMatrix(), []);
+  const cardTranslateXRef = useRef(0);
+
+  // const progressMinValueAnimTrigger = 0.2;
+  // const progressMinValueTrigger = 0.05;
   const maxTranslateX = 140;
 
-  const baseColor = hexToRgb("#6000C1");
-  const acceptColor = hexToRgb("#31CA93");
-  const refuseColor = hexToRgb("#ED2579");
+  // const actionContreEl = actionContreRef.current;
+  // const actionPourEl = actionPourRef.current;
+  // const actionPasserEl = actionPasserRef.current;
+
+  const updateCardGradient = useCallback(() => {
+    if (!currentSwipeCardRef.current || !currentCardRef.current || !visible) {
+      return;
+    }
+
+    const computedStyle = window.getComputedStyle(currentSwipeCardRef.current);
+    cardMatrix.setMatrixValue(computedStyle.transform);
+    cardTranslateXRef.current = cardMatrix.m41;
+
+    const percent =
+      Math.min(
+        Math.abs((cardTranslateXRef.current / maxTranslateX) * 100),
+        100,
+      ) / 100;
+
+    gsap.set(currentCardRef.current, {
+      "--card-bg-approve-opacity": cardTranslateXRef.current > 0 ? percent : 0,
+      "--card-bg-decline-opacity": cardTranslateXRef.current < 0 ? percent : 0,
+    });
+
+    // const blurValue = (percent - progressMinValueAnimTrigger) * 10;
+    // const scaleValue = blurValue / 70;
+    // if (percent > progressMinValueTrigger) {
+    //   gsap.set(actionContreRef.current, {
+    //     scale:
+    //       percent > progressMinValueAnimTrigger && translateX < 0
+    //         ? 1 + scaleValue
+    //         : 1,
+    //     filter:
+    //       percent > progressMinValueAnimTrigger && translateX > 0
+    //         ? `blur(${blurValue}px)`
+    //         : "blur(0px)",
+    //   });
+    //
+    //   gsap.set(actionPourRef.current, {
+    //     scale:
+    //       percent > progressMinValueAnimTrigger && translateX > 0
+    //         ? 1 + scaleValue
+    //         : 1,
+    //     filter:
+    //       percent > progressMinValueAnimTrigger && translateX < 0
+    //         ? `blur(${blurValue}px)`
+    //         : "blur(0px)",
+    //   });
+    //
+    //   gsap.set(actionPasserRef.current, {
+    //     filter: percent > 0.2 ? `blur(${blurValue}px)` : "blur(0px)",
+    //     scale:
+    //       percent > progressMinValueAnimTrigger ? 1 - blurValue / 50 : 1,
+    //   });
+    // }
+  }, [cardMatrix, visible]);
 
   useEffect(() => {
-    let actionContreEl = actionContreRef.current;
-    let actionPourEl = actionPourRef.current;
-    let actionPasserEl = actionPasserRef.current;
-
     if (visible) {
-      // Démarrer le ticker GSAP
-      tickerRef.current = gsap.ticker.add(() => {
-        if (!currentSwipeCardRef.current || !currentCardRef.current || !visible)
-          return;
-
-        const computedStyle = window.getComputedStyle(
-          currentSwipeCardRef.current,
-        );
-        const matrix = new DOMMatrix(computedStyle.transform);
-        const translateX = matrix.m41;
-
-        const percent =
-          Math.min(Math.abs((translateX / maxTranslateX) * 100), 100) / 100;
-
-        const interpolatedColor = gsap.utils.interpolate(
-          baseColor,
-          translateX > 0 ? acceptColor : refuseColor,
-          percent,
-        );
-
-        const interpolatedHex = rgbToHex(
-          Math.round(interpolatedColor[0]),
-          Math.round(interpolatedColor[1]),
-          Math.round(interpolatedColor[2]),
-        );
-
-        const blurValue = (percent - progressMinValueAnimTrigger) * 10;
-        const scaleValue = blurValue / 70;
-        if (percent > progressMinValueTrigger) {
-          gsap.set(actionContreRef.current, {
-            scale:
-              percent > progressMinValueAnimTrigger && translateX < 0
-                ? 1 + scaleValue
-                : 1,
-            filter:
-              percent > progressMinValueAnimTrigger && translateX > 0
-                ? `blur(${blurValue}px)`
-                : "blur(0px)",
-          });
-
-          gsap.set(actionPourRef.current, {
-            scale:
-              percent > progressMinValueAnimTrigger && translateX > 0
-                ? 1 + scaleValue
-                : 1,
-            filter:
-              percent > progressMinValueAnimTrigger && translateX < 0
-                ? `blur(${blurValue}px)`
-                : "blur(0px)",
-          });
-
-          gsap.set(actionPasserRef.current, {
-            filter: percent > 0.2 ? `blur(${blurValue}px)` : "blur(0px)",
-            scale:
-              percent > progressMinValueAnimTrigger ? 1 - blurValue / 50 : 1,
-          });
-        }
-
-        gsap.set(currentCardRef.current, {
-          "--card-bottom-bg-color": interpolatedHex,
-        });
-      });
+      tickerRef.current = gsap.ticker.add(updateCardGradient);
     } else {
-      // Arrêter et retirer le ticker GSAP
       if (tickerRef.current) {
         gsap.ticker.remove(tickerRef.current);
-        tickerRef.current = null; // Réinitialiser la référence du ticker
+        tickerRef.current = null;
       }
     }
 
-    // Cleanup lors du démontage du composant
+    // Cleanup
     return () => {
       if (tickerRef.current) {
         gsap.ticker.remove(tickerRef.current);
+        tickerRef.current = null;
       }
 
-      gsap.to([actionContreEl, actionPasserEl, actionPourEl], {
-        filter: "blur(0px)",
-        scale: 1,
-        duration: 0.3,
-      });
+      // gsap.to([actionContreEl, actionPasserEl, actionPourEl], {
+      //   filter: "blur(0px)",
+      //   scale: 1,
+      //   duration: 0.3,
+      // });
     };
-  }, [visible, id, acceptColor, baseColor, refuseColor]);
+  }, [visible, updateCardGradient]);
 
   return (
     <div className={`Votes ${visible ? "" : "hide"}`}>

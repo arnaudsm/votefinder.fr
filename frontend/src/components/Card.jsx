@@ -15,7 +15,7 @@ import CrossIcon from "../assets/icons/cross.svg";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 
-export default function Card({ vote_id, list_id, editable }) {
+export default function Card({ vote_id, list_id, is_votes_page, editable }) {
   const vote = data.votes[vote_id];
   const context = useContext(ThemeContext);
   const cardRef = useRef(null);
@@ -24,6 +24,13 @@ export default function Card({ vote_id, list_id, editable }) {
     <div ref={cardRef} className={`Card ${editable ? "Card--editable" : ""}`}>
       <div className="Card__front">
         <div className="Card__container">
+          <div className="Card__bg"></div>
+          {is_votes_page && (
+            <>
+              <div className="Card__bg Card__bg--approve"></div>
+              <div className="Card__bg Card__bg--decline"></div>
+            </>
+          )}
           <div className="Card__top">
             {!list_id && (
               <div className="Card__meta">
@@ -125,6 +132,13 @@ export default function Card({ vote_id, list_id, editable }) {
       </div>
       <div className="Card__back">
         <div className="Card__container">
+          <div className="Card__bg"></div>
+          {is_votes_page && (
+            <>
+              <div className="Card__bg Card__bg--approve"></div>
+              <div className="Card__bg Card__bg--decline"></div>
+            </>
+          )}
           <div className="Card__top">
             {!list_id && (
               <div className="Card__meta">

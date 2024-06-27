@@ -4,6 +4,8 @@
   --card-top-bg-color: var(--mui-palette-lightPurple-main);
   --card-bottom-bg-color: var(--mui-palette-purple-main);
   --card-border-radius: 2rem;
+  --card-bg-approve-opacity: 0;
+  --card-bg-decline-opacity: 0;
 
   perspective: 1000px;
   transform-style: preserve-3d;
@@ -12,7 +14,6 @@
   &__front, &__back {
     backface-visibility: hidden;
     transition: transform 0.5s ease-in-out;
-    overflow: hidden;
   }
 
   &__front {
@@ -47,7 +48,6 @@
   }
 
   &__container {
-    background: linear-gradient(180deg, var(--card-top-bg-color) 0%, var(--card-bottom-bg-color) 100%);
     color: var(--mui-palette-white-main);
     display: flex;
     flex-direction: column;
@@ -56,9 +56,34 @@
     padding: 0.75rem 1rem 2rem;
     box-sizing: border-box;
     border-radius: var(--card-border-radius);
+    position: relative;
+    overflow: hidden;
 
     @media only screen and (min-width: breakpoints.$breakpoint-sm) {
       padding: 1rem 1.25rem 1.5rem;
+    }
+  }
+
+  &__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, var(--card-top-bg-color) 0%, var(--card-bottom-bg-color) 100%);
+    z-index: -2;
+
+    &--approve {
+      --card-bottom-bg-color: var(--mui-palette-green-main);
+
+      opacity: var(--card-bg-approve-opacity);
+      z-index: -1;
+    }
+
+    &--decline {
+      --card-bottom-bg-color: var(--mui-palette-red-main);
+
+      opacity: var(--card-bg-decline-opacity);
     }
   }
 
