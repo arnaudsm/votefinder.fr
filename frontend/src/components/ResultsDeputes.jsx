@@ -1,6 +1,38 @@
 import data from "../data/data.json";
 
 export default function ResultsDeputes({ results }) {
+  const getRatio = (id) => {
+    const positive = results?.deputesRaw?.[id]?.["+"] || 0;
+    const negative = results?.deputesRaw?.[id]?.["-"] || 0;
+
+    if (negative === 0 && positive > 0) return Number.POSITIVE_INFINITY;
+    if (negative === 0 && positive === 0) return -Number.POSITIVE_INFINITY;
+    if (positive === 0) return -1;
+
+    return positive / negative;
+  };
+
+  const deputesRatioSort = ([id_a], [id_b]) => {
+    return getRatio(id_b) - getRatio(id_a);
+  };
+
+  const deputesVotesSort = ([id_a], [id_b]) => {
+    const ratio_a = getRatio(id_a);
+    const ratio_b = getRatio(id_b);
+
+    if (ratio_a === ratio_b) {
+      const sum_a =
+        (results?.deputesRaw?.[id_a]?.["+"] || 0) +
+        (results?.deputesRaw?.[id_a]?.["-"] || 0);
+      const sum_b =
+        (results?.deputesRaw?.[id_b]?.["+"] || 0) +
+        (results?.deputesRaw?.[id_b]?.["-"] || 0);
+      return sum_b - sum_a;
+    }
+
+    return 0;
+  };
+
   return (
     <div className="ResultsDeputes">
       <div className="ResultsDeputes__explanation">
@@ -9,13 +41,12 @@ export default function ResultsDeputes({ results }) {
         Trié par accords - désaccords.
       </div>
       {results.deputes
-        .sort(
-          ([id_a], [id_b]) =>
-            results?.deputesRaw?.[id_b]?.["+"] -
-            results?.deputesRaw?.[id_b]?.["-"] -
-            (results?.deputesRaw?.[id_a]?.["+"] -
-              results?.deputesRaw?.[id_a]?.["-"]),
-        )
+        .sort(([id_a], [id_b]) => {
+          return deputesRatioSort([id_a], [id_b]);
+        })
+        .sort(([id_a], [id_b]) => {
+          return deputesVotesSort([id_a], [id_b]);
+        })
         .map(([id, approval]) => (
           <a
             className="Result Result--simple"
