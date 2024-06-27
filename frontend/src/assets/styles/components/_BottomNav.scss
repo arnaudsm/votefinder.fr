@@ -3,7 +3,7 @@
 .BottomNav {
   box-shadow: var(--shadow);
   z-index: 5;
-  height: 4rem !important;
+  height: var(--bottom-nav-height) !important;
 
   &__action {
     padding: 0 !important;

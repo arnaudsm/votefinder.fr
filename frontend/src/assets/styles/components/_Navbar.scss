@@ -2,21 +2,18 @@
   width: 100%;
   z-index: 5;
 
-  --header-height: 3.5rem;
-  --navbar-padding: 0.5rem;
-
   &__toolbar {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
     padding: var(--navbar-padding);
-    height: var(--header-height);
+    height: var(--navbar-height);
     background-color: var(--mui-palette-background-paper) !important;
   }
 
   &__logo {
-    height: calc(var(--header-height) - (var(--navbar-padding) * 2));
+    height: calc(var(--navbar-height) - (var(--navbar-padding) * 2));
 
     &:hover {
       opacity: 0.85;

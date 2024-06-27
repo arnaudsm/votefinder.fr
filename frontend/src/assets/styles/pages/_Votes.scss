@@ -136,7 +136,7 @@
 
   &__progress {
     position: fixed;
-    bottom: 56px;
+    bottom: var(--bottom-nav-height);
     left: 0;
     height: 0.5rem;
     width: 100%;
