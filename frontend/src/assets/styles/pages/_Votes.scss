@@ -70,6 +70,10 @@
         &.blur {
           filter: blur(5px);
         }
+
+        &:hover {
+          background-color: var(--mui-palette-white-main);
+        }
       }
 
       &__pour, &__contre {
@@ -101,33 +105,39 @@
           }
         }
 
-        &:hover {
-          background-color: var(--mui-palette-blue-main);
+        @media (hover: hover) and (pointer: fine) {
+          &:hover {
+            background-color: var(--mui-palette-blue-main);
 
-          svg {
-            path {
-              fill: var(--mui-palette-white-main);
+            svg {
+              path {
+                fill: var(--mui-palette-white-main);
+              }
             }
           }
         }
       }
 
       &__pour {
-        &:hover {
-          background-color: var(--mui-palette-green-main);
+        @media (hover: hover) and (pointer: fine) {
+          &:hover {
+            background-color: var(--mui-palette-green-main);
 
-          svg {
-            fill: var(--mui-palette-white-main);
+            svg {
+              fill: var(--mui-palette-white-main);
+            }
           }
         }
       }
 
       &__contre {
-        &:hover {
-          background-color: var(--mui-palette-red-main);
+        @media (hover: hover) and (pointer: fine) {
+          &:hover {
+            background-color: var(--mui-palette-red-main);
 
-          svg {
-            fill: var(--mui-palette-white-main);
+            svg {
+              fill: var(--mui-palette-white-main);
+            }
           }
         }
       }
