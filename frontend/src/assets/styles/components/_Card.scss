@@ -175,10 +175,6 @@
         svg {
           width: 100%;
           height: 100%;
-
-          path {
-            fill: var(--mui-palette-white-main);
-          }
         }
       }
 
@@ -216,21 +212,19 @@
         width: 1.5rem;
         height: 1.5rem;
         margin-right: 0.5rem;
+      }
 
-        path {
-          fill: var(--mui-palette-white-main);
+      &:not(.Mui-selected) {
+        svg {
+          path {
+            fill: var(--mui-palette-white-main);
+          }
         }
       }
 
       &.Mui-selected {
         color: var(--mui-palette-purple-main);
         background-color: var(--mui-palette-white-main) !important;
-
-        svg {
-          path {
-            fill: var(--mui-palette-purple-main);
-          }
-        }
       }
     }
   }

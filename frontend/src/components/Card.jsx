@@ -55,9 +55,9 @@ export default function Card({ vote_id, list_id, is_votes_page, editable }) {
                   <div className="user-vote__icon">
                     {
                       {
-                        "-": <ThumbDownIcon />,
+                        "-": <ThumbDownIcon color="red" />,
                         0: <CrossIcon />,
-                        "+": <ThumbUpIcon />,
+                        "+": <ThumbUpIcon color="green" />,
                       }[context.choices[vote_id]]
                     }
                   </div>
@@ -118,13 +118,13 @@ export default function Card({ vote_id, list_id, is_votes_page, editable }) {
               }
             >
               <ToggleButton value="-">
-                <ThumbDownIcon /> Contre
+                <ThumbDownIcon color="red" /> Contre
               </ToggleButton>
               <ToggleButton value="0">
                 <CrossIcon /> Passer
               </ToggleButton>
               <ToggleButton value="+">
-                <ThumbUpIcon /> Pour
+                <ThumbUpIcon color="green" /> Pour
               </ToggleButton>
             </ToggleButtonGroup>
           </div>
