@@ -12,7 +12,8 @@
   transform-style: preserve-3d;
   position: relative;
 
-  &__front, &__back {
+  &__front,
+  &__back {
     backface-visibility: hidden;
     transition: transform 0.5s ease-in-out;
   }

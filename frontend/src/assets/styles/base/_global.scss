@@ -7,16 +7,16 @@ html {
   font-family: var(--font-body), sans-serif;
   font-weight: 700;
 
-  &[data-mui-color-scheme="light"] {
-    --link-color: #4751FD;
-    --link-visited-color: #4751FD;
-    --logo-svg-text-vote-color: #3E3E3E;
+  &[data-mui-color-scheme='light'] {
+    --link-color: #4751fd;
+    --link-visited-color: #4751fd;
+    --logo-svg-text-vote-color: #3e3e3e;
   }
 
-  &[data-mui-color-scheme="dark"] {
-    --link-color: #4751FD;
-    --link-visited-color: #4751FD;
-    --logo-svg-text-vote-color: #C1C1C1;
+  &[data-mui-color-scheme='dark'] {
+    --link-color: #4751fd;
+    --link-visited-color: #4751fd;
+    --logo-svg-text-vote-color: #c1c1c1;
   }
 
   font-size: 16px;
