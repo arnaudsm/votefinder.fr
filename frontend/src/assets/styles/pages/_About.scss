@@ -1,3 +1,5 @@
+@use '../base/breakpoints' as breakpoints;
+
 .About {
   width: 100%;
   padding: 1rem;
@@ -80,6 +82,11 @@
   &__btn {
     &:not(:first-child) {
       margin-top: 1rem;
+    }
+
+    @media only screen and (min-width: breakpoints.$width-mobile) {
+      padding: 0.5rem 0.75rem !important;
+      font-size: 0.875rem !important;
     }
   }
 }
