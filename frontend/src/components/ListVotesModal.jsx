@@ -40,7 +40,7 @@ export default function ListVotesModal() {
         </h2>
         <Button
           startIcon={<AccountBalance />}
-          className="Btn Btn--purple"
+          className="Btn Btn--secondary"
           color="secondary"
           variant="contained"
           size="large"
@@ -51,7 +51,7 @@ export default function ListVotesModal() {
           Fiche du parti
         </Button>
         <Button
-          className="Btn Btn--purple Btn--bordered"
+          className="Btn Btn--secondary Btn--bordered"
           startIcon={<Close />}
           variant="text"
           disableElevation

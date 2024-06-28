@@ -41,6 +41,24 @@
     }
   }
 
+  &--primary {
+    background-color: var(--mui-palette-primary-main) !important;
+    color: var(--mui-palette-white-main) !important;
+
+    &.Btn--bordered {
+      color: var(--mui-palette-primary-main) !important;
+    }
+  }
+
+  &--secondary {
+    background-color: var(--mui-palette-secondary-main) !important;
+    color: var(--mui-palette-white-main) !important;
+
+    &.Btn--bordered {
+      color: var(--mui-palette-secondary-main) !important;
+    }
+  }
+
   &--blue {
     background-color: var(--mui-palette-primary-main) !important;
     color: var(--mui-palette-white-main) !important;

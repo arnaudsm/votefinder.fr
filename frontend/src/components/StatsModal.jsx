@@ -61,7 +61,7 @@ export default function StatsModal() {
               ))}
         </div>
         <Button
-          className="Btn Btn--purple Btn--bordered Btn--centered"
+          className="Btn Btn--secondary Btn--bordered Btn--centered"
           startIcon={<Close />}
           variant="text"
           disableElevation

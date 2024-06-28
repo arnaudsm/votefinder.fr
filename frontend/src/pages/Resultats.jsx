@@ -28,7 +28,7 @@ export default function Resultats() {
             startIcon={<Share />}
             color="secondary"
             variant="contained"
-            className="Resultats__share Btn Btn--purple"
+            className="Resultats__share Btn Btn--secondary"
             onClick={async () => {
               context.setShowShare(true);
               await share();

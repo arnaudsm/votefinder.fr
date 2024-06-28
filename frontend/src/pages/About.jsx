@@ -39,7 +39,7 @@ export default function About() {
 
           <Button
             startIcon={<Description />}
-            className="About__btn Btn Btn--purple"
+            className="About__btn Btn Btn--secondary"
             variant="contained"
             size="large"
             href="Communique-de-Presse-VoteFinder.fr.pdf"
@@ -59,7 +59,7 @@ export default function About() {
 
           <Button
             startIcon={<Email />}
-            className="About__btn Btn Btn--purple"
+            className="About__btn Btn Btn--secondary"
             variant="contained"
             size="large"
             href="mailto:contact@votefinder.fr"
@@ -69,7 +69,7 @@ export default function About() {
           </Button>
           <Button
             startIcon={<GitHub />}
-            className="About__btn Btn Btn--purple"
+            className="About__btn Btn Btn--secondary"
             variant="contained"
             size="large"
             disableElevation
@@ -84,21 +84,21 @@ export default function About() {
           <h2 className="About__subtitle">🔗 Réseaux sociaux</h2>
           <div className="About__socials">
             <Button
-              className="About__btn Btn Btn--purple"
+              className="About__btn Btn Btn--secondary"
               variant="contained"
               href="https://twitter.com/VoteFinder_eu"
             >
               <X />
             </Button>
             <Button
-              className="About__btn Btn Btn--purple"
+              className="About__btn Btn Btn--secondary"
               variant="contained"
               href="https://www.instagram.com/votefinder.eu"
             >
               <Instagram />
             </Button>
             <Button
-              className="About__btn Btn Btn--purple"
+              className="About__btn Btn Btn--secondary"
               variant="contained"
               href="https://www.tiktok.com/@votefinder.eu"
             >
@@ -115,7 +115,7 @@ export default function About() {
           </div>
 
           <Button
-            className="About__btn Btn Btn--purple"
+            className="About__btn Btn Btn--secondary"
             startIcon={<Delete />}
             size="large"
             variant="contained"
@@ -133,7 +133,7 @@ export default function About() {
           </Button>
 
           <Button
-            className="About__btn Btn Btn--purple"
+            className="About__btn Btn Btn--secondary"
             startIcon={<FileDownload />}
             size="large"
             variant="contained"
@@ -159,7 +159,7 @@ export default function About() {
         <div className="About__section">
           <h2 className="About__subtitle">🔍 Nos autres projets</h2>
           <Button
-            className="About__btn Btn Btn--purple"
+            className="About__btn Btn Btn--secondary"
             variant="contained"
             size="large"
             disableElevation
