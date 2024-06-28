@@ -57,7 +57,7 @@ export default function ResultsDeputes({ results }) {
             <div className="Result__img-container">
               <img
                 className="Result__img"
-                src={`/deputes/${id.slice(2)}.jpg`}
+                src={`${import.meta.env.BASE_URL}deputes/${id.slice(2)}.jpg`}
                 alt={data.deputes[id]?.l}
               />
             </div>

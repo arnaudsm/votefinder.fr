@@ -17,7 +17,7 @@ export default function ResultListe({ id, approval }) {
       <div className="Result__img-container">
         <img
           className="Result__img"
-          src={`/lists/${id}.svg`}
+          src={`${import.meta.env.BASE_URL}lists/${id}.svg`}
           alt={data.lists[id].label}
         />
       </div>
