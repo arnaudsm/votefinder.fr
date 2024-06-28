@@ -44,6 +44,12 @@ h6 {
   overflow-wrap: break-word;
 }
 
+a:active,
+a:focus {
+  outline: 0;
+  border: none;
+}
+
 #root {
   isolation: isolate;
 }
