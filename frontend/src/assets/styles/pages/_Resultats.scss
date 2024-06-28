@@ -5,6 +5,7 @@
   &__container {
     background-color: var(--mui-palette-background-paper);
     border-radius: 1rem;
+    margin-bottom: 2rem;
 
     @media (max-width: 40rem) {
       border-radius: 0;
@@ -13,10 +14,8 @@
 
   &__header {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    justify-content: space-between;	
     margin: 1rem;
-    text-align: center;
   }
 
   &__list {
