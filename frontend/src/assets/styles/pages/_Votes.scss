@@ -46,7 +46,7 @@
     align-items: center;
     justify-content: center;
 
-    @media only screen and (min-width: breakpoints.$breakpoint-sm) {
+    @media only screen and (min-width: breakpoints.$width-mobile) {
       gap: 3rem;
     }
 
@@ -81,7 +81,7 @@
         height: 4.5rem;
         padding: 1rem;
 
-        @media (min-height: 800px) {
+        @media (min-height: breakpoints.$height-normal) {
           width: 5.5rem;
           height: 5.5rem;
           padding: 1.25rem;
@@ -93,7 +93,7 @@
         height: 3.25rem;
         padding: 0.875rem !important;
 
-        @media (min-height: 800px) {
+        @media (min-height: breakpoints.$height-normal) {
           width: 4rem;
           height: 4rem;
           padding: 1.25rem !important;

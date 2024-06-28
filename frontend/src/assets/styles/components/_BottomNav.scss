@@ -23,7 +23,7 @@
       font-weight: 800;
       margin-top: 0 !important;
 
-      @media only screen and (min-width: breakpoints.$breakpoint-sm) {
+      @media only screen and (min-width: breakpoints.$width-mobile) {
         font-size: 0.85rem !important;
       }
     }

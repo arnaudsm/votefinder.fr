@@ -40,7 +40,7 @@
       &__title {
         font-size: 1.25rem !important;
 
-        @media only screen and (min-width: breakpoints.$breakpoint-sm) {
+        @media only screen and (min-width: breakpoints.$width-mobile) {
           font-size: 1.5rem !important;
         }
       }
@@ -59,7 +59,7 @@
     position: relative;
     overflow: hidden;
 
-    @media only screen and (min-width: breakpoints.$breakpoint-sm) {
+    @media only screen and (min-width: breakpoints.$width-mobile) {
       padding: 1rem 1.25rem 1.5rem;
     }
   }
@@ -117,7 +117,7 @@
     line-height: 1.125;
     text-align: center;
 
-    @media only screen and (min-width: breakpoints.$breakpoint-sm) {
+    @media only screen and (min-width: breakpoints.$width-mobile) {
       font-size: 1.5rem;
     }
   }
@@ -131,7 +131,7 @@
   &__subtitle {
     text-align: center;
     font-weight: 600;
-    font-size: 0.875rem;
+    font-size: calc(1rem / 16 * 14);
 
     &:not(:first-child) {
       margin-top: 1.25rem;
@@ -226,7 +226,7 @@
       &__title {
         font-size: 1.375rem;
 
-        @media only screen and (min-width: breakpoints.$breakpoint-sm) {
+        @media only screen and (min-width: breakpoints.$width-mobile) {
           font-size: 1.75rem;
         }
       }

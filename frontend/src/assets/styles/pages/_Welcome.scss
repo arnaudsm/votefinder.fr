@@ -54,7 +54,7 @@
       line-height: 1.375;
       font-weight: 900;
 
-      @media only screen and (min-width: breakpoints.$breakpoint-sm) {
+      @media only screen and (min-width: breakpoints.$width-mobile) {
         font-size: 1.5rem;
       }
     }

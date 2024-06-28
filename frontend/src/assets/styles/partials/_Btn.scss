@@ -10,7 +10,7 @@
   font-size: 0.875rem !important;
   border: solid 0.125rem transparent !important;
 
-  @media only screen and (min-width: breakpoints.$breakpoint-sm) {
+  @media only screen and (min-width: breakpoints.$width-mobile) {
     padding: 1.25rem 1rem !important;
     font-size: 1rem !important;
   }
