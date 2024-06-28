@@ -4,5 +4,12 @@ import svgr from "vite-plugin-svgr";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), svgr({ include: "**/*.svg" })],
+  plugins: [
+    react(),
+    svgr({ include: "**/*.svg" }),
+    // eslint-disable-next-line no-undef
+    ...(process.env.USE_HTTPS === "true"
+      ? [await import("vite-plugin-mkcert").then((plugin) => plugin.default())]
+      : []),
+  ],
 });
