@@ -109,6 +109,7 @@
     font-size: 0.75rem;
     font-family: var(--font-title), sans-serif;
     font-weight: 600;
+    text-transform: uppercase;
   }
 
   &__title {
@@ -116,7 +117,7 @@
     font-family: var(--font-title), sans-serif;
     font-weight: 700;
     font-size: 1.25rem;
-    line-height: 1.125;
+    line-height: 1.25;
     text-align: center;
 
     @media only screen and (min-width: breakpoints.$width-mobile) {
