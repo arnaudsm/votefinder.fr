@@ -15,7 +15,7 @@ export default function BottomNav({ state: [tab, setTab] }) {
       onChange={(event, newValue) => setTab(newValue)}
     >
       {[
-        { key: "votes", label: "Je vote !", icon: <HowToVote /> },
+        { key: "votes", label: "Voter", icon: <HowToVote /> },
         { key: "resultats", label: "Mes résultats", icon: <EmojiEvents /> },
         { key: "mes-votes", label: "Mes votes", icon: <MarkAsUnread /> },
         { key: "a-propos", label: "À Propos", icon: <Info /> },
