@@ -74,6 +74,11 @@ ul {
   margin-bottom: 1em;
 }
 
+.title {
+  font-family: var(--font-title), sans-serif;
+  font-weight: 600;
+}
+
 .hide {
   display: none !important;
 }

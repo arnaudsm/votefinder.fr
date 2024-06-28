@@ -15,7 +15,7 @@ export default function MesVotes() {
 
   return (
     <div className={`MesVotes`}>
-      <h1 className="MesVotes__title">Mes votes</h1>
+      <h1 className="MesVotes__title title">Mes votes</h1>
       <div className="MesVotes__results">
         {choices.map((vote_id) => (
           <Card vote_id={vote_id} key={vote_id} editable />

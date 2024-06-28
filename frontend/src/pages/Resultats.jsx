@@ -21,7 +21,7 @@ export default function Resultats() {
   return (
     <div className={`Resultats`}>
       <div className="Resultats__header">
-        <h1>Mes Résultats</h1>
+        <h1 className="title">Mes Résultats</h1>
 
         {minVotesReached && navigator.canShare && (
           <Button
