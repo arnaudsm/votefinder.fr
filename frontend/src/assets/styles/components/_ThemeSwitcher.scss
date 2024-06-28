@@ -1,17 +1,19 @@
+@use '../base/functions' as functions;
+
 .ThemeSwitcher {
   margin-left: auto !important;
-  width: calc((1rem / 16) * 62) !important;
-  height: calc((1rem / 16) * 34) !important;
-  padding: calc((1rem / 16) * 7) !important;
+  width: functions.calculate-rem(62) !important;
+  height: functions.calculate-rem(34) !important;
+  padding: functions.calculate-rem(7) !important;
 
   .MuiSwitch-switchBase {
-    margin: calc((1rem / 16) * 1);
+    margin: functions.calculate-rem(1);
     padding: 0;
-    transform: translateX(calc((1rem / 16) * 6));
+    transform: translateX(functions.calculate-rem(6));
 
     &.Mui-checked {
       color: #fff;
-      transform: translateX(calc((1rem / 16) * 23));
+      transform: translateX(functions.calculate-rem(23));
 
       .MuiSwitch-thumb::before {
         background-repeat: no-repeat;
@@ -29,8 +31,8 @@
 
   .MuiSwitch-thumb {
     background-color: #003892;
-    width: calc((1rem / 16) * 32);
-    height: calc((1rem / 16) * 32);
+    width: functions.calculate-rem(32);
+    height: functions.calculate-rem(32);
 
     &::before {
       content: "";
@@ -49,6 +51,6 @@
   .MuiSwitch-track {
     opacity: 1;
     background-color: #aab4be;
-    border-radius: calc(calc((1rem / 16) * 20) / 2);
+    border-radius: functions.calculate-rem(10);
   }
 }

@@ -1,4 +1,5 @@
 @use '../base/breakpoints' as breakpoints;
+@use '../base/functions' as functions;
 
 html {
   height: 100%;
@@ -44,7 +45,7 @@ body {
   overflow: hidden;
   height: 100%;
   width: 100%;
-  font-size: calc(1rem / 16 * 14);
+  font-size: functions.calculate-rem(14);
 }
 
 #root {
