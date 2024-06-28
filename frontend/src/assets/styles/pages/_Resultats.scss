@@ -2,19 +2,20 @@
 
 .Resultats {
   width: 100%;
-  padding: 1rem;
-
   &__container {
     background-color: var(--mui-palette-background-paper);
     border-radius: 1rem;
-    padding-top: 0.5rem;
-    margin-top: 2rem;
+    margin-bottom: 2rem;
+
+    @media (max-width: 40rem) {
+      border-radius: 0;
+    }
   }
 
   &__header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: space-between;	
+    margin: 1rem;
   }
 
   &__list {
@@ -26,16 +27,7 @@
 
   &__tabs {
     .MuiTabs-fixed {
-      &::after {
-        content: '';
-        position: absolute;
-        bottom: 1px;
-        left: 0;
-        width: 100%;
-        height: 1px;
-        background: color-mix(in srgb, var(--mui-palette-primary-main) 54%, transparent) !important;
-        z-index: 1;
-      }
+      border-bottom: 1px solid #e3e3e3;
     }
 
     .MuiTabs-indicator {

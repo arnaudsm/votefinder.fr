@@ -29,9 +29,9 @@ export default function About() {
         <h1 className="About__title title">À Propos</h1>
 
         <div className="About__section">
-          <h2 className="About__subtitle">💡 Le projet</h2>
           <p>
-            VoteFinder est un projet bénévole,{" "}
+            VoteFinder est un projet bénévole,
+            <br />
             <a href={projectURL} target="_blank">
               open-source
             </a>
@@ -51,7 +51,7 @@ export default function About() {
         </div>
 
         <div className="About__section">
-          <h2 className="About__subtitle">🚀 Une amélioration</h2>
+          <h2 className="About__subtitle">🚀 Contribuer</h2>
           <p>
             Vous voulez corriger une erreur ou rajouter un texte de loi ?
             <br />

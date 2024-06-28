@@ -111,7 +111,7 @@ export default function Card({ vote_id, list_id, is_votes_page, editable }) {
               className="Card__toggle-group"
               value={context.choices[vote_id]}
               exclusive
-              fullWidth={true}
+              fullWidth
               onChange={(event) =>
                 context.choose({
                   vote_id,
