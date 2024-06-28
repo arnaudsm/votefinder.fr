@@ -10,6 +10,7 @@ import {
   Description,
   X,
 } from "@mui/icons-material";
+import EuropeIcon from "../assets/icons/europe.svg";
 import { projectURL } from "../data/variables.jsx";
 import ThemeSwitcher from "../components/ThemeSwitcher.jsx";
 
@@ -165,6 +166,7 @@ export default function About() {
             disableElevation
             href="https://votefinder.eu"
             target="_blank"
+            startIcon={<EuropeIcon />}
           >
             Votefinder Européennes
           </Button>
