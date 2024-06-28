@@ -195,7 +195,7 @@
   }
 
   &__toggle-group {
-    background-color: var(--card-top-bg-color);
+    background-color: color-mix(in srgb, var(--mui-palette-lightBlue-main) 60%, transparent) !important;
     border-radius: 0 !important;
 
     button {
@@ -261,6 +261,7 @@
         }
 
         &__toggle-container {
+          background-color: var(--mui-palette-darkPurple-main);
           border: solid 0.3rem var(--mui-palette-darkPurple-main);
           border-radius: var(--card-border-radius);
           border-top-left-radius: 0;
