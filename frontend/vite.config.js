@@ -7,5 +7,9 @@ export default defineConfig({
   plugins: [
     react(),
     svgr({ include: "**/*.svg", exclude: "**/images/**/*.svg" }),
+    // eslint-disable-next-line no-undef
+    ...(process.env.USE_HTTPS === "true"
+      ? [await import("vite-plugin-mkcert").then((plugin) => plugin.default())]
+      : []),
   ],
 });
