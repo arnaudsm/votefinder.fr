@@ -16,13 +16,11 @@ import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import { shuffle } from "../utils/utils";
 import { recommendedVotesCount } from "../data/variables";
-import gsap from "gsap";
 import CrossIcon from "../assets/icons/cross.svg";
 
 export default function Votes() {
   let currentSwipeCardRef = useRef(null);
   let currentCardRef = useRef(null);
-  const tickerRef = useRef(null);
   const actionContreRef = useRef(null);
   const actionPasserRef = useRef(null);
   const actionPourRef = useRef(null);
@@ -98,10 +96,15 @@ export default function Votes() {
         100,
       ) / 100;
 
-    gsap.set(currentCardRef.current, {
-      "--card-bg-approve-opacity": cardTranslateXRef.current > 0 ? percent : 0,
-      "--card-bg-decline-opacity": cardTranslateXRef.current < 0 ? percent : 0,
-    });
+    currentCardRef.current.style.setProperty(
+      "--card-bg-approve-opacity",
+      cardTranslateXRef.current > 0 ? percent : 0,
+    );
+
+    currentCardRef.current.style.setProperty(
+      "--card-bg-decline-opacity",
+      cardTranslateXRef.current < 0 ? percent : 0,
+    );
 
     // const blurValue = (percent - progressMinValueAnimTrigger) * 10;
     // const scaleValue = blurValue / 70;
@@ -137,20 +140,17 @@ export default function Votes() {
   }, [cardMatrix]);
 
   useEffect(() => {
-    tickerRef.current = gsap.ticker.add(updateCardGradient);
+    let animationFrameRaf;
+
+    const animate = () => {
+      updateCardGradient();
+      animationFrameRaf = requestAnimationFrame(animate);
+    };
+    animationFrameRaf = requestAnimationFrame(animate);
 
     // Cleanup
     return () => {
-      if (tickerRef.current) {
-        gsap.ticker.remove(tickerRef.current);
-        tickerRef.current = null;
-      }
-
-      // gsap.to([actionContreEl, actionPasserEl, actionPourEl], {
-      //   filter: "blur(0px)",
-      //   scale: 1,
-      //   duration: 0.3,
-      // });
+      cancelAnimationFrame(animationFrameRaf);
     };
   }, [updateCardGradient]);
 
