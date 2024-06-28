@@ -1,6 +1,8 @@
 @use '../base/breakpoints' as breakpoints;
 
 .BottomNav {
+  --bottom-nav-height: 4rem;
+
   box-shadow: var(--shadow);
   z-index: 5;
   height: var(--bottom-nav-height) !important;

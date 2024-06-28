@@ -156,6 +156,15 @@ export default function Votes() {
 
   return (
     <div className={`Votes`}>
+      {progress < 100 && (
+        <div className="Votes__progress progress">
+          <div
+            className="progress__bar"
+            style={{ width: `${progress}%` }}
+          ></div>
+        </div>
+      )}
+
       <div className="Votes__bg-color"></div>
       <div className="Votes__bg-circle"></div>
 
@@ -242,15 +251,6 @@ export default function Votes() {
           <ThumbUpIcon color="green" />
         </Button>
       </div>
-
-      {progress < 100 && (
-        <div className="Votes__progress progress">
-          <div
-            className="progress__bar"
-            style={{ width: `${progress}%` }}
-          ></div>
-        </div>
-      )}
     </div>
   );
 }

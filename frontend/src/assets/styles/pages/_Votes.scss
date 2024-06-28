@@ -1,7 +1,7 @@
 @use '../base/breakpoints' as breakpoints;
 
 .Votes {
-  padding: 1rem 1rem 2rem;
+  padding: 1.75rem 1rem 1.5rem;
   box-sizing: border-box;
   height: 100%;
   width: 100%;
@@ -143,8 +143,8 @@
   }
 
   &__progress {
-    position: fixed;
-    bottom: var(--bottom-nav-height);
+    position: absolute;
+    top: 0;
     left: 0;
     height: 0.5rem;
     width: 100%;
