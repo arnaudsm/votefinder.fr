@@ -49,12 +49,18 @@
     .About__btn {
       margin-top: 0 !important;
       border-radius: 0.5rem !important;
-      padding: 0.25rem !important;
+      padding: 0.5rem !important;
       min-width: unset;
       aspect-ratio: 1;
+      height: 3rem;
 
       &:not(:first-child) {
         margin-left: 1rem;
+      }
+
+      svg {
+        width: 100%;
+        height: 100%;
       }
     }
   }
