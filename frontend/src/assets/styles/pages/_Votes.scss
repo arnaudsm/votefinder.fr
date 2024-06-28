@@ -148,6 +148,7 @@
     left: 0;
     height: 0.5rem;
     width: 100%;
+    background-color: var(--vote-progress-color);
 
     .progress {
       &__bar {
