@@ -29,7 +29,9 @@ export default function ListVotesModal() {
               />
             ))}
             {choices.length == 0 && (
-              <div>{"Vous n'avez voté pour aucun texte pour l'instant !"}</div>
+              <div className="MesVotes__empty">
+                {"Vous n'avez voté pour aucun texte pour l'instant !"}
+              </div>
             )}
           </div>
         </div>

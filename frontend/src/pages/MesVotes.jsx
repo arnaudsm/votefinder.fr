@@ -21,7 +21,9 @@ export default function MesVotes() {
           <Card vote_id={vote_id} key={vote_id} editable />
         ))}
         {choices.length == 0 && (
-          <div>{"Vous n'avez voté pour aucun texte pour l'instant !"}</div>
+          <div className="MesVotes__empty">
+            {"Vous n'avez voté pour aucun texte pour l'instant !"}
+          </div>
         )}
       </div>
     </div>
