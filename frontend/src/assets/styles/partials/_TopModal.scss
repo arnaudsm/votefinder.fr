@@ -1,25 +1,36 @@
 .TopModal {
   .content {
     background-color: var(--mui-palette-background-paper);
-    color: var(--mui-palette-body-main);
+    color: var(--mui-palette-primary-main);
     margin: 0 auto;
     border-radius: 1rem;
     max-width: 32rem;
     gap: 1rem;
     display: flex;
     flex-direction: column;
-    text-align: center;
     justify-content: space-between;
     overflow: auto;
     min-height: 30rem;
   }
 
-  h2 {
+  &__title {
+    font-family: var(--font-title), sans-serif;
+    font-weight: 800;
     font-size: 1.25rem;
+    line-height: 1.25;
+    text-align: center;
   }
 
-  ul {
-    font-size: 0.875rem;
+  &__list {
     text-align: left;
+    padding-left: 1.5rem;
+
+    li {
+      &:not(:first-child) {
+        margin-top: 0.5rem;
+      }
+
+      font-size: 0.875rem;
+    }
   }
 }

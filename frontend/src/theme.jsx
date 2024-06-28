@@ -1,61 +1,75 @@
 import { experimental_extendTheme as extendTheme } from "@mui/material/styles";
 
 const colors = {
-  primary: {
-    main: "#0052B4",
-    contrastText: "#fff",
-  },
-  secondary: {
-    main: "#DD5A5A",
-    contrastText: "#fff",
+  body: {
+    main: "#06093F",
   },
   lightBlue: {
-    main: "#6697D2",
+    main: "#323ADA",
   },
-  lightRed: {
-    main: "#E78B8B",
+  darkPurple: {
+    main: "#280098",
+  },
+  purple: {
+    main: "#323ADA",
+  },
+  lightPurple: {
+    main: "#5647FD",
+  },
+  red: {
+    main: "#ED2579",
   },
   green: {
-    main: "#63B85D",
+    main: "#26c990",
   },
   white: {
     main: "#FFFFFF",
+    background: "#f0f1f9",
+  },
+  black: {
+    main: "#121212",
+    background: "#1e1e1e",
   },
 };
 
 export const theme = extendTheme({
+  typography: {
+    fontFamily: ["var(--font-body)", "sans-serif"].join(","),
+  },
   colorSchemes: {
     light: {
       palette: {
         ...colors,
-        body: {
-          main: "#3E3E3E",
+        primary: {
+          main: colors.body.main,
+          contrastText: colors.white.main,
         },
-        highlight: {
-          main: "#FFFFFF",
-          contrastText: "#3E3E3E",
+        secondary: {
+          main: colors.purple.main,
+          contrastText: colors.white.main,
         },
         background: {
-          main: "#EBEBEB",
-          paper: "#FFFFFF",
-          contrastText: "#3E3E3E",
+          main: colors.white.background,
+          paper: colors.white.main,
+          contrastText: colors.body.main,
         },
       },
     },
     dark: {
       palette: {
         ...colors,
-        body: {
-          main: "#FFFFFF",
+        primary: {
+          main: colors.white.background,
+          contrastText: colors.body.main,
         },
-        highlight: {
-          main: "#121212",
-          contrastText: "#FFFFFF",
+        secondary: {
+          main: colors.purple.main,
+          contrastText: colors.white.main,
         },
         background: {
-          main: "#262626",
-          paper: "#121212",
-          contrastText: "#FFFFFF",
+          main: colors.black.background,
+          paper: colors.black.main,
+          contrastText: colors.white.main,
         },
       },
     },

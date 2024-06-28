@@ -1,5 +1,10 @@
 import { BottomNavigation, BottomNavigationAction } from "@mui/material";
-import { EmojiEvents, HowToVote, Info, ViewStream } from "@mui/icons-material";
+import {
+  EmojiEvents,
+  HowToVote,
+  Info,
+  MarkAsUnread,
+} from "@mui/icons-material";
 
 export default function BottomNav({ state: [tab, setTab] }) {
   return (
@@ -11,8 +16,8 @@ export default function BottomNav({ state: [tab, setTab] }) {
     >
       {[
         { key: "votes", label: "Voter", icon: <HowToVote /> },
-        { key: "resultats", label: "Résultats", icon: <EmojiEvents /> },
-        { key: "mes-votes", label: "Mes Votes", icon: <ViewStream /> },
+        { key: "resultats", label: "Mes résultats", icon: <EmojiEvents /> },
+        { key: "mes-votes", label: "Mes votes", icon: <MarkAsUnread /> },
         { key: "a-propos", label: "À Propos", icon: <Info /> },
       ].map(({ label, icon, key }) => (
         <BottomNavigationAction

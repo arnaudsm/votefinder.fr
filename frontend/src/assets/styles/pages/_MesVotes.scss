@@ -1,8 +1,17 @@
 .MesVotes {
+  &__title {
+    margin-top: 1rem;
+    text-align: center;
+  }
+
   &__results {
     display: flex;
     flex-direction: column;
     padding: 1rem;
+  }
+
+  &__empty {
+    text-align: center;
   }
 
   .Card {

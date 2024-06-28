@@ -17,8 +17,8 @@ export default function StatsModal() {
       className="StatsModal TopModal"
     >
       <div className="content">
-        <h2>{vote?.titre}</h2>
-        <ul>
+        <h2 className="TopModal__title">{vote?.titre}</h2>
+        <ul className="TopModal__list">
           <li>{vote?.sous_titre_1}</li>
           <li>{vote?.sous_titre_2}</li>
         </ul>
@@ -61,7 +61,8 @@ export default function StatsModal() {
               ))}
         </div>
         <Button
-          endIcon={<Close />}
+          className="Btn Btn--secondary Btn--bordered Btn--centered"
+          startIcon={<Close />}
           variant="text"
           disableElevation
           onClick={() => context.setStatsPopup(false)}

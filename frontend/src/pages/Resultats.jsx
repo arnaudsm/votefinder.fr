@@ -1,4 +1,4 @@
-import { useContext, useMemo, useState } from "react";
+import { useContext, useMemo, useState, useEffect } from "react";
 import { ThemeContext } from "../context/ThemeContext.jsx";
 import { getRanks } from "../utils/votes.jsx";
 import { minVotesCount } from "../data/variables.jsx";
@@ -7,24 +7,28 @@ import { Share } from "@mui/icons-material";
 import ResultsListes from "../components/ResultsListes.jsx";
 import ResultsDeputes from "../components/ResultsDeputes.jsx";
 import html2canvas from "html2canvas";
-export default function Resultats({ visible }) {
+export default function Resultats() {
   const [tab, setTab] = useState(0);
   const context = useContext(ThemeContext);
   const results = useMemo(() => getRanks(context.choices), [context.choices]);
   const minVotesReached = Object.keys(context.choices).length >= minVotesCount;
   const handleChange = (event, newValue) => setTab(newValue);
 
+  useEffect(() => {
+    context.contentRef.current.scrollTo(0, 0);
+  }, [context.contentRef]);
+
   return (
-    <div className={`Resultats ${visible ? "" : "hide"}`}>
+    <div className={`Resultats`}>
       <div className="Resultats__header">
-        <h2>🏆 Mes Résultats</h2>
+        <h1 className="title">Mes Résultats</h1>
 
         {minVotesReached && navigator.canShare && (
           <Button
             startIcon={<Share />}
-            color="primary"
+            color="secondary"
             variant="contained"
-            className="Resultats__share"
+            className="Resultats__share Btn Btn--secondary"
             onClick={async () => {
               context.setShowShare(true);
               await share();
@@ -37,24 +41,29 @@ export default function Resultats({ visible }) {
           </Button>
         )}
       </div>
-      <Tabs
-        className="Resultats__tabs"
-        value={tab}
-        onChange={handleChange}
-        variant="fullWidth"
-      >
-        <Tab label="Listes" />
-        <Tab label="Députés" />
-      </Tabs>
-      {!minVotesReached ? (
-        <div className="Resultats__list">
-          Réponds à plus de {minVotesCount} questions pour voir tes résultats!
-        </div>
-      ) : tab == 0 ? (
-        <ResultsListes results={results} choices={context.choices} />
-      ) : tab == 1 ? (
-        <ResultsDeputes results={results} />
-      ) : null}
+
+      <div className="Resultats__container">
+        <Tabs
+          className="Resultats__tabs"
+          value={tab}
+          onChange={handleChange}
+          indicatorColor="secondary"
+          textColor="secondary"
+          variant="fullWidth"
+        >
+          <Tab className="Resultats__tab" label="Listes" />
+          <Tab className="Resultats__tab" label="Députés" />
+        </Tabs>
+        {!minVotesReached ? (
+          <div className="Resultats__list">
+            Réponds à plus de {minVotesCount} questions pour voir tes résultats!
+          </div>
+        ) : tab == 0 ? (
+          <ResultsListes results={results} choices={context.choices} />
+        ) : tab == 1 ? (
+          <ResultsDeputes results={results} />
+        ) : null}
+      </div>
     </div>
   );
 }

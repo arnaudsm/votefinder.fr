@@ -1,62 +1,95 @@
-.About {
-  max-width: 35rem;
+@use '../base/breakpoints' as breakpoints;
 
-  &__socials {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    justify-content: center;
+.About {
+  width: 100%;
+  padding: 1rem;
+  text-align: center;
+
+  &__title {
+    margin-top: 0.5rem;
   }
 
-  &__card {
-    margin: 1rem;
+  &__subtitle {
+    font-family: var(--font-title), sans-serif;
+    font-weight: 600;
+
+    & + * {
+      margin-top: 0.5rem !important;
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: var(--mui-palette-background-paper);
-    gap: 0.75rem;
     border-radius: 1rem;
-    padding: 0.5rem 1.5rem 1.5rem;
-    text-align: center;
+    padding: 1rem;
+  }
+
+  &__section {
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    h2,
-    p {
-      margin: 0;
+    &:first-of-type {
+      margin-top: 1.5rem;
     }
 
-    h2 {
-      margin-top: 2rem;
-      font-size: 1.75rem;
+    &:not(:first-of-type) {
+      margin-top: 2.5rem;
+    }
+  }
+
+  &__theme-switcher {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+  }
+
+  &__socials {
+    display: flex;
+    flex-wrap: wrap;
+
+    .About__btn {
+      margin-top: 0 !important;
+      border-radius: 0.5rem !important;
+      padding: 0.5rem !important;
+      min-width: unset;
+      aspect-ratio: 1;
+      height: 3rem;
+
+      &:not(:first-child) {
+        margin-left: 1rem;
+      }
+
+      svg {
+        width: 100%;
+        height: 100%;
+      }
     }
   }
 
   &__team {
     display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
+    flex-direction: column;
+    gap: 0.75rem;
     justify-content: center;
     width: 100%;
 
-    div {
-      width: calc(49% - 1rem);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+    strong {
+      font-weight: 800;
+    }
+  }
+
+  &__btn {
+    &:not(:first-child) {
+      margin-top: 1rem;
     }
 
-    h4,
-    h5 {
-      margin: 0;
-      font-weight: normal;
-    }
-
-    a {
-      color: var(--link-color);
-
-      &:visited {
-        color: var(--link-visited-color);
-      }
+    @media only screen and (min-width: breakpoints.$width-mobile) {
+      padding: 0.5rem 1rem !important;
+      font-size: 0.875rem !important;
     }
   }
 }

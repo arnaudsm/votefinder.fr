@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { ThemeContext } from "../context/ThemeContext.jsx";
 import { Button } from "@mui/material";
 import {
@@ -7,201 +7,233 @@ import {
   FileDownload,
   GitHub,
   Instagram,
-  PictureAsPdf,
+  Description,
   X,
 } from "@mui/icons-material";
+import EuropeIcon from "../assets/icons/europe.svg";
 import { projectURL } from "../data/variables.jsx";
+import ThemeSwitcher from "../components/ThemeSwitcher.jsx";
 
-export default function About({ visible }) {
+import TiktokIcon from "../assets/icons/tiktok.svg";
+
+export default function About() {
   const context = useContext(ThemeContext);
 
+  useEffect(() => {
+    context.contentRef.current.scrollTo(0, 0);
+  }, [context.contentRef]);
+
   return (
-    <div className={`About ${visible ? "" : "hide"}`}>
-      <div className="About__card">
-        <h2>À Propos</h2>
-        <p>
-          VoteFinder est un projet bénévole, <br />
-          open-source, et sans tracking.
-        </p>
+    <div className={`About`}>
+      <div className="About__container">
+        <h1 className="About__title title">À Propos</h1>
 
-        <Button
-          startIcon={<PictureAsPdf />}
-          color="primary"
-          variant="contained"
-          size="large"
-          href="Communique-de-Presse-VoteFinder.fr.pdf"
-          disableElevation
-        >
-          communiqué de presse
-        </Button>
-        <p>
-          Vous voulez corriger une erreur ou rajouter un texte de loi ?<br />
-          Contactez-nous ou proposez une modification sur GitHub !
-        </p>
-        <Button
-          startIcon={<Email />}
-          color="primary"
-          variant="contained"
-          size="large"
-          href="mailto:contact@votefinder.fr"
-          disableElevation
-        >
-          nous contacter
-        </Button>
-        <Button
-          startIcon={<GitHub />}
-          color="primary"
-          variant="contained"
-          size="large"
-          disableElevation
-          href={projectURL}
-          target="_blank"
-        >
-          contribuer sur github
-        </Button>
-        <Button
-          color="primary"
-          variant="contained"
-          size="large"
-          href="https://votefinder.eu"
-        >
-          VoteFinder Européennes
-        </Button>
+        <div className="About__section">
+          <h2 className="About__subtitle">💡 Le projet</h2>
+          <p>
+            VoteFinder est un projet bénévole,{" "}
+            <a href={projectURL} target="_blank">
+              open-source
+            </a>
+            , et sans tracking.
+          </p>
 
-        <h2>Paramètres</h2>
-        <Button
-          className="reset"
-          startIcon={<Delete />}
-          size="large"
-          color="primary"
-          variant="contained"
-          onClick={() => {
-            if (!confirm("Voulez vous supprimer toutes vos données locales?"))
-              return;
-            context.setChoices({});
-            localStorage.setItem("votes", JSON.stringify({}));
-            context.acceptWelcome(false);
-            context.setTab(0);
-          }}
-          disableElevation
-        >
-          réinitialiser mes votes
-        </Button>
-        <Button
-          className="reset"
-          startIcon={<FileDownload />}
-          size="large"
-          color="primary"
-          variant="contained"
-          onClick={() => {
-            const data = new Blob([JSON.stringify(context.choices)], {
-              type: "application/json",
-            });
-            const url = window.URL.createObjectURL(data);
-            const a = document.createElement("a");
-            a.style.display = "none";
-            a.href = url;
-            a.download = "votes_legislatives.txt";
-            document.body.appendChild(a);
-            a.click();
-            window.URL.revokeObjectURL(url);
-          }}
-          disableElevation
-        >
-          Télécharger mes votes
-        </Button>
-
-        <h2>Réseaux Sociaux</h2>
-        <div className="About__socials">
           <Button
-            color="primary"
+            startIcon={<Description />}
+            className="About__btn Btn Btn--secondary"
             variant="contained"
-            href="https://twitter.com/VoteFinder_eu"
-            startIcon={<X />}
+            size="large"
+            href="Communique-de-Presse-VoteFinder.fr.pdf"
+            disableElevation
           >
-            Twitter
-          </Button>
-          <Button
-            color="primary"
-            variant="contained"
-            href="https://www.instagram.com/votefinder.eu"
-            startIcon={<Instagram />}
-          >
-            instagram
-          </Button>
-          <Button
-            color="primary"
-            variant="contained"
-            href="https://www.tiktok.com/@votefinder.eu"
-          >
-            TikTok
+            communiqué de presse
           </Button>
         </div>
 
-        <h2>L’Équipe</h2>
-        <div className="About__team">
-          <div style={{ width: "80%" }}>
-            <h4>Arnaud de Saint Méloir</h4>
-            <h5>Créateur/Ingénieur</h5>
-          </div>
-          <div>
-            <h4>Anna Logacheva</h4>
-            <h5>Communication</h5>
-          </div>
-          <div>
-            <h4>Yeliz Inci</h4>
-            <h5>Spécialiste Droits Humains</h5>
-          </div>
-          <div>
-            <h4>Rémi Dupont</h4>
-            <h5>Communication</h5>
-          </div>
-          <div>
-            <h4>Arnaud-Yoh Massenet</h4>
-            <h5>Data Scientist</h5>
-          </div>
-          <div>
-            <h4>Mélusine Magat</h4>
-            <h5>Communication et Relecture</h5>
-          </div>
+        <div className="About__section">
+          <h2 className="About__subtitle">🚀 Une amélioration</h2>
+          <p>
+            Vous voulez corriger une erreur ou rajouter un texte de loi ?
+            <br />
+            Contactez-nous ou proposez une modification sur GitHub !
+          </p>
 
-          <div>
-            <h4>Marie-Bénédicte Fradin</h4>
-            <h5>Communication et Relecture</h5>
-          </div>
+          <Button
+            startIcon={<Email />}
+            className="About__btn Btn Btn--secondary"
+            variant="contained"
+            size="large"
+            href="mailto:contact@votefinder.fr"
+            disableElevation
+          >
+            nous contacter
+          </Button>
+          <Button
+            startIcon={<GitHub />}
+            className="About__btn Btn Btn--secondary"
+            variant="contained"
+            size="large"
+            disableElevation
+            href={projectURL}
+            target="_blank"
+          >
+            contribuer sur github
+          </Button>
+        </div>
 
-          <div>
-            <h4>Cyprien Olive-Riban</h4>
-            <h5>Relecture</h5>
-          </div>
-
-          <div>
-            <h4>Clément Gayot</h4>
-            <h5>Développeur</h5>
-          </div>
-
-          <div>
-            <h4>Tiphaine Chomaz</h4>
-            <h5>Designer UX / UI</h5>
+        <div className="About__section">
+          <h2 className="About__subtitle">🔗 Réseaux sociaux</h2>
+          <div className="About__socials">
+            <Button
+              className="About__btn Btn Btn--secondary"
+              variant="contained"
+              href="https://twitter.com/VoteFinder_eu"
+            >
+              <X />
+            </Button>
+            <Button
+              className="About__btn Btn Btn--secondary"
+              variant="contained"
+              href="https://www.instagram.com/votefinder.eu"
+            >
+              <Instagram />
+            </Button>
+            <Button
+              className="About__btn Btn Btn--secondary"
+              variant="contained"
+              href="https://www.tiktok.com/@votefinder.eu"
+            >
+              <TiktokIcon />
+            </Button>
           </div>
         </div>
-        <h2>Remerciements</h2>
-        <div className="About__team">
-          <div>
-            <h4>Théo Delemazure</h4>
-            <h5>
-              <a target="_blank" href="https://theatrebourbon.delemazure.fr/">
+
+        <div className="About__section">
+          <h2 className="About__subtitle">⚙️ Paramètres</h2>
+          <div className="About__theme-switcher">
+            Choix du thème
+            <ThemeSwitcher />
+          </div>
+
+          <Button
+            className="About__btn Btn Btn--secondary"
+            startIcon={<Delete />}
+            size="large"
+            variant="contained"
+            onClick={() => {
+              if (!confirm("Voulez vous supprimer toutes vos données locales?"))
+                return;
+              context.setChoices({});
+              localStorage.setItem("votes", JSON.stringify({}));
+              context.acceptWelcome(false);
+              context.setTab(0);
+            }}
+            disableElevation
+          >
+            Réinitialiser mes votes
+          </Button>
+
+          <Button
+            className="About__btn Btn Btn--secondary"
+            startIcon={<FileDownload />}
+            size="large"
+            variant="contained"
+            onClick={() => {
+              const data = new Blob([JSON.stringify(context.choices)], {
+                type: "application/json",
+              });
+              const url = window.URL.createObjectURL(data);
+              const a = document.createElement("a");
+              a.style.display = "none";
+              a.href = url;
+              a.download = "votes_legislatives.txt";
+              document.body.appendChild(a);
+              a.click();
+              window.URL.revokeObjectURL(url);
+            }}
+            disableElevation
+          >
+            Télécharger mes votes
+          </Button>
+        </div>
+
+        <div className="About__section">
+          <h2 className="About__subtitle">🔍 Nos autres projets</h2>
+          <Button
+            className="About__btn Btn Btn--secondary"
+            variant="contained"
+            size="large"
+            disableElevation
+            href="https://votefinder.eu"
+            target="_blank"
+            startIcon={<EuropeIcon />}
+          >
+            Votefinder Européennes
+          </Button>
+        </div>
+
+        <div className="About__section">
+          <h2 className="About__subtitle">👥 L’équipe</h2>
+
+          <div className="About__team">
+            <div>
+              <strong>Arnaud de Saint Méloir</strong> - Créateur/Ingénieur
+            </div>
+
+            <div>
+              <strong>Anna Logacheva</strong> - Communication
+            </div>
+
+            <div>
+              <strong>Yeliz Inci</strong> - Spécialiste Droits Humains
+            </div>
+
+            <div>
+              <strong>Rémi Dupont</strong> - Communication
+            </div>
+
+            <div>
+              <strong>Arnaud-Yoh Massenet</strong> - Data Scientist
+            </div>
+
+            <div>
+              <strong>Mélusine Magat</strong> - Communication et Relecture
+            </div>
+
+            <div>
+              <strong>Marie-Bénédicte Fradin</strong> - Communication et
+              Relecture
+            </div>
+
+            <div>
+              <strong>Cyprien Olive-Riban</strong> - Relecture
+            </div>
+
+            <div>
+              <strong>Clément Gayot</strong> - Développeur
+            </div>
+
+            <div>
+              <strong>Tiphaine Chomaz</strong> - Designer UX / UI
+            </div>
+          </div>
+        </div>
+
+        <div className="About__section">
+          <h2 className="About__subtitle">🤝 Partenaires</h2>
+
+          <div className="About__team">
+            <div>
+              <strong>Théo Delemazure</strong> -{" "}
+              <a href="https://theatrebourbon.delemazure.fr/">
                 Plateforme des débats
               </a>
-            </h5>
-          </div>
-          <div>
-            <h4>Awenig Marié</h4>
-            <h5>
-              <a target="_blank" href="https://datan.fr/">
-                Datan.fr
-              </a>
-            </h5>
+            </div>
+
+            <div>
+              <strong>Awenig Marié</strong> -{" "}
+              <a href="https://datan.fr/">Datan.fr</a>
+            </div>
           </div>
         </div>
       </div>

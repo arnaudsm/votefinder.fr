@@ -1,18 +1,32 @@
+@use '../base/breakpoints' as breakpoints;
+
 .BottomNav {
+  --bottom-nav-height: 4rem;
+
   box-shadow: var(--shadow);
   z-index: 5;
+  height: var(--bottom-nav-height) !important;
 
   &__action {
+    padding: 0 !important;
+    color: color-mix(in srgb, var(--mui-palette-primary-main) 54%, transparent) !important;
+
     &:hover {
-      opacity: 0.8;
+      color: var(--mui-palette-primary-main) !important;
+    }
+
+    &.Mui-selected {
+      color: var(--mui-palette-primary-main) !important;
     }
 
     .MuiBottomNavigationAction-label {
       transition: margin 0.1s ease-in-out;
+      font-size: 0.75rem !important;
+      font-weight: 800;
+      margin-top: 0 !important;
 
-      &.Mui-selected {
-        font-size: 0.75rem !important;
-        margin-top: 0.15rem;
+      @media only screen and (min-width: breakpoints.$width-mobile) {
+        font-size: 0.85rem !important;
       }
     }
   }

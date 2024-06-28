@@ -1,40 +1,49 @@
+@use '../base/breakpoints' as breakpoints;
+@use '../base/functions' as functions;
+
 html {
   height: 100%;
   width: 100%;
-  font-family: Roboto, sans-serif;
+  font-family: var(--font-body), sans-serif;
+  font-weight: 700;
 
-  &[data-mui-color-scheme="light"] {
-    --result-bg-color: #c2c2c2;
-    --link-color: inherit;
-    --link-visited-color: inherit;
+  &[data-mui-color-scheme='light'] {
+    --logo-svg-text-vote-color: #3e3e3e;
+    --vote-progress-color: color-mix(in srgb, var(--mui-palette-body-main) 8%, transparent);
   }
 
-  &[data-mui-color-scheme="dark"] {
-    --result-bg-color: var(--mui-palette-background-main);
-    --link-color: #ccc;
-    --link-visited-color: #ccc;
+  &[data-mui-color-scheme='dark'] {
+    --logo-svg-text-vote-color: #c1c1c1;
+    --vote-progress-color: color-mix(in srgb, var(--mui-palette-white-main) 8%, transparent);
   }
-}
 
-@media (min-height: 1000px) {
-  html {
-    zoom: 125%;
+  font-size: 16px;
+
+  @media (max-height: breakpoints.$height-small) {
+    font-size: 14px;
   }
-}
 
-@media (max-height: 700px) {
-  html {
-    zoom: 75%;
+  @media (min-height: breakpoints.$height-xl) {
+    font-size: 18px;
+  }
+
+  @media (min-height: breakpoints.$height-2xl) {
+    font-size: 20px;
+  }
+
+  @media (min-height: breakpoints.$height-3xl) {
+    font-size: 22px;
   }
 }
 
 body {
-  color: var(--mui-palette-body-main);
+  color: var(--mui-palette-primary-main);
   background: var(--mui-palette-background-main);
   margin: 0;
   overflow: hidden;
   height: 100%;
   width: 100%;
+  font-size: functions.calculate-rem(14);
 }
 
 #root {
@@ -61,6 +70,25 @@ body {
 ul {
   margin-top: 1em;
   margin-bottom: 1em;
+}
+
+p {
+  &:not(:first-child) {
+    margin-top: 0.75rem;
+  }
+}
+
+a {
+  color: var(--mui-palette-lightPurple-main);
+
+  &:visited {
+    color: var(--mui-palette-lightPurple-main);
+  }
+}
+
+.title {
+  font-family: var(--font-title), sans-serif;
+  font-weight: 600;
 }
 
 .hide {

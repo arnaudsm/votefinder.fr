@@ -29,16 +29,21 @@ export default function ListVotesModal() {
               />
             ))}
             {choices.length == 0 && (
-              <div>{"Vous n'avez voté pour aucun texte pour l'instant !"}</div>
+              <div className="MesVotes__empty">
+                {"Vous n'avez voté pour aucun texte pour l'instant !"}
+              </div>
             )}
           </div>
         </div>
       </div>
       <div className="ListVotesModal__actions">
-        <h2>{data.lists[context.listVotesPopup]?.label}</h2>
+        <h2 className="TopModal__title">
+          {data.lists[context.listVotesPopup]?.label}
+        </h2>
         <Button
           startIcon={<AccountBalance />}
-          color="primary"
+          className="Btn Btn--secondary"
+          color="secondary"
           variant="contained"
           size="large"
           href={`https://www.assemblee-nationale.fr/dyn/org/${context.listVotesPopup}`}
@@ -48,7 +53,8 @@ export default function ListVotesModal() {
           Fiche du parti
         </Button>
         <Button
-          endIcon={<Close />}
+          className="Btn Btn--secondary Btn--bordered"
+          startIcon={<Close />}
           variant="text"
           disableElevation
           onClick={() => context.setListVotesPopup(false)}

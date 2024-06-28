@@ -1,6 +1,12 @@
 module.exports = {
-  extends: 'stylelint-config-standard-scss',
+  extends: [
+    'stylelint-config-standard-scss',
+    'stylelint-prettier/recommended',
+    'stylelint-config-prettier-scss',
+  ],
   rules: {
+    'prettier/prettier': true,
+
     // Custom rules
     'no-descending-specificity': null,
     'color-function-notation': 'legacy',

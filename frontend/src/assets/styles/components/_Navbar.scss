@@ -1,16 +1,31 @@
 .Navbar {
-  box-shadow: var(--shadow);
+  --navbar-height: 3.5rem;
+  --navbar-padding: 0.5rem;
+
+  width: 100%;
   z-index: 5;
 
   &__toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: var(--navbar-padding);
+    height: var(--navbar-height);
     background-color: var(--mui-palette-background-paper) !important;
   }
 
   &__logo {
-    height: 2.625rem;
+    height: calc(var(--navbar-height) - (var(--navbar-padding) * 2));
 
     &:hover {
       opacity: 0.85;
+    }
+
+    .Logo-svg {
+      &__vote {
+        fill: var(--logo-svg-text-vote-color);
+      }
     }
   }
 }

@@ -7,9 +7,9 @@ export default function NoVotesLeft() {
 
   return (
     <div className="NoVotesLeft">
-      <div> Félicitations, vous avez voté toutes les lois !</div>
+      <h3 className="title">Félicitations, vous avez voté toutes les lois !</h3>
       <Button
-        className="welcome-start"
+        className="Btn Btn--secondary Btn--centered"
         variant="contained"
         disableElevation
         size="large"

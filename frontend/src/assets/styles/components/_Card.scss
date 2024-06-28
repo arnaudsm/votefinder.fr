@@ -1,64 +1,189 @@
+@use '../base/breakpoints' as breakpoints;
+@use '../base/functions' as functions;
+
 .Card {
-  background: var(--mui-palette-primary-main);
-  color: var(--mui-palette-white-main);
-  padding: 1.2rem;
-  border-radius: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-  box-sizing: border-box;
+  --card-top-bg-color: var(--mui-palette-lightPurple-main);
+  --card-bottom-bg-color: var(--mui-palette-darkPurple-main);
+  --card-border-radius: 2rem;
+  --card-bg-approve-opacity: 0;
+  --card-bg-decline-opacity: 0;
 
-  h2 {
-    font-size: 1.375rem;
-    text-align: center;
-    margin: 0;
-    padding-bottom: 1rem;
-    border-bottom: #ffffff30 1px solid;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  position: relative;
+
+  &__front,
+  &__back {
+    backface-visibility: hidden;
+    transition: transform 0.5s ease-in-out;
   }
 
-  ul {
-    padding-left: 1rem;
-
-    li {
-      margin-bottom: 1rem;
-    }
+  &__front {
+    position: relative;
+    z-index: 2;
   }
 
-  &__user-vote {
-    margin-top: 1rem;
-  }
-
-  &__more-info {
-    height: 2.5rem;
+  &__back {
+    transform: rotateY(180deg);
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 100%;
 
-    &:hover {
-      opacity: 0.9;
+    .Card {
+      &__actions {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+      }
+
+      &__title {
+        font-size: 1.25rem !important;
+
+        @media only screen and (min-width: breakpoints.$width-mobile) {
+          font-size: 1.5rem !important;
+        }
+      }
     }
+  }
+
+  &__container {
+    color: var(--mui-palette-white-main);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 0.75rem 1rem 2rem;
+    box-sizing: border-box;
+    border-radius: var(--card-border-radius);
+    position: relative;
+    overflow: hidden;
+
+    @media only screen and (min-width: breakpoints.$width-mobile) {
+      padding: 1rem 1.25rem 1.5rem;
+    }
+  }
+
+  &__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, var(--card-top-bg-color) 0%, var(--card-bottom-bg-color) 100%);
+    z-index: -2;
+
+    &--approve {
+      --card-bottom-bg-color: var(--mui-palette-green-main);
+
+      opacity: var(--card-bg-approve-opacity);
+      z-index: -1;
+    }
+
+    &--decline {
+      --card-bottom-bg-color: var(--mui-palette-red-main);
+
+      opacity: var(--card-bg-decline-opacity);
+    }
+  }
+
+  &__top {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
   }
 
   &__bottom {
+    margin-top: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
   }
 
-  &__actions {
-    display: flex;
-    gap: 1rem;
-    width: 100%;
+  &__meta {
+    opacity: 0.9;
+    text-align: center;
+    font-size: 0.75rem;
+    font-family: var(--font-title), sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
 
-    & > div {
-      flex: auto;
+  &__title {
+    margin-top: 1rem;
+    font-family: var(--font-title), sans-serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 1.25;
+    text-align: center;
+
+    @media only screen and (min-width: breakpoints.$width-mobile) {
+      font-size: 1.5rem;
     }
   }
 
-  &__meta {
-    opacity: 0.7;
+  &__subtitles {
+    margin-top: 2rem;
+    padding-left: 0;
+    list-style-type: none;
+  }
+
+  &__subtitle {
     text-align: center;
-    font-size: 14px;
+    font-weight: 600;
+    font-size: functions.calculate-rem(14);
+
+    &:not(:first-child) {
+      margin-top: 1.25rem;
+    }
+  }
+
+  &__back-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: center;
+    gap: 0.9rem;
+    width: 100%;
+  }
+
+  &__user-vote {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+
+    .user-vote {
+      &__icon {
+        margin-left: 0.5rem;
+        width: 1.5rem;
+        height: 1.5rem;
+
+        svg {
+          width: 100%;
+          height: 100%;
+
+          path {
+            fill: var(--mui-palette-white-main);
+          }
+        }
+      }
+
+      &__label {
+        margin-left: 0.4rem;
+        text-transform: uppercase;
+        font-family: var(--font-title), sans-serif;
+        font-weight: 700;
+      }
+    }
   }
 
   &__results {
@@ -70,15 +195,79 @@
   }
 
   &__toggle-group {
-    background-color: var(--mui-palette-background-paper);
-    border: none;
+    background-color: color-mix(in srgb, var(--mui-palette-lightBlue-main) 60%, transparent) !important;
+    border-radius: 0 !important;
 
     button {
       border: none;
+      border-radius: 0 !important;
+      color: var(--mui-palette-white-main);
+      font-family: var(--font-title), sans-serif;
+      font-weight: 700;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+
+      svg {
+        width: 1.5rem;
+        height: 1.5rem;
+        margin-right: 0.5rem;
+
+        path {
+          fill: var(--mui-palette-white-main);
+        }
+      }
 
       &.Mui-selected {
-        color: var(--mui-palette-white-main);
-        background-color: #5c90cf !important;
+        color: var(--mui-palette-purple-main);
+        background-color: var(--mui-palette-white-main) !important;
+
+        svg {
+          path {
+            fill: var(--mui-palette-purple-main);
+          }
+        }
+      }
+    }
+  }
+
+  &--votes {
+    .Card {
+      &__title {
+        font-size: 1.375rem;
+
+        @media only screen and (min-width: breakpoints.$width-mobile) {
+          font-size: 1.75rem;
+        }
+      }
+    }
+  }
+
+  &--revert {
+    .Card__front {
+      transform: rotateY(180deg) !important;
+    }
+
+    .Card__back {
+      transform: rotateY(360deg) !important;
+    }
+  }
+
+  &--editable {
+    .Card__front {
+      .Card {
+        &__container {
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+
+        &__toggle-container {
+          background-color: var(--mui-palette-darkPurple-main);
+          border: solid 0.3rem var(--mui-palette-darkPurple-main);
+          border-radius: var(--card-border-radius);
+          border-top-left-radius: 0;
+          border-top-right-radius: 0;
+          overflow: hidden;
+        }
       }
     }
   }

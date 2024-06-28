@@ -1,9 +1,11 @@
 import "./assets/styles/index.scss";
-import "@fontsource/roboto/300.css";
-import "@fontsource/roboto/400.css";
-import "@fontsource/roboto/700.css";
+import "@fontsource/poppins/600-italic.css";
+import "@fontsource/poppins/700-italic.css";
+import "@fontsource/poppins/800-italic.css";
+import "@fontsource/manrope/700.css";
+import "@fontsource/manrope/800.css";
 
-import { useState } from "react";
+import { useState, Suspense, useRef } from "react";
 import ConfettiExplosion from "react-confetti-explosion";
 
 import { Experimental_CssVarsProvider as CssVarsProvider } from "@mui/material/styles";
@@ -28,6 +30,8 @@ import StatsModal from "./components/StatsModal";
 const enableResultsPopup = false;
 
 function App() {
+  const contentRef = useRef(null);
+
   const [tab, setTab] = useState(0);
   const [resultPopup, setResultPopup] = useState();
   const [listVotesPopup, setListVotesPopup] = useState();
@@ -65,6 +69,7 @@ function App() {
     <CssVarsProvider theme={theme}>
       <ThemeContext.Provider
         value={{
+          contentRef,
           tab,
           setTab,
           choices,
@@ -84,7 +89,7 @@ function App() {
       >
         <Navbar />
         {/* Switch with CSS to keep the state and rendering */}
-        <div className="content">
+        <div className="content" ref={contentRef}>
           {!enableResultsPopup && resultPopup && showConfetti && (
             <ConfettiExplosion
               onComplete={() => {
@@ -93,12 +98,12 @@ function App() {
             />
           )}
           {started ? (
-            <>
-              <Votes visible={tab == 0} />
-              <Resultats visible={tab == 1} />
-              <MesVotes visible={tab == 2} />
-              <About visible={tab == 3} />
-            </>
+            <Suspense>
+              {tab === 0 && <Votes />}
+              {tab === 1 && <Resultats />}
+              {tab === 2 && <MesVotes />}
+              {tab === 3 && <About />}
+            </Suspense>
           ) : (
             <Welcome />
           )}
