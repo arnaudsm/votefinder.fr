@@ -175,7 +175,7 @@
 
       &:not(:last-child) {
         .swipe-card__content {
-          filter: blur(3px) brightness(110%);
+          filter: brightness(70%);
         }
       }
     }
@@ -195,7 +195,7 @@
       height: 100%;
       width: 100%;
       background: transparent !important;
-      filter: blur(0);
+      filter: brightness(100%);
       transition:
         filter 0.5s ease-out,
         opacity 0.5s ease-out;
