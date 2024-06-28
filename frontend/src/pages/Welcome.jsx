@@ -39,7 +39,7 @@ export default function Welcome() {
 
       <div className="Welcome__bottom">
         <Button
-          className="Welcome__btn Btn Btn--blue"
+          className="Welcome__btn Btn Btn--body"
           color="background"
           variant="contained"
           endIcon={<East />}

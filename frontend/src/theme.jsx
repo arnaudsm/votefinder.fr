@@ -1,23 +1,26 @@
 import { experimental_extendTheme as extendTheme } from "@mui/material/styles";
 
 const colors = {
-  blue: {
+  body: {
     main: "#06093F",
   },
   lightBlue: {
-    main: "#4751FD",
+    main: "#323ADA",
+  },
+  darkPurple: {
+    main: "#280098",
   },
   purple: {
-    main: "#6000C1",
+    main: "#323ADA",
   },
   lightPurple: {
-    main: "#9B5ADB",
+    main: "#5647FD",
   },
   red: {
     main: "#ED2579",
   },
   green: {
-    main: "#31CA93",
+    main: "#26c990",
   },
   white: {
     main: "#FFFFFF",
@@ -38,7 +41,7 @@ export const theme = extendTheme({
       palette: {
         ...colors,
         primary: {
-          main: colors.blue.main,
+          main: colors.body.main,
           contrastText: colors.white.main,
         },
         secondary: {
@@ -48,7 +51,7 @@ export const theme = extendTheme({
         background: {
           main: colors.white.background,
           paper: colors.white.main,
-          contrastText: colors.blue.main,
+          contrastText: colors.body.main,
         },
       },
     },
@@ -57,10 +60,10 @@ export const theme = extendTheme({
         ...colors,
         primary: {
           main: colors.white.background,
-          contrastText: colors.blue.main,
+          contrastText: colors.body.main,
         },
         secondary: {
-          main: colors.lightPurple.main,
+          main: colors.purple.main,
           contrastText: colors.white.main,
         },
         background: {

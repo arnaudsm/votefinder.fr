@@ -105,7 +105,7 @@
 
         @media (hover: hover) and (pointer: fine) {
           &:hover {
-            background-color: var(--mui-palette-blue-main);
+            background-color: var(--mui-palette-body-main);
 
             svg {
               path {
@@ -151,7 +151,7 @@
 
     .progress {
       &__bar {
-        background-color: var(--mui-palette-secondary-main);
+        background-color: var(--mui-palette-lightBlue-main);
         position: absolute;
         transition: width 0.3s ease-in-out;
         transition-delay: 0.3s;

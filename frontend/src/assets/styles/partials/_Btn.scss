@@ -24,7 +24,7 @@
     color: var(--mui-palette-purple-main) !important;
 
     &.Btn--transparent {
-      background-color: color-mix(in srgb, var(--mui-palette-white-main) 40%, transparent) !important;
+      background-color: color-mix(in srgb, var(--mui-palette-white-main) 20%, transparent) !important;
     }
 
     &.Btn--bordered {
@@ -38,6 +38,15 @@
 
     &.Btn--bordered {
       color: var(--mui-palette-purple-main) !important;
+    }
+  }
+
+  &--body {
+    background-color: var(--mui-palette-body-main) !important;
+    color: var(--mui-palette-white-main) !important;
+
+    &.Btn--bordered {
+      color: var(--mui-palette-body-main) !important;
     }
   }
 
@@ -56,15 +65,6 @@
 
     &.Btn--bordered {
       color: var(--mui-palette-secondary-main) !important;
-    }
-  }
-
-  &--blue {
-    background-color: var(--mui-palette-primary-main) !important;
-    color: var(--mui-palette-white-main) !important;
-
-    &.Btn--bordered {
-      color: var(--mui-palette-primary-main) !important;
     }
   }
 

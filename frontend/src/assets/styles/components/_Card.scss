@@ -3,7 +3,7 @@
 
 .Card {
   --card-top-bg-color: var(--mui-palette-lightPurple-main);
-  --card-bottom-bg-color: var(--mui-palette-purple-main);
+  --card-bottom-bg-color: var(--mui-palette-darkPurple-main);
   --card-border-radius: 2rem;
   --card-bg-approve-opacity: 0;
   --card-bg-decline-opacity: 0;
@@ -261,7 +261,7 @@
         }
 
         &__toggle-container {
-          border: solid 0.3rem var(--mui-palette-purple-main);
+          border: solid 0.3rem var(--mui-palette-darkPurple-main);
           border-radius: var(--card-border-radius);
           border-top-left-radius: 0;
           border-top-right-radius: 0;

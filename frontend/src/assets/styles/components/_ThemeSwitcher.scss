@@ -30,7 +30,7 @@
   }
 
   .MuiSwitch-thumb {
-    background-color: #003892;
+    background-color: var(--mui-palette-secondary-main);
     width: functions.calculate-rem(32);
     height: functions.calculate-rem(32);
 
