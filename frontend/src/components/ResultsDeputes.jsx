@@ -68,7 +68,7 @@ export default function ResultsDeputes({ results }) {
               ></div>
               <div className="Result__name">
                 <h4>{data.deputes[id]?.l}</h4>
-                <div>
+                <div className="Result__ratio">
                   {results?.deputesRaw?.[id]?.["+"]}/
                   {results?.deputesRaw?.[id]?.["+"] +
                     results?.deputesRaw?.[id]?.["-"]}{" "}
