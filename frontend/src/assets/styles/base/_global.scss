@@ -59,7 +59,7 @@ body {
   position: relative;
   box-sizing: border-box;
   width: 100%;
-  overflow: hidden scroll;
+  overflow: hidden auto;
 
   & > * {
     margin: 0 auto;
