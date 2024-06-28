@@ -16,11 +16,9 @@ export default function Welcome() {
   return (
     <div className="Welcome">
       <div className="Welcome__container">
-        <img
-          className="Welcome__illustration"
-          src={WelcomeIllustrationPath}
-          alt="Welcome illustration"
-        />
+        <div className="Welcome__illustration">
+          <img src={WelcomeIllustrationPath} alt="Welcome illustration" />
+        </div>
 
         <div className="Welcome__content">
           <strong>
