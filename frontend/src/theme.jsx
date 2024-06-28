@@ -4,6 +4,9 @@ const colors = {
   blue: {
     main: "#06093F",
   },
+  lightBlue: {
+    main: "#4751FD",
+  },
   purple: {
     main: "#6000C1",
   },

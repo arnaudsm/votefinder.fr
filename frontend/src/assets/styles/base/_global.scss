@@ -8,14 +8,10 @@ html {
   font-weight: 700;
 
   &[data-mui-color-scheme='light'] {
-    --link-color: #4751fd;
-    --link-visited-color: #4751fd;
     --logo-svg-text-vote-color: #3e3e3e;
   }
 
   &[data-mui-color-scheme='dark'] {
-    --link-color: #4751fd;
-    --link-visited-color: #4751fd;
     --logo-svg-text-vote-color: #c1c1c1;
   }
 
@@ -72,6 +68,20 @@ body {
 ul {
   margin-top: 1em;
   margin-bottom: 1em;
+}
+
+p {
+  &:not(:first-child) {
+    margin-top: 0.75rem;
+  }
+}
+
+a {
+  color: var(--mui-palette-lightBlue-main);
+
+  &:visited {
+    color: var(--mui-palette-lightBlue-main);
+  }
 }
 
 .title {

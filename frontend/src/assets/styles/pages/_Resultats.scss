@@ -2,20 +2,19 @@
 
 .Resultats {
   width: 100%;
-  box-sizing: border-box;
   padding: 1rem;
-
-  &__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
 
   &__container {
     background-color: var(--mui-palette-background-paper);
     border-radius: 1rem;
     padding-top: 0.5rem;
     margin-top: 2rem;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   &__list {
