@@ -156,100 +156,104 @@ export default function Votes() {
 
   return (
     <div className={`Votes`}>
-      {progress < 100 && (
-        <div className="Votes__progress progress">
-          <div
-            className="progress__bar"
-            style={{ width: `${progress}%` }}
-          ></div>
+      <div className="Votes__container">
+        {progress < 100 && (
+          <div className="Votes__progress progress">
+            <div
+              className="progress__bar"
+              style={{ width: `${progress}%` }}
+            ></div>
+          </div>
+        )}
+
+        <div className="Votes__bg-color"></div>
+        <div className="Votes__bg-circle"></div>
+
+        <Stack className="Votes__stack">
+          <CardSwiper
+            className="Votes__card-swiper"
+            data={cardData}
+            onEnter={handleEnter}
+            onFinish={() => null}
+            onDismiss={handleDismiss}
+            dislikeButton={<div />}
+            likeButton={<div />}
+            withActionButtons
+            withRibbons
+            likeRibbonText="POUR"
+            dislikeRibbonText="CONTRE"
+            ribbonColors={{
+              bgLike: "var(--mui-palette-green-main)",
+              bgDislike: "var(--mui-palette-red-main)",
+              textColor: "white",
+            }}
+            emptyState={<NoVotesLeft />}
+          />
+        </Stack>
+        <div className="Votes__actions actions">
+          <Button
+            disableElevation
+            className="actions__contre"
+            ref={actionContreRef}
+            onClick={() => {
+              if (canPressActionRef.current === false) return;
+
+              delayNextActionPress();
+
+              document
+                .getElementById("swipe-card__dislike-action-button")
+                ?.click();
+
+              setTimeout(() => {
+                context.choose({ vote_id: id, type: "-" });
+              }, 0);
+            }}
+          >
+            <ThumbDownIcon color="red" />
+          </Button>
+
+          <Button
+            disableElevation
+            className="actions__passer"
+            ref={actionPasserRef}
+            onClick={() => {
+              if (canPressActionRef.current === false) return;
+
+              delayNextActionPress();
+
+              document
+                .getElementById("swipe-card__dislike-action-button")
+                ?.click();
+
+              setTimeout(() => {
+                context.choose({ vote_id: id, type: "0" });
+              }, 0);
+            }}
+          >
+            <CrossIcon />
+          </Button>
+
+          <Button
+            disableElevation
+            className="actions__pour"
+            ref={actionPourRef}
+            onClick={() => {
+              if (canPressActionRef.current === false) return;
+
+              delayNextActionPress();
+
+              document
+                .getElementById("swipe-card__like-action-button")
+                ?.click();
+
+              setTimeout(() => {
+                context.choose({ vote_id: id, type: "+" });
+              }, 0);
+            }}
+          >
+            <ThumbUpIcon color="green" />
+          </Button>
         </div>
-      )}
-
-      <div className="Votes__bg-color"></div>
-      <div className="Votes__bg-circle"></div>
-
-      <Stack className="Votes__stack">
-        <CardSwiper
-          className="Votes__card-swiper"
-          data={cardData}
-          onEnter={handleEnter}
-          onFinish={() => null}
-          onDismiss={handleDismiss}
-          dislikeButton={<div />}
-          likeButton={<div />}
-          withActionButtons
-          withRibbons
-          likeRibbonText="POUR"
-          dislikeRibbonText="CONTRE"
-          ribbonColors={{
-            bgLike: "var(--mui-palette-green-main)",
-            bgDislike: "var(--mui-palette-red-main)",
-            textColor: "white",
-          }}
-          emptyState={<NoVotesLeft />}
-        />
-      </Stack>
-      <div className="Votes__actions actions">
-        <Button
-          disableElevation
-          className="actions__contre"
-          ref={actionContreRef}
-          onClick={() => {
-            if (canPressActionRef.current === false) return;
-
-            delayNextActionPress();
-
-            document
-              .getElementById("swipe-card__dislike-action-button")
-              ?.click();
-
-            setTimeout(() => {
-              context.choose({ vote_id: id, type: "-" });
-            }, 0);
-          }}
-        >
-          <ThumbDownIcon color="red" />
-        </Button>
-
-        <Button
-          disableElevation
-          className="actions__passer"
-          ref={actionPasserRef}
-          onClick={() => {
-            if (canPressActionRef.current === false) return;
-
-            delayNextActionPress();
-
-            document
-              .getElementById("swipe-card__dislike-action-button")
-              ?.click();
-
-            setTimeout(() => {
-              context.choose({ vote_id: id, type: "0" });
-            }, 0);
-          }}
-        >
-          <CrossIcon />
-        </Button>
-
-        <Button
-          disableElevation
-          className="actions__pour"
-          ref={actionPourRef}
-          onClick={() => {
-            if (canPressActionRef.current === false) return;
-
-            delayNextActionPress();
-
-            document.getElementById("swipe-card__like-action-button")?.click();
-
-            setTimeout(() => {
-              context.choose({ vote_id: id, type: "+" });
-            }, 0);
-          }}
-        >
-          <ThumbUpIcon color="green" />
-        </Button>
       </div>
     </div>
   );

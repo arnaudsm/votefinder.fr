@@ -1,14 +1,21 @@
 @use '../base/breakpoints' as breakpoints;
 
 .Votes {
-  padding: 1.75rem 1rem 1.5rem;
-  box-sizing: border-box;
+  max-width: unset;
   height: 100%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: space-between;
+  overflow: hidden;
+
+  &__container {
+    padding: 1.75rem 1rem 1.5rem;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 30rem;
+    margin: 0 auto;
+  }
 
   &__bg-color {
     position: absolute;
@@ -149,6 +156,7 @@
     height: 0.5rem;
     width: 100%;
     background-color: var(--vote-progress-color);
+    z-index: 5;
 
     .progress {
       &__bar {
