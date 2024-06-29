@@ -23,8 +23,8 @@ export default function Welcome() {
         <div className="Welcome__content">
           <strong>
             {/* eslint-disable-next-line react/no-unescaped-entities */}
-            Votez les textes de l'Assemblée Nationale, et découvrez quel parti a
-            voté comme vous !
+            Votez les textes de l'Assemblée Nationale (2022 - 2024), et
+            découvrez quel parti a voté comme vous !
           </strong>
 
           <p>
