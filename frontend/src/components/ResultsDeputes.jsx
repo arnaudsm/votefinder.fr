@@ -17,20 +17,13 @@ export default function ResultsDeputes({ results }) {
   };
 
   const deputesVotesSort = ([id_a], [id_b]) => {
-    const ratio_a = getRatio(id_a);
-    const ratio_b = getRatio(id_b);
-
-    if (ratio_a === ratio_b) {
-      const sum_a =
-        (results?.deputesRaw?.[id_a]?.["+"] || 0) +
-        (results?.deputesRaw?.[id_a]?.["-"] || 0);
-      const sum_b =
-        (results?.deputesRaw?.[id_b]?.["+"] || 0) +
-        (results?.deputesRaw?.[id_b]?.["-"] || 0);
-      return sum_b - sum_a;
-    }
-
-    return 0;
+    const sum_a =
+      (results?.deputesRaw?.[id_a]?.["+"] || 0) +
+      (results?.deputesRaw?.[id_a]?.["-"] || 0);
+    const sum_b =
+      (results?.deputesRaw?.[id_b]?.["+"] || 0) +
+      (results?.deputesRaw?.[id_b]?.["-"] || 0);
+    return sum_b - sum_a;
   };
 
   return (
