@@ -6,7 +6,7 @@ import { Button, Tab, Tabs } from "@mui/material";
 import { Share } from "@mui/icons-material";
 import ResultsListes from "../components/ResultsListes.jsx";
 import ResultsDeputes from "../components/ResultsDeputes.jsx";
-import html2canvas from "html2canvas";
+import html2canvas from "html2canvas-pro";
 export default function Resultats() {
   const [tab, setTab] = useState(0);
   const context = useContext(ThemeContext);

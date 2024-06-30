@@ -5,19 +5,26 @@
   z-index: 2000;
   background-color: var(--mui-palette-background-paper);
   width: 25rem;
-  padding-bottom: 1rem;
   transform: scale(2);
 
   h1 {
-    font-size: 25px;
+    font-size: 1.25rem;
+    font-family: var(--font-title), sans-serif;
+    font-style: italic;
+    font-weight: 800;
     text-align: center;
     padding: 1rem 1rem 0;
   }
 
   &__logo {
-    width: 25rem;
-    max-width: 100%;
-    padding: 0 1rem;
+    width: 90%;
+    aspect-ratio: 9/1;
+    margin: 0 auto 1rem;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
   }
 
   &__list {
@@ -29,7 +36,15 @@
   }
 
   &__explanation {
-    font-size: 0.875rem;
+    font-size: 0.75rem;
     text-align: center;
+    margin-bottom: 0.25rem;
+  }
+
+  .Result {
+    &__name h4,
+    &__score {
+      transform: translateY(-0.5rem);
+    }
   }
 }
