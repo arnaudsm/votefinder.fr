@@ -11,6 +11,7 @@
 
   &__subtitle {
     font-family: var(--font-title), sans-serif;
+    font-style: italic;
     font-weight: 600;
 
     & + * {
@@ -52,10 +53,11 @@
     flex-wrap: wrap;
 
     .About__btn {
+      width: min-content;
+      min-width: unset;
       margin-top: 0 !important;
       border-radius: 0.5rem !important;
       padding: 0.5rem !important;
-      min-width: unset;
       aspect-ratio: 1;
       height: 3rem;
 

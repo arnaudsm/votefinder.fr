@@ -4,6 +4,7 @@
   width: fit-content;
   border-radius: 2.5rem !important;
   font-family: var(--font-title), sans-serif !important;
+  font-style: italic !important;
   font-weight: 700 !important;
   padding: 0.375rem 0.75rem !important;
   font-size: 0.875rem !important;
@@ -24,7 +25,7 @@
     color: var(--mui-palette-purple-main) !important;
 
     &.Btn--transparent {
-      background-color: color-mix(in srgb, var(--mui-palette-lightPurple-main) 20%, transparent) !important;
+      background-color: rgba(var(--mui-palette-lightPurple-mainChannel) / 0.20) !important;
     }
 
     &.Btn--bordered {

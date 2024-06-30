@@ -40,9 +40,10 @@
 
   &__tab {
     font-family: var(--font-title), sans-serif !important;
+    font-style: italic !important;
     font-weight: 600 !important;
     font-size: 1.125rem !important;
-    color: color-mix(in srgb, var(--mui-palette-primary-main) 54%, transparent) !important;
+    color: rgba(var(--mui-palette-primary-mainChannel) / 0.54) !important;
 
     &.Mui-selected {
       font-weight: 700 !important;

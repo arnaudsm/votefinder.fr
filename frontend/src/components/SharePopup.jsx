@@ -35,14 +35,15 @@ export default function SharePopup() {
               ></div>
               <div className="Result__name">
                 <h4>{data.lists[id].label}</h4>
-                <h5>{data.lists[id].leader}</h5>
               </div>
               <div className="Result__score">{`${Math.floor(approval * 100)}%`}</div>
             </div>
           </a>
         ))}
       </div>
-      <LogoURL className="SharePopup__logo" />
+      <div className="SharePopup__logo">
+        <LogoURL />
+      </div>
     </div>
   );
 }

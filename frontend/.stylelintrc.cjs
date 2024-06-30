@@ -9,7 +9,6 @@ module.exports = {
 
     // Custom rules
     'no-descending-specificity': null,
-    'color-function-notation': 'legacy',
 
     // MUI rules
     'alpha-value-notation': null,
