@@ -38,6 +38,17 @@ export default function About() {
             , et sans tracking.
           </p>
 
+          <p>
+            Les textes proposés sont issus
+            <br />
+            de la 16<sup>ème</sup> législature (2022-2024).
+            <br />
+            <br />
+            Résumés non-exhaustifs,
+            <br />
+            cliquez pour plus de contexte !
+          </p>
+
           <Button
             startIcon={<Description />}
             className="About__btn Btn Btn--secondary"
