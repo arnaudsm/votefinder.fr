@@ -116,7 +116,7 @@
     margin-top: 1rem;
     font-family: var(--font-title), sans-serif;
     font-weight: 700;
-    font-size: 1.25rem;
+    font-size: 1.375rem;
     line-height: 1.25;
     text-align: center;
 
@@ -134,7 +134,11 @@
   &__subtitle {
     text-align: center;
     font-weight: 600;
-    font-size: functions.calculate-rem(16);
+    font-size: functions.calculate-rem(15);
+
+    @media only screen and (min-width: breakpoints.$width-mobile) {
+      font-size: functions.calculate-rem(16);
+    }
 
     &:not(:first-child) {
       margin-top: 1.25rem;
@@ -227,14 +231,6 @@
             fill: var(--mui-palette-purple-main);
           }
         }
-      }
-    }
-  }
-
-  &--votes {
-    .Card {
-      &__title {
-        font-size: functions.calculate-rem(24);
       }
     }
   }
