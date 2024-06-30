@@ -9,7 +9,7 @@
 
   &__action {
     padding: 0 !important;
-    color: color-mix(in srgb, var(--mui-palette-primary-main) 54%, transparent) !important;
+    color: rgba(var(--mui-palette-primary-mainChannel) / 0.54) !important;
 
     &:hover {
       color: var(--mui-palette-primary-main) !important;

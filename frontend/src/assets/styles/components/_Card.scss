@@ -198,7 +198,7 @@
   }
 
   &__toggle-group {
-    background-color: color-mix(in srgb, var(--mui-palette-lightBlue-main) 60%, transparent) !important;
+    background-color: rgba(var(--mui-palette-lightBlue-mainChannel) / 0.60) !important;
     border-radius: 0 !important;
 
     button {

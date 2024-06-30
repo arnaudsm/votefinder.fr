@@ -9,12 +9,12 @@ html {
 
   &[data-mui-color-scheme='light'] {
     --logo-svg-text-vote-color: #3e3e3e;
-    --vote-progress-color: color-mix(in srgb, var(--mui-palette-body-main) 8%, transparent);
+    --vote-progress-color: rgba(var(--mui-palette-body-mainChannel) / 0.08);
   }
 
   &[data-mui-color-scheme='dark'] {
     --logo-svg-text-vote-color: #c1c1c1;
-    --vote-progress-color: color-mix(in srgb, var(--mui-palette-white-main) 8%, transparent);
+    --vote-progress-color: rgba(var(--mui-palette-white-mainChannel) / 0.08);
   }
 
   font-size: 16px;

@@ -25,7 +25,7 @@
     color: var(--mui-palette-purple-main) !important;
 
     &.Btn--transparent {
-      background-color: color-mix(in srgb, var(--mui-palette-lightPurple-main) 20%, transparent) !important;
+      background-color: rgba(var(--mui-palette-lightPurple-mainChannel) / 0.20) !important;
     }
 
     &.Btn--bordered {

@@ -1,5 +1,5 @@
 .Result {
-  background-color: color-mix(in srgb, var(--mui-palette-primary-main) 25%, transparent);
+  background-color: rgba(var(--mui-palette-primary-mainChannel) / 0.25);
   border-radius: 0.675rem;
   box-shadow: var(--shadow);
   display: flex;

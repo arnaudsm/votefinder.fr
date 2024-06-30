@@ -75,7 +75,7 @@
     width: 200vw;
     height: 200vw;
     z-index: -2;
-    background-color: color-mix(in srgb, var(--mui-palette-secondary-main) 30%, transparent) !important;
+    background-color: rgba(var(--mui-palette-secondary-mainChannel) / 0.30) !important;
     border-radius: 200vw;
     transform: translateX(-50%);
   }
