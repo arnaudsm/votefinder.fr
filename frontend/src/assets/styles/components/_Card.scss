@@ -108,6 +108,7 @@
     text-align: center;
     font-size: 0.75rem;
     font-family: var(--font-title), sans-serif;
+    font-style: italic;
     font-weight: 600;
     text-transform: uppercase;
   }
@@ -115,6 +116,7 @@
   &__title {
     margin-top: 1rem;
     font-family: var(--font-title), sans-serif;
+    font-style: italic;
     font-weight: 700;
     font-size: 1.25rem;
     line-height: 1.25;
@@ -181,6 +183,7 @@
         margin-left: 0.4rem;
         text-transform: uppercase;
         font-family: var(--font-title), sans-serif;
+        font-style: italic;
         font-weight: 700;
       }
     }
@@ -203,6 +206,7 @@
       border-radius: 0 !important;
       color: var(--mui-palette-white-main);
       font-family: var(--font-title), sans-serif;
+      font-style: italic;
       font-weight: 700;
       padding-top: 1rem;
       padding-bottom: 1rem;
