@@ -19,6 +19,18 @@ html {
 
   font-size: 16px;
 
+  @media (max-width: breakpoints.$width-mobile-xs) {
+    font-size: 16px !important;
+  }
+
+  @media (max-width: breakpoints.$width-mobile-2xs) {
+    font-size: 15px !important;
+  }
+
+  @media (max-width: breakpoints.$width-mobile-3xs) {
+    font-size: 14px !important;
+  }
+
   @media (max-height: breakpoints.$height-small) {
     font-size: 14px;
   }
