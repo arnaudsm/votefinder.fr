@@ -53,9 +53,14 @@ export default function About() {
         <div className="About__section">
           <h2 className="About__subtitle">🚀 Contribuer</h2>
           <p>
-            Vous voulez corriger une erreur ou rajouter un texte de loi ?
+            Vous voulez corriger une erreur
             <br />
-            Contactez-nous ou proposez une modification sur GitHub !
+            ou rajouter un texte de loi ?
+          </p>
+          <p>
+            Contactez-nous ou proposez
+            <br />
+            une modification sur GitHub !
           </p>
 
           <Button
