@@ -4,7 +4,6 @@ import { Button } from "@mui/material";
 import {
   Delete,
   Email,
-  FileDownload,
   GitHub,
   Instagram,
   Description,
@@ -53,9 +52,14 @@ export default function About() {
         <div className="About__section">
           <h2 className="About__subtitle">🚀 Contribuer</h2>
           <p>
-            Vous voulez corriger une erreur ou rajouter un texte de loi ?
+            Vous voulez corriger une erreur
             <br />
-            Contactez-nous ou proposez une modification sur GitHub !
+            ou rajouter un texte de loi ?
+          </p>
+          <p>
+            Contactez-nous ou proposez
+            <br />
+            une modification sur GitHub !
           </p>
 
           <Button
@@ -131,29 +135,6 @@ export default function About() {
             disableElevation
           >
             Réinitialiser mes votes
-          </Button>
-
-          <Button
-            className="About__btn Btn Btn--secondary"
-            startIcon={<FileDownload />}
-            size="large"
-            variant="contained"
-            onClick={() => {
-              const data = new Blob([JSON.stringify(context.choices)], {
-                type: "application/json",
-              });
-              const url = window.URL.createObjectURL(data);
-              const a = document.createElement("a");
-              a.style.display = "none";
-              a.href = url;
-              a.download = "votes_legislatives.txt";
-              document.body.appendChild(a);
-              a.click();
-              window.URL.revokeObjectURL(url);
-            }}
-            disableElevation
-          >
-            Télécharger mes votes
           </Button>
         </div>
 

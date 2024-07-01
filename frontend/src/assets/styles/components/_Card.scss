@@ -38,14 +38,6 @@
         gap: 1rem;
         align-items: center;
       }
-
-      &__title {
-        font-size: 1.25rem !important;
-
-        @media only screen and (min-width: breakpoints.$width-mobile) {
-          font-size: 1.5rem !important;
-        }
-      }
     }
   }
 
@@ -214,7 +206,7 @@
       font-weight: 700;
       padding-top: 1rem;
       padding-bottom: 1rem;
-      font-size: 1rem;
+      font-size: 0.875rem;
 
       svg {
         width: 1.125rem;
