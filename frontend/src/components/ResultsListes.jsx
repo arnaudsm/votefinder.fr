@@ -17,7 +17,7 @@ export default function ResultsListes({ results, choices }) {
             affiner vos résultats !
           </strong>
         ) : (
-          <strong>Bravo, vous avez complété tous les votes ! 🎉</strong>
+          <strong>Félicitations, vous avez voté toutes les lois ! 🎉</strong>
         )}
       </p>
       {results.lists.map(([id, approval]) => (
