@@ -17,7 +17,14 @@
   &__header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin: 1rem;
+  }
+
+  &__title {
+    display: block;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
   }
 
   &__list {
