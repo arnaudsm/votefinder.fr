@@ -39,6 +39,7 @@ export default function Votes() {
           Number(data.votes?.[b]?.pinned || false),
       ),
   );
+  const [tooltipContent, setTooltipContent] = useState(false);
   const handleDismiss = (el, meta, id, action, operation) => {
     if (operation !== "swipe") return;
     setTimeout(() => {
@@ -208,6 +209,12 @@ export default function Votes() {
                 context.choose({ vote_id: id, type: "-" });
               }, 0);
             }}
+            onMouseOver={() => {
+              setTooltipContent(data.votes[id]?.contre || null);
+            }}
+            onMouseOut={() => {
+              setTooltipContent(null);
+            }}
           >
             <ThumbDownIcon color="red" />
           </Button>
@@ -250,9 +257,21 @@ export default function Votes() {
                 context.choose({ vote_id: id, type: "+" });
               }, 0);
             }}
+            onMouseOver={() => {
+              setTooltipContent(data.votes[id]?.pour || null);
+            }}
+            onMouseOut={() => {
+              setTooltipContent(null);
+            }}
           >
             <ThumbUpIcon color="green" />
           </Button>
+          {tooltipContent && <div
+            className="Votes__tooltip"
+            style={{ bottom: actionPourRef.current?.offsetHeight }}
+          >
+            {tooltipContent}
+          </div>}
         </div>
       </div>
     </div>

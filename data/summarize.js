@@ -1,10 +1,10 @@
 import fs from "fs";
-import { summarize } from "./openai.js";
-import { pRateLimit } from "p-ratelimit";
 import { parse } from "node-html-parser";
-import { getSheet, getVoteId, amendement_urls } from "./sync.js"
-import { getData, listify } from "./data.js";
+import { pRateLimit } from "p-ratelimit";
 import { readPdfText } from "pdf-text-reader";
+import { getData, listify } from "./data.js";
+import { argue, summarize } from "./openai.js";
+import { amendement_urls, getSheet, getVoteId } from "./sync.js";
 
 const limit = pRateLimit({
   interval: 1000,
@@ -83,6 +83,8 @@ const scrape = async (vote) => {
   const { text, summary_url } = await getText(vote)
   const summary = await summarize(text);
   console.log({ summary });
+  const discuss = await argue(summary.titre);
+  console.log({ discuss });
   if (!summary || Object.keys(summary).length == 0) return fs.writeFileSync(file, "");
 
 
@@ -90,8 +92,10 @@ const scrape = async (vote) => {
     file,
     JSON.stringify({
       ...summary,
+      ...discuss,
       ...vote,
-      summary_url
+      summary_url,
+      dossier_url: vote.senat_url || vote.assemblee_url
     })
   );
 };
@@ -145,7 +149,7 @@ const dossiersTodo = Object.values(dossiers)
 const dossiersCounter = {}
 
 const amendementsTodo = Object.entries(amendement_urls)
-  .map(([amendement_url, { dossier_id, amendement_id, vote_id }]) => ({ amendement_url, amendement_id, vote_id: `VTANR5L16V${vote_id}`, dossier_id }))
+  .map(([amendement_url, { dossier_id, amendement_id, vote_id, seance_id }]) => ({ amendement_url, amendement_id, vote_id: `VTANR5L16V${vote_id}`, dossier_id, seance_id }))
   .map(x => {
     const dossier = dossiers[x.dossier_id]
     const vote = votes[x.vote_id]
@@ -160,6 +164,7 @@ const amendementsTodo = Object.entries(amendement_urls)
       senat_url: dossier.titreDossier.senatChemin,
       date: vote.dateScrutin,
       type: "Amendement",
+      seance_url: `https://www.assemblee-nationale.fr/dyn/crSeanceRedirect/${x.seance_id}`
     }
   })
   .filter(x => x)
@@ -197,8 +202,8 @@ const shuffle = arr => {
   return [arr[rand], ...shuffle(arr.filter((_, i) => i != rand))];
 };
 
-const urls_todo = [
-]
+const urls_todo = amendementsTodo.slice(16, 17).map((x) => x.amendement_url)
+
 const todo = shuffle([
   ...dossiersTodo,
   ...amendementsTodo,

@@ -47,6 +47,15 @@
     justify-content: end;
   }
 
+  &__tooltip {
+    position: absolute;
+    background-color: var(--mui-palette-body-main);
+    color: white;
+    padding: 10px;
+    border-radius: 20px;
+    z-index: 10;
+  }
+
   &__actions {
     display: flex;
     gap: 2rem;

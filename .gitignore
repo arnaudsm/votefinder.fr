@@ -4,6 +4,7 @@ legacy
 .env
 data/sync.js
 data/resumes
+data/amendements
 
 # Logs
 logs
